@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>mmmmisl_m</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            color: #1d1d1f;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+            background-color: #f5f5f7;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="20" y="30" font-size="40" opacity="0.15">💥</text></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="20" y="30" font-size="40" opacity="0.15">🤘</text></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="20" y="30" font-size="30" opacity="0.12">💥</text></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="20" y="30" font-size="50" opacity="0.10">🤘</text></svg>');
+            background-repeat: repeat, repeat, repeat, repeat;
+            background-size: 150px 150px, 200px 200px, 120px 120px, 180px 180px;
+            background-position: 0 0, 75px 30px, 40px 80px, 120px 10px;
+            background-color: #f5f5f7;
+            pointer-events: none;
+        }
+
+        .cards-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            max-width: 100%;
+            padding: 20px 16px 30px 16px;
+            gap: 30px;
+        }
+
+        .glass-card {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(80px) saturate(220%);
+            -webkit-backdrop-filter: blur(80px) saturate(220%);
+            border-radius: 44px;
+            padding: 32px 36px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 
+                0 8px 40px rgba(0, 0, 0, 0.03),
+                inset 0 1.5px 0 rgba(255, 255, 255, 0.40),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+            transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transform: rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            box-sizing: border-box;
+            position: relative;
+            opacity: 1;
+        }
+
+        .card-welcome {
+            --rot: 0deg;
+            --x: 0px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            max-width: 100%;
+            max-height: 100vh;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(60px) saturate(200%);
+            -webkit-backdrop-filter: blur(60px) saturate(200%);
+            border: none;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            z-index: 1000;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        .card-welcome.hidden {
+            transform: translateY(30px) scale(0.85);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .card-welcome .emoji-big {
+            font-size: 5rem;
+            margin-bottom: 16px;
+        }
+
+        .card-welcome h1 {
+            font-size: 2.8rem;
+            text-align: center;
+        }
+
+        .card-welcome .subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .loader {
+            margin-top: 28px;
+            display: flex;
+            gap: 7px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader span {
+            width: 10px;
+            height: 10px;
+            background: #1d1d1f;
+            border-radius: 50%;
+            display: inline-block;
+            animation: dot-wave 1.2s ease-in-out infinite both;
+        }
+
+        .loader span:nth-child(1) { animation-delay: -0.32s; }
+        .loader span:nth-child(2) { animation-delay: -0.16s; }
+        .loader span:nth-child(3) { animation-delay: 0s; }
+        .loader span:nth-child(4) { animation-delay: 0.16s; }
+        .loader span:nth-child(5) { animation-delay: 0.32s; }
+
+        @keyframes dot-wave {
+            0%, 80%, 100% {
+                transform: scale(0.5);
+                opacity: 0.2;
+            }
+            40% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .card-1 { --rot: -2deg; --x: -8px; background: rgba(255, 255, 255, 0.06); }
+        .card-2 { --rot: 2.5deg; --x: 12px; background: rgba(0, 122, 255, 0.04); }
+        .card-3 { --rot: -1.5deg; --x: -5px; background: rgba(52, 199, 89, 0.04); }
+        .card-4 { --rot: 3deg; --x: 15px; background: rgba(255, 45, 85, 0.04); }
+        .card-5 { --rot: -2.5deg; --x: -12px; background: rgba(0, 0, 0, 0.03); }
+        .card-6 { --rot: 1.5deg; --x: 10px; background: rgba(0, 0, 0, 0.03); }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 
+                0 16px 56px rgba(0, 0, 0, 0.06),
+                inset 0 1.5px 0 rgba(255, 255, 255, 0.50);
+            transform: rotate(0deg) translateX(0) scale(1.02);
+        }
+
+        .cards-grid {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 420px;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .cards-grid.visible {
+            display: flex;
+        }
+
+        .cards-grid .glass-card {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .cards-grid.visible .glass-card:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.1s;
+        }
+        .cards-grid.visible .glass-card:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.2s;
+        }
+        .cards-grid.visible .glass-card:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.3s;
+        }
+        .cards-grid.visible .glass-card:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.4s;
+        }
+        .cards-grid.visible .glass-card:nth-child(5) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.55s;
+        }
+        .cards-grid.visible .glass-card:nth-child(6) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.7s;
+        }
+
+        .footer {
+            width: 100%;
+            max-width: 420px;
+            text-align: left;
+            padding: 15px 0 5px 0;
+            font-size: 0.9rem;
+            font-weight: 450;
+            opacity: 0.5;
+            color: rgba(0, 0, 0, 0.55);
+            letter-spacing: 0.3px;
+            transition: opacity 0.3s ease;
+            flex: 0 0 auto;
+        }
+
+        .footer:hover {
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-weight: 650;
+            font-size: 1.8rem;
+            letter-spacing: -0.035em;
+            line-height: 1.2;
+            margin: 0 0 6px 0;
+            color: rgba(0, 0, 0, 0.85);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.6;
+            margin: 0;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .link {
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        .link a {
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+            word-break: break-all;
+        }
+
+        .link a:hover {
+            opacity: 0.7;
+        }
+
+        .telegram-link a {
+            color: #0088cc;
+            border-bottom-color: rgba(0, 136, 204, 0.2);
+        }
+        .telegram-link a:hover {
+            border-bottom-color: rgba(0, 136, 204, 0.7);
+        }
+
+        .instagram-link a {
+            color: #e4405f;
+            border-bottom-color: rgba(228, 64, 95, 0.2);
+        }
+        .instagram-link a:hover {
+            border-bottom-color: rgba(228, 64, 95, 0.7);
+        }
+
+        .threads-link a {
+            color: #000000;
+            border-bottom-color: rgba(0, 0, 0, 0.15);
+        }
+        .threads-link a:hover {
+            border-bottom-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .tiktok-link a {
+            color: #000000;
+            border-bottom-color: rgba(0, 0, 0, 0.15);
+        }
+        .tiktok-link a:hover {
+            border-bottom-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .emoji-big {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .card-welcome .emoji-big {
+                font-size: 3.6rem;
+            }
+            .card-welcome h1 {
+                font-size: 2rem;
+            }
+            .card-welcome .subtitle {
+                font-size: 1rem;
+            }
+            .glass-card {
+                padding: 24px 26px;
+                border-radius: 36px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .emoji-big {
+                font-size: 2.4rem;
+            }
+            .cards-grid {
+                padding: 0 0 10px 0;
+            }
+            .footer {
+                font-size: 0.75rem;
+                padding: 10px 0 5px 0;
+                opacity: 0.5;
+            }
+            .loader span {
+                width: 8px;
+                height: 8px;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-welcome" id="welcomeCard">
+        <span class="emoji-big">👋</span>
+        <h1>Добро пожаловать!</h1>
+        <p class="subtitle">@mmmmisl_m</p>
+        <div class="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="cards-wrapper" id="scrollContainer">
+        <div class="cards-grid" id="cardsGrid">
+
+            <div class="glass-card card-1">
+                <span class="emoji-big">💥</span>
+                <h1>Привет тут соцсети mmmmisl_m</h1>
+            </div>
+
+            <div class="glass-card card-2">
+                <span class="emoji-big">🤘</span>
+                <h1>Наш Telegram</h1>
+                <div class="link telegram-link">
+                    <a href="https://t.me/mmmmisl_m_channel" target="_blank">@mmmmisl_m_channel</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Telegram</p>
+            </div>
+
+            <div class="glass-card card-3">
+                <span class="emoji-big">📸</span>
+                <h1>Наш Instagram</h1>
+                <div class="link instagram-link">
+                    <a href="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr" target="_blank">@mmmmisl_m</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
+            </div>
+
+            <div class="glass-card card-4">
+                <span class="emoji-big">🚀</span>
+                <h1>Наш Threads</h1>
+                <div class="link threads-link">
+                    <a href="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==" target="_blank">@mmmmisl_m</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
+            </div>
+
+            <div class="glass-card card-5">
+                <span class="emoji-big">🎵</span>
+                <h1>Наш TikTok</h1>
+                <div class="link tiktok-link">
+                    <a href="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ" target="_blank">@mmmmisl_m</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
+            </div>
+
+            <div class="glass-card card-6">
+                <span class="emoji-big">✨</span>
+                <h1>Присоединяйся</h1>
+                <p class="subtitle">Все ссылки выше ☝️</p>
+            </div>
+
+            <div class="footer">
+                © 2026 mmmmisl_m
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const welcomeCard = document.getElementById('welcomeCard');
+            const cardsGrid = document.getElementById('cardsGrid');
+
+            setTimeout(function() {
+                welcomeCard.classList.add('hidden');
+                setTimeout(function() {
+                    cardsGrid.classList.add('visible');
+                }, 200);
+                setTimeout(function() {
+                    welcomeCard.style.display = 'none';
+                }, 700);
+            }, 2000);
+        });
+    </script>
+
+    <script data-goatcounter="https://mmmmislm.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
