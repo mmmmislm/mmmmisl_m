@@ -22,33 +22,96 @@
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             margin: 0;
             min-height: 100vh;
-            color: #1d1d1f;
             overflow-y: auto;
             overflow-x: hidden;
             width: 100%;
             max-width: 100vw;
             position: relative;
-            background-color: #f5f5f7;
+            transition: background 0.6s ease, color 0.6s ease;
         }
 
-        body::before {
-            content: '';
+        body {
+            color: #ffffff;
+            background: linear-gradient(-45deg, #2c2c2c, #1a1a1a, #3a3a3a, #0d0d0d);
+            background-size: 400% 400%;
+            animation: gradientMove 18s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (prefers-color-scheme: light) {
+            body {
+                color: #1d1d1f;
+                background: linear-gradient(-45deg, #e0e0e6, #d0d0d8, #e8e8ee, #f5f5f7);
+                background-size: 400% 400%;
+                animation: gradientMove 18s ease infinite;
+            }
+
+            .glass-card {
+                background: rgba(255, 255, 255, 0.15) !important;
+                backdrop-filter: blur(16px) saturate(180%) !important;
+                -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+                border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+            }
+
+            .glass-card:hover {
+                background: rgba(255, 255, 255, 0.25) !important;
+                box-shadow: 0 16px 56px rgba(0, 0, 0, 0.08) !important;
+            }
+
+            h1 { color: #1d1d1f !important; }
+            .subtitle { color: rgba(0, 0, 0, 0.6) !important; }
+            .footer { color: rgba(0, 0, 0, 0.6) !important; }
+
+            .link a {
+                color: rgba(0, 0, 0, 0.8) !important;
+                border-bottom-color: rgba(0, 0, 0, 0.15) !important;
+            }
+
+            .card-welcome {
+                background: rgba(255, 255, 255, 0.3) !important;
+                backdrop-filter: blur(30px) saturate(200%) !important;
+                -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+            }
+
+            .card-welcome h1 { color: #1d1d1f !important; }
+            .card-welcome .subtitle { color: rgba(0, 0, 0, 0.6) !important; }
+
+            .loader span {
+                background: #1d1d1f !important;
+            }
+
+            .emoji-bg {
+                opacity: 0.25 !important;
+                filter: brightness(0.6) contrast(0.9);
+            }
+
+            .telegram-link a { color: #0088cc !important; }
+            .telegram-private-link a { color: #0088cc !important; }
+            .instagram-link a { color: #e4405f !important; }
+            .threads-link a { color: #1d1d1f !important; }
+            .tiktok-link a { color: #1d1d1f !important; }
+        }
+
+        .emoji-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-            background-image: 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="20" y="30" font-size="40" opacity="0.15">💥</text></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="20" y="30" font-size="40" opacity="0.15">🤘</text></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="20" y="30" font-size="30" opacity="0.12">💥</text></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="20" y="30" font-size="50" opacity="0.10">🤘</text></svg>');
-            background-repeat: repeat, repeat, repeat, repeat;
-            background-size: 150px 150px, 200px 200px, 120px 120px, 180px 180px;
-            background-position: 0 0, 75px 30px, 40px 80px, 120px 10px;
-            background-color: #f5f5f7;
+            font-size: 3rem;
+            opacity: 0.2;
             pointer-events: none;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite alternate;
+            user-select: none;
+            transition: opacity 0.4s ease;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(var(--rot, 0deg)) scale(1); }
+            100% { transform: translate(var(--dx, 30px), var(--dy, -30px)) rotate(calc(var(--rot, 0deg) + 10deg)) scale(1.1); }
         }
 
         .cards-wrapper {
@@ -60,22 +123,23 @@
             max-width: 100%;
             padding: 20px 16px 30px 16px;
             gap: 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .glass-card {
             flex: 0 0 auto;
             width: 100%;
             max-width: 420px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(80px) saturate(220%);
-            -webkit-backdrop-filter: blur(80px) saturate(220%);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
             border-radius: 44px;
             padding: 32px 36px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 
-                0 8px 40px rgba(0, 0, 0, 0.03),
-                inset 0 1.5px 0 rgba(255, 255, 255, 0.40),
-                inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+                0 8px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
             transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
             transform: rotate(var(--rot, 0deg)) translateX(var(--x, 0));
             box-sizing: border-box;
@@ -94,9 +158,9 @@
             max-width: 100%;
             max-height: 100vh;
             border-radius: 0;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(60px) saturate(200%);
-            -webkit-backdrop-filter: blur(60px) saturate(200%);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
             border: none;
             box-shadow: none;
             display: flex;
@@ -125,11 +189,13 @@
         .card-welcome h1 {
             font-size: 2.8rem;
             text-align: center;
+            color: #ffffff;
         }
 
         .card-welcome .subtitle {
             font-size: 1.2rem;
             text-align: center;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .loader {
@@ -143,7 +209,7 @@
         .loader span {
             width: 10px;
             height: 10px;
-            background: #1d1d1f;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
             display: inline-block;
             animation: dot-wave 1.2s ease-in-out infinite both;
@@ -166,18 +232,19 @@
             }
         }
 
-        .card-1 { --rot: -2deg; --x: -8px; background: rgba(255, 255, 255, 0.06); }
-        .card-2 { --rot: 2.5deg; --x: 12px; background: rgba(0, 122, 255, 0.04); }
-        .card-3 { --rot: -1.5deg; --x: -5px; background: rgba(52, 199, 89, 0.04); }
-        .card-4 { --rot: 3deg; --x: 15px; background: rgba(255, 45, 85, 0.04); }
-        .card-5 { --rot: -2.5deg; --x: -12px; background: rgba(0, 0, 0, 0.03); }
-        .card-6 { --rot: 1.5deg; --x: 10px; background: rgba(0, 0, 0, 0.03); }
+        .card-1 { --rot: -2deg; --x: -8px; }
+        .card-2 { --rot: 2.5deg; --x: 12px; }
+        .card-3 { --rot: -1.5deg; --x: -5px; }
+        .card-4 { --rot: 3deg; --x: 15px; }
+        .card-5 { --rot: -2.5deg; --x: -12px; }
+        .card-6 { --rot: 1.5deg; --x: 10px; }
+        .card-7 { --rot: -1.5deg; --x: 8px; }
 
         .glass-card:hover {
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.12);
             box-shadow: 
-                0 16px 56px rgba(0, 0, 0, 0.06),
-                inset 0 1.5px 0 rgba(255, 255, 255, 0.50);
+                0 16px 56px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transform: rotate(0deg) translateX(0) scale(1.02);
         }
 
@@ -233,23 +300,28 @@
             transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
             transition-delay: 0.65s;
         }
+        .cards-grid.visible .glass-card:nth-child(7) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.75s;
+        }
 
         .footer {
             width: 100%;
             max-width: 420px;
             text-align: left;
-            padding: 15px 0 5px 0;
-            font-size: 0.9rem;
-            font-weight: 450;
-            opacity: 0.5;
-            color: rgba(0, 0, 0, 0.55);
-            letter-spacing: 0.3px;
+            padding: 20px 0 10px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5px;
             transition: opacity 0.3s ease;
             flex: 0 0 auto;
         }
 
         .footer:hover {
-            opacity: 0.8;
+            opacity: 1;
         }
 
         h1 {
@@ -258,15 +330,15 @@
             letter-spacing: -0.035em;
             line-height: 1.2;
             margin: 0 0 6px 0;
-            color: rgba(0, 0, 0, 0.85);
+            color: #ffffff;
         }
 
         .subtitle {
             font-size: 1rem;
             font-weight: 400;
-            opacity: 0.6;
+            opacity: 0.7;
             margin: 0;
-            color: rgba(0, 0, 0, 0.7);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .link {
@@ -277,10 +349,11 @@
         .link a {
             text-decoration: none;
             font-weight: 500;
-            border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
             padding-bottom: 2px;
             transition: all 0.3s ease;
             word-break: break-all;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .link a:hover {
@@ -289,34 +362,42 @@
 
         .telegram-link a {
             color: #0088cc;
-            border-bottom-color: rgba(0, 136, 204, 0.2);
+            border-bottom-color: rgba(0, 136, 204, 0.3);
         }
         .telegram-link a:hover {
             border-bottom-color: rgba(0, 136, 204, 0.7);
         }
 
+        .telegram-private-link a {
+            color: #0088cc;
+            border-bottom-color: rgba(0, 136, 204, 0.3);
+        }
+        .telegram-private-link a:hover {
+            border-bottom-color: rgba(0, 136, 204, 0.7);
+        }
+
         .instagram-link a {
             color: #e4405f;
-            border-bottom-color: rgba(228, 64, 95, 0.2);
+            border-bottom-color: rgba(228, 64, 95, 0.3);
         }
         .instagram-link a:hover {
             border-bottom-color: rgba(228, 64, 95, 0.7);
         }
 
         .threads-link a {
-            color: #000000;
-            border-bottom-color: rgba(0, 0, 0, 0.15);
+            color: rgba(255, 255, 255, 0.9);
+            border-bottom-color: rgba(255, 255, 255, 0.2);
         }
         .threads-link a:hover {
-            border-bottom-color: rgba(0, 0, 0, 0.6);
+            border-bottom-color: rgba(255, 255, 255, 0.6);
         }
 
         .tiktok-link a {
-            color: #000000;
-            border-bottom-color: rgba(0, 0, 0, 0.15);
+            color: rgba(255, 255, 255, 0.9);
+            border-bottom-color: rgba(255, 255, 255, 0.2);
         }
         .tiktok-link a:hover {
-            border-bottom-color: rgba(0, 0, 0, 0.6);
+            border-bottom-color: rgba(255, 255, 255, 0.6);
         }
 
         .emoji-big {
@@ -349,9 +430,9 @@
                 padding: 0 0 10px 0;
             }
             .footer {
-                font-size: 0.75rem;
-                padding: 10px 0 5px 0;
-                opacity: 0.5;
+                font-size: 1rem;
+                padding: 15px 0 8px 0;
+                opacity: 0.7;
             }
             .loader span {
                 width: 8px;
@@ -362,6 +443,38 @@
     </style>
 </head>
 <body>
+
+    <!-- РАЗБРОСАННЫЕ СМАЙЛЫ (30 штук) -->
+    <div class="emoji-bg" style="top: 2%; left: 2%; font-size: 4rem; --rot: 25deg; --dx: 40px; --dy: -20px;">💥</div>
+    <div class="emoji-bg" style="top: 8%; right: 5%; font-size: 3rem; --rot: -45deg; --dx: -30px; --dy: 50px;">🤘</div>
+    <div class="emoji-bg" style="top: 15%; left: 8%; font-size: 5rem; --rot: 180deg; --dx: 60px; --dy: 30px;">💥</div>
+    <div class="emoji-bg" style="top: 22%; right: 12%; font-size: 2.5rem; --rot: 70deg; --dx: -50px; --dy: -40px;">🤘</div>
+    <div class="emoji-bg" style="top: 30%; left: 3%; font-size: 4.5rem; --rot: -120deg; --dx: 30px; --dy: 60px;">💥</div>
+    <div class="emoji-bg" style="top: 38%; right: 8%; font-size: 3.5rem; --rot: 15deg; --dx: -20px; --dy: -50px;">🤘</div>
+    <div class="emoji-bg" style="top: 45%; left: 12%; font-size: 3rem; --rot: -200deg; --dx: 50px; --dy: 20px;">💥</div>
+    <div class="emoji-bg" style="top: 52%; right: 3%; font-size: 2.8rem; --rot: 90deg; --dx: -40px; --dy: 40px;">🤘</div>
+    <div class="emoji-bg" style="top: 60%; left: 6%; font-size: 4.2rem; --rot: -60deg; --dx: 20px; --dy: -30px;">💥</div>
+    <div class="emoji-bg" style="top: 68%; right: 10%; font-size: 3.2rem; --rot: 220deg; --dx: -60px; --dy: 10px;">🤘</div>
+    <div class="emoji-bg" style="top: 75%; left: 9%; font-size: 2rem; --rot: -15deg; --dx: 70px; --dy: -20px;">💥</div>
+    <div class="emoji-bg" style="top: 82%; right: 6%; font-size: 3.8rem; --rot: 45deg; --dx: -20px; --dy: 60px;">🤘</div>
+    <div class="emoji-bg" style="top: 88%; left: 4%; font-size: 2.2rem; --rot: 130deg; --dx: 30px; --dy: -40px;">💥</div>
+    <div class="emoji-bg" style="top: 93%; right: 9%; font-size: 3rem; --rot: -80deg; --dx: -70px; --dy: 50px;">🤘</div>
+    <div class="emoji-bg" style="top: 97%; left: 7%; font-size: 3.5rem; --rot: 300deg; --dx: 40px; --dy: -10px;">💥</div>
+    <div class="emoji-bg" style="top: 5%; left: 20%; font-size: 3.2rem; --rot: 50deg; --dx: 25px; --dy: 35px;">💥</div>
+    <div class="emoji-bg" style="top: 12%; left: 45%; font-size: 2.8rem; --rot: -30deg; --dx: -15px; --dy: -25px;">🤘</div>
+    <div class="emoji-bg" style="top: 20%; left: 70%; font-size: 4.8rem; --rot: 160deg; --dx: 45px; --dy: 20px;">💥</div>
+    <div class="emoji-bg" style="top: 28%; left: 35%; font-size: 2.2rem; --rot: -75deg; --dx: 20px; --dy: -30px;">🤘</div>
+    <div class="emoji-bg" style="top: 35%; left: 85%; font-size: 4.0rem; --rot: 110deg; --dx: -35px; --dy: 15px;">💥</div>
+    <div class="emoji-bg" style="top: 42%; left: 15%; font-size: 3.8rem; --rot: -20deg; --dx: 50px; --dy: -10px;">🤘</div>
+    <div class="emoji-bg" style="top: 50%; left: 60%; font-size: 2.6rem; --rot: 200deg; --dx: -20px; --dy: 40px;">💥</div>
+    <div class="emoji-bg" style="top: 58%; left: 30%; font-size: 4.6rem; --rot: -140deg; --dx: 30px; --dy: -50px;">🤘</div>
+    <div class="emoji-bg" style="top: 65%; left: 75%; font-size: 3.4rem; --rot: 35deg; --dx: -45px; --dy: 25px;">💥</div>
+    <div class="emoji-bg" style="top: 72%; left: 20%; font-size: 2.4rem; --rot: -90deg; --dx: 60px; --dy: -15px;">🤘</div>
+    <div class="emoji-bg" style="top: 80%; left: 55%; font-size: 4.4rem; --rot: 280deg; --dx: -25px; --dy: 35px;">💥</div>
+    <div class="emoji-bg" style="top: 87%; left: 30%; font-size: 3.0rem; --rot: -10deg; --dx: 40px; --dy: -40px;">🤘</div>
+    <div class="emoji-bg" style="top: 92%; left: 80%; font-size: 2.0rem; --rot: 150deg; --dx: -50px; --dy: 20px;">💥</div>
+    <div class="emoji-bg" style="top: 98%; left: 50%; font-size: 3.6rem; --rot: -220deg; --dx: 20px; --dy: -30px;">🤘</div>
+    <div class="emoji-bg" style="top: 48%; left: 48%; font-size: 2.2rem; --rot: 45deg; --dx: 10px; --dy: -10px;">💥</div>
 
     <div class="card-welcome" id="welcomeCard">
         <span class="emoji-big">👋</span>
@@ -386,7 +499,7 @@
 
             <div class="glass-card card-2">
                 <span class="emoji-big">🤘</span>
-                <h1>Наш Telegram</h1>
+                <h1>Наш Telegram канал</h1>
                 <div class="link telegram-link">
                     <a href="https://t.me/mmmmisl_m_channel" target="_blank">↗ mmmmisl_m_channel</a>
                 </div>
@@ -394,6 +507,15 @@
             </div>
 
             <div class="glass-card card-3">
+                <span class="emoji-big">🔒</span>
+                <h1>Наш Telegram канал (Приват)</h1>
+                <div class="link telegram-private-link">
+                    <a href="https://t.me/+MB8dBLXqcvVhNzcy" target="_blank">↗ mmmmisl_m_channel_privat</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Доступ по ссылке</p>
+            </div>
+
+            <div class="glass-card card-4">
                 <span class="emoji-big">📸</span>
                 <h1>Наш Instagram</h1>
                 <div class="link instagram-link">
@@ -402,7 +524,7 @@
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
             </div>
 
-            <div class="glass-card card-4">
+            <div class="glass-card card-5">
                 <span class="emoji-big">🚀</span>
                 <h1>Наш Threads</h1>
                 <div class="link threads-link">
@@ -411,7 +533,7 @@
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
             </div>
 
-            <div class="glass-card card-5">
+            <div class="glass-card card-6">
                 <span class="emoji-big">🎵</span>
                 <h1>Наш TikTok</h1>
                 <div class="link tiktok-link">
@@ -420,7 +542,7 @@
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
             </div>
 
-            <div class="glass-card card-6">
+            <div class="glass-card card-7">
                 <span class="emoji-big">✨</span>
                 <h1>Присоединяйся</h1>
                 <p class="subtitle">Все ссылки выше ☝️</p>
@@ -450,7 +572,5 @@
         });
     </script>
 
-    <script data-goatcounter="https://mmmmislm.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
