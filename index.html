@@ -52,50 +52,59 @@
             }
 
             .glass-card {
-                background: rgba(255, 255, 255, 0.15) !important;
-                backdrop-filter: blur(16px) saturate(180%) !important;
-                -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-                border: 1px solid rgba(255, 255, 255, 0.2) !important;
-                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+                background: rgba(232, 240, 254, 0.12) !important;
+                backdrop-filter: blur(16px) saturate(160%) !important;
+                -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.01), inset 0 1px 0 rgba(232, 240, 254, 0.06) !important;
             }
 
             .glass-card:hover {
-                background: rgba(255, 255, 255, 0.25) !important;
-                box-shadow: 0 16px 56px rgba(0, 0, 0, 0.08) !important;
+                background: rgba(232, 240, 254, 0.18) !important;
+                box-shadow: 0 16px 48px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(232, 240, 254, 0.10) !important;
+                border-color: rgba(255, 255, 255, 0.25) !important;
             }
 
-            h1 { color: #1d1d1f !important; }
-            .subtitle { color: rgba(0, 0, 0, 0.6) !important; }
-            .footer { color: rgba(0, 0, 0, 0.6) !important; }
+            .glass-card::before {
+                background: linear-gradient(135deg, 
+                    rgba(232, 240, 254, 0.3) 0%, 
+                    rgba(232, 240, 254, 0.0) 35%,
+                    rgba(232, 240, 254, 0.0) 65%,
+                    rgba(232, 240, 254, 0.2) 100%
+                ) !important;
+                opacity: 0.3 !important;
+            }
 
-            .link a {
-                color: rgba(0, 0, 0, 0.8) !important;
-                border-bottom-color: rgba(0, 0, 0, 0.15) !important;
+            .glass-card:hover::before {
+                opacity: 0.6 !important;
             }
 
             .card-welcome {
-                background: rgba(255, 255, 255, 0.3) !important;
-                backdrop-filter: blur(30px) saturate(200%) !important;
-                -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+                background: #f2f2f7 !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
             }
 
             .card-welcome h1 { color: #1d1d1f !important; }
             .card-welcome .subtitle { color: rgba(0, 0, 0, 0.6) !important; }
-
-            .loader span {
-                background: #1d1d1f !important;
-            }
-
-            .emoji-bg {
-                opacity: 0.25 !important;
-                filter: brightness(0.6) contrast(0.9);
-            }
-
+            .loader span { background: #1d1d1f !important; }
+            .emoji-bg { opacity: 0.25 !important; filter: brightness(0.6) contrast(0.9); }
             .telegram-link a { color: #0088cc !important; }
             .telegram-private-link a { color: #0088cc !important; }
             .instagram-link a { color: #e4405f !important; }
             .threads-link a { color: #1d1d1f !important; }
             .tiktok-link a { color: #1d1d1f !important; }
+            .card-1 { background: rgba(232, 240, 254, 0.12) !important; }
+            .card-2 { background: rgba(232, 240, 254, 0.12) !important; }
+            .card-3 { background: rgba(232, 240, 254, 0.12) !important; }
+            .card-4 { background: rgba(232, 240, 254, 0.12) !important; }
+            .card-5 { background: rgba(232, 240, 254, 0.12) !important; }
+            .card-6 { background: rgba(232, 240, 254, 0.12) !important; }
+            .card-7 { background: rgba(232, 240, 254, 0.12) !important; }
+            h1 { color: #1d1d1f !important; }
+            .subtitle { color: rgba(0, 0, 0, 0.6) !important; }
+            .footer { color: rgba(0, 0, 0, 0.6) !important; }
+            .link a { color: rgba(0, 0, 0, 0.8) !important; border-bottom-color: rgba(0, 0, 0, 0.15) !important; }
         }
 
         .emoji-bg {
@@ -127,24 +136,100 @@
             z-index: 1;
         }
 
+        /* ТЁМНАЯ ТЕМА — ПРОЗРАЧНОСТЬ 0.03 */
         .glass-card {
             flex: 0 0 auto;
             width: 100%;
             max-width: 420px;
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background: rgba(232, 240, 254, 0.03);
+            backdrop-filter: blur(12px) saturate(140%);
+            -webkit-backdrop-filter: blur(12px) saturate(140%);
             border-radius: 44px;
             padding: 32px 36px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 
-                0 8px 40px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                0 8px 32px rgba(0, 0, 0, 0.01),
+                inset 0 1px 0 rgba(232, 240, 254, 0.04);
             transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
             transform: rotate(var(--rot, 0deg)) translateX(var(--x, 0));
             box-sizing: border-box;
             position: relative;
             opacity: 1;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            user-select: none;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 46px;
+            background: linear-gradient(135deg, 
+                rgba(232, 240, 254, 0.2) 0%, 
+                rgba(232, 240, 254, 0.0) 35%,
+                rgba(232, 240, 254, 0.0) 65%,
+                rgba(232, 240, 254, 0.15) 100%
+            );
+            z-index: -1;
+            opacity: 0.2;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .glass-card:hover::before {
+            opacity: 0.5;
+        }
+
+        .glass-card:active,
+        .glass-card:focus,
+        .glass-card:focus-visible {
+            background: rgba(232, 240, 254, 0.03) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.01), inset 0 1px 0 rgba(232, 240, 254, 0.04) !important;
+            transform: rotate(var(--rot, 0deg)) translateX(var(--x, 0)) !important;
+            outline: none;
+        }
+
+        .card-1:active,
+        .card-1:focus,
+        .card-1:focus-visible { background: rgba(232, 240, 254, 0.03) !important; }
+        .card-2:active,
+        .card-2:focus,
+        .card-2:focus-visible { background: rgba(232, 240, 254, 0.03) !important; }
+        .card-3:active,
+        .card-3:focus,
+        .card-3:focus-visible { background: rgba(232, 240, 254, 0.03) !important; }
+        .card-4:active,
+        .card-4:focus,
+        .card-4:focus-visible { background: rgba(232, 240, 254, 0.03) !important; }
+        .card-5:active,
+        .card-5:focus,
+        .card-5:focus-visible { background: rgba(232, 240, 254, 0.03) !important; }
+        .card-6:active,
+        .card-6:focus,
+        .card-6:focus-visible { background: rgba(232, 240, 254, 0.03) !important; }
+        .card-7:active,
+        .card-7:focus,
+        .card-7:focus-visible { background: rgba(232, 240, 254, 0.03) !important; }
+
+        .card-1 { --rot: -2deg; --x: -8px; background: rgba(232, 240, 254, 0.03); }
+        .card-2 { --rot: 2.5deg; --x: 12px; background: rgba(232, 240, 254, 0.03); }
+        .card-3 { --rot: -1.5deg; --x: -5px; background: rgba(232, 240, 254, 0.03); }
+        .card-4 { --rot: 3deg; --x: 15px; background: rgba(232, 240, 254, 0.03); }
+        .card-5 { --rot: -2.5deg; --x: -12px; background: rgba(232, 240, 254, 0.03); }
+        .card-6 { --rot: 1.5deg; --x: 10px; background: rgba(232, 240, 254, 0.03); }
+        .card-7 { --rot: -1.5deg; --x: 8px; background: rgba(232, 240, 254, 0.03); }
+
+        .glass-card:hover {
+            background: rgba(232, 240, 254, 0.06);
+            box-shadow: 
+                0 16px 48px rgba(0, 0, 0, 0.02),
+                inset 0 1px 0 rgba(232, 240, 254, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: rotate(0deg) translateX(0) scale(1.02);
         }
 
         .card-welcome {
@@ -158,9 +243,9 @@
             max-width: 100%;
             max-height: 100vh;
             border-radius: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(30px) saturate(200%);
-            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            background: #1c1c1e;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
             border: none;
             box-shadow: none;
             display: flex;
@@ -232,22 +317,6 @@
             }
         }
 
-        .card-1 { --rot: -2deg; --x: -8px; }
-        .card-2 { --rot: 2.5deg; --x: 12px; }
-        .card-3 { --rot: -1.5deg; --x: -5px; }
-        .card-4 { --rot: 3deg; --x: 15px; }
-        .card-5 { --rot: -2.5deg; --x: -12px; }
-        .card-6 { --rot: 1.5deg; --x: 10px; }
-        .card-7 { --rot: -1.5deg; --x: 8px; }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 
-                0 16px 56px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transform: rotate(0deg) translateX(0) scale(1.02);
-        }
-
         .cards-grid {
             display: none;
             flex-direction: column;
@@ -266,8 +335,8 @@
 
         .cards-grid .glass-card {
             opacity: 0;
-            transform: translateY(60px) scale(0.85) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateY(40px) scale(0.92) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .cards-grid.visible .glass-card:nth-child(1) {
@@ -278,32 +347,32 @@
         .cards-grid.visible .glass-card:nth-child(2) {
             opacity: 1;
             transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
-            transition-delay: 0.18s;
+            transition-delay: 0.2s;
         }
         .cards-grid.visible .glass-card:nth-child(3) {
             opacity: 1;
             transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
-            transition-delay: 0.26s;
+            transition-delay: 0.3s;
         }
         .cards-grid.visible .glass-card:nth-child(4) {
             opacity: 1;
             transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
-            transition-delay: 0.34s;
+            transition-delay: 0.4s;
         }
         .cards-grid.visible .glass-card:nth-child(5) {
             opacity: 1;
             transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
-            transition-delay: 0.42s;
+            transition-delay: 0.5s;
         }
         .cards-grid.visible .glass-card:nth-child(6) {
             opacity: 1;
             transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
-            transition-delay: 0.5s;
+            transition-delay: 0.6s;
         }
         .cards-grid.visible .glass-card:nth-child(7) {
             opacity: 1;
             transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
-            transition-delay: 0.58s;
+            transition-delay: 0.7s;
         }
 
         .footer {
@@ -439,6 +508,9 @@
                 height: 8px;
                 gap: 5px;
             }
+            .glass-card::before {
+                border-radius: 38px;
+            }
         }
     </style>
 </head>
@@ -571,7 +643,6 @@
         });
     </script>
 
-    <!-- GoatCounter счётчик -->
     <script data-goatcounter="https://mmmmislm.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
 
