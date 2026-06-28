@@ -657,3 +657,21 @@
         document.addEventListener('DOMContentLoaded', function() {
             const welcomeCard = document.getElementById('welcomeCard');
             const cardsGrid = document.getElementById('cardsGrid');
+
+            setTimeout(function() {
+                welcomeCard.classList.add('hidden');
+                setTimeout(function() {
+                    cardsGrid.classList.add('visible');
+                }, 200);
+                setTimeout(function() {
+                    welcomeCard.style.display = 'none';
+                }, 700);
+            }, 1800);
+        });
+    </script>
+
+    <script data-goatcounter="https://mmmmislm.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
