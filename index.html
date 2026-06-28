@@ -94,6 +94,7 @@
             .instagram-link a { color: #e4405f !important; }
             .threads-link a { color: #1d1d1f !important; }
             .tiktok-link a { color: #1d1d1f !important; }
+            .meera-link a { color: #ff6b6b !important; }
             .card-1 { background: rgba(232, 240, 254, 0.12) !important; }
             .card-2 { background: rgba(232, 240, 254, 0.12) !important; }
             .card-3 { background: rgba(232, 240, 254, 0.12) !important; }
@@ -101,6 +102,7 @@
             .card-5 { background: rgba(232, 240, 254, 0.12) !important; }
             .card-6 { background: rgba(232, 240, 254, 0.12) !important; }
             .card-7 { background: rgba(232, 240, 254, 0.12) !important; }
+            .card-8 { background: rgba(232, 240, 254, 0.12) !important; }
             h1 { color: #1d1d1f !important; }
             .subtitle { color: rgba(0, 0, 0, 0.6) !important; }
             .footer { color: rgba(0, 0, 0, 0.6) !important; }
@@ -213,6 +215,9 @@
         .card-7:active,
         .card-7:focus,
         .card-7:focus-visible { background: rgba(232, 240, 254, 0.03) !important; }
+        .card-8:active,
+        .card-8:focus,
+        .card-8:focus-visible { background: rgba(232, 240, 254, 0.03) !important; }
 
         .card-1 { --rot: -2deg; --x: -8px; background: rgba(232, 240, 254, 0.03); }
         .card-2 { --rot: 2.5deg; --x: 12px; background: rgba(232, 240, 254, 0.03); }
@@ -221,6 +226,7 @@
         .card-5 { --rot: -2.5deg; --x: -12px; background: rgba(232, 240, 254, 0.03); }
         .card-6 { --rot: 1.5deg; --x: 10px; background: rgba(232, 240, 254, 0.03); }
         .card-7 { --rot: -1.5deg; --x: 8px; background: rgba(232, 240, 254, 0.03); }
+        .card-8 { --rot: 2deg; --x: -5px; background: rgba(232, 240, 254, 0.03); }
 
         .glass-card:hover {
             background: rgba(232, 240, 254, 0.06);
@@ -373,6 +379,11 @@
             transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
             transition-delay: 0.7s;
         }
+        .cards-grid.visible .glass-card:nth-child(8) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.8s;
+        }
 
         .footer {
             width: 100%;
@@ -453,19 +464,27 @@
         }
 
         .threads-link a {
-            color: rgba(255, 255, 255, 0.9);
-            border-bottom-color: rgba(255, 255, 255, 0.2);
+            color: #1d1d1f;
+            border-bottom-color: rgba(0, 0, 0, 0.2);
         }
         .threads-link a:hover {
-            border-bottom-color: rgba(255, 255, 255, 0.6);
+            border-bottom-color: rgba(0, 0, 0, 0.6);
         }
 
         .tiktok-link a {
-            color: rgba(255, 255, 255, 0.9);
-            border-bottom-color: rgba(255, 255, 255, 0.2);
+            color: #1d1d1f;
+            border-bottom-color: rgba(0, 0, 0, 0.2);
         }
         .tiktok-link a:hover {
-            border-bottom-color: rgba(255, 255, 255, 0.6);
+            border-bottom-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .meera-link a {
+            color: #ff6b6b;
+            border-bottom-color: rgba(255, 107, 107, 0.3);
+        }
+        .meera-link a:hover {
+            border-bottom-color: rgba(255, 107, 107, 0.7);
         }
 
         .emoji-big {
@@ -569,7 +588,7 @@
 
             <div class="glass-card card-2">
                 <span class="emoji-big">🤘</span>
-                <h1>Наш Telegram канал</h1>
+                <h1>Мы в Telegram</h1>
                 <div class="link telegram-link">
                     <a href="https://t.me/mmmmisl_m_channel" target="_blank">↗ mmmmisl_m_channel</a>
                 </div>
@@ -578,7 +597,7 @@
 
             <div class="glass-card card-3">
                 <span class="emoji-big">🔒</span>
-                <h1>Наш Telegram канал (Приват)</h1>
+                <h1>Мы в Telegram (Приват)</h1>
                 <div class="link telegram-private-link">
                     <a href="https://t.me/+MB8dBLXqcvVhNzcy" target="_blank">↗ mmmmisl_m_channel_privat</a>
                 </div>
@@ -587,7 +606,7 @@
 
             <div class="glass-card card-4">
                 <span class="emoji-big">📸</span>
-                <h1>Наш Instagram</h1>
+                <h1>Мы в Instagram</h1>
                 <div class="link instagram-link">
                     <a href="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr" target="_blank">↗ mmmmisl_m</a>
                 </div>
@@ -596,7 +615,7 @@
 
             <div class="glass-card card-5">
                 <span class="emoji-big">🚀</span>
-                <h1>Наш Threads</h1>
+                <h1>Мы в Threads</h1>
                 <div class="link threads-link">
                     <a href="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==" target="_blank">↗ mmmmisl_m</a>
                 </div>
@@ -605,7 +624,7 @@
 
             <div class="glass-card card-6">
                 <span class="emoji-big">🎵</span>
-                <h1>Наш TikTok</h1>
+                <h1>Мы в TikTok</h1>
                 <div class="link tiktok-link">
                     <a href="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ" target="_blank">↗ mmmmisl_m</a>
                 </div>
@@ -613,6 +632,15 @@
             </div>
 
             <div class="glass-card card-7">
+                <span class="emoji-big">🌍</span>
+                <h1>Мы в Meera</h1>
+                <div class="link meera-link">
+                    <a href="https://meera.me/mmmmisl_m" target="_blank">↗ mmmmisl_m</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Meera</p>
+            </div>
+
+            <div class="glass-card card-8">
                 <span class="emoji-big">✨</span>
                 <h1>Присоединяйся</h1>
                 <p class="subtitle">Все ссылки выше ☝️</p>
@@ -629,21 +657,3 @@
         document.addEventListener('DOMContentLoaded', function() {
             const welcomeCard = document.getElementById('welcomeCard');
             const cardsGrid = document.getElementById('cardsGrid');
-
-            setTimeout(function() {
-                welcomeCard.classList.add('hidden');
-                setTimeout(function() {
-                    cardsGrid.classList.add('visible');
-                }, 200);
-                setTimeout(function() {
-                    welcomeCard.style.display = 'none';
-                }, 700);
-            }, 1800);
-        });
-    </script>
-
-    <script data-goatcounter="https://mmmmislm.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
-
-</body>
-</html>
