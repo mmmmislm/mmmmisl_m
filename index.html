@@ -3,34 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-
-    <!-- ===== PWA ===== -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="mmmmisl_m">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#1c1c1e">
     <meta name="msapplication-TileColor" content="#1c1c1e">
-
     <link rel="manifest" href="/mmmmisl_m/manifest.json">
     <link rel="apple-touch-icon" href="/mmmmisl_m/icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/mmmmisl_m/icon.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/mmmmisl_m/icon.png">
-
     <title>mmmmisl_m</title>
-
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         html {
             overflow-x: hidden;
             width: 100%;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             margin: 0;
@@ -47,13 +40,17 @@
             animation: gradientMove 18s ease infinite;
             padding-bottom: 100px;
         }
-
         @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
-
         @media (prefers-color-scheme: light) {
             body {
                 color: #1d1d1f;
@@ -85,21 +82,60 @@
                 backdrop-filter: none !important;
                 -webkit-backdrop-filter: none !important;
             }
-            .card-welcome h1 { color: #1d1d1f !important; }
-            .card-welcome .subtitle { color: rgba(0, 0, 0, 0.6) !important; }
-            .loader span { background: #1d1d1f !important; }
-            .emoji-bg { opacity: 0.25 !important; filter: brightness(0.6) contrast(0.9); }
-            .telegram-link a { color: #0088cc !important; }
-            .telegram-private-link a { color: #0088cc !important; }
-            .instagram-link a { color: #e4405f !important; }
-            .threads-link a { color: #1d1d1f !important; }
-            .tiktok-link a { color: #1d1d1f !important; }
-            .meera-link a { color: #ff6b6b !important; }
-            .card-1, .card-2, .card-3, .card-4, .card-5, .card-6, .card-7, .card-8 { background: rgba(232, 240, 254, 0.12) !important; }
-            h1 { color: #1d1d1f !important; }
-            .subtitle { color: rgba(0, 0, 0, 0.6) !important; }
-            .footer { color: rgba(0, 0, 0, 0.6) !important; }
-            .link a { color: rgba(0, 0, 0, 0.8) !important; border-bottom-color: rgba(0, 0, 0, 0.15) !important; }
+            .card-welcome h1 {
+                color: #1d1d1f !important;
+            }
+            .card-welcome .subtitle {
+                color: rgba(0, 0, 0, 0.6) !important;
+            }
+            .loader span {
+                background: #1d1d1f !important;
+            }
+            .emoji-bg {
+                opacity: 0.25 !important;
+                filter: brightness(0.6) contrast(0.9);
+            }
+            .telegram-link a {
+                color: #0088cc !important;
+            }
+            .telegram-private-link a {
+                color: #0088cc !important;
+            }
+            .instagram-link a {
+                color: #e4405f !important;
+            }
+            .threads-link a {
+                color: #1d1d1f !important;
+            }
+            .tiktok-link a {
+                color: #1d1d1f !important;
+            }
+            .meera-link a {
+                color: #ff6b6b !important;
+            }
+            .card-1,
+            .card-2,
+            .card-3,
+            .card-4,
+            .card-5,
+            .card-6,
+            .card-7,
+            .card-8 {
+                background: rgba(232, 240, 254, 0.12) !important;
+            }
+            h1 {
+                color: #1d1d1f !important;
+            }
+            .subtitle {
+                color: rgba(0, 0, 0, 0.6) !important;
+            }
+            .footer {
+                color: rgba(0, 0, 0, 0.6) !important;
+            }
+            .link a {
+                color: rgba(0, 0, 0, 0.8) !important;
+                border-bottom-color: rgba(0, 0, 0, 0.15) !important;
+            }
             .dock {
                 background: rgba(255, 255, 255, 0.2) !important;
                 border: 1px solid rgba(255, 255, 255, 0.15) !important;
@@ -147,7 +183,6 @@
                 color: rgba(0, 0, 0, 0.35) !important;
             }
         }
-
         .emoji-bg {
             position: fixed;
             font-size: 3rem;
@@ -158,12 +193,14 @@
             user-select: none;
             transition: opacity 0.4s ease;
         }
-
         @keyframes float {
-            0% { transform: translate(0, 0) rotate(var(--rot, 0deg)) scale(1); }
-            100% { transform: translate(var(--dx, 30px), var(--dy, -30px)) rotate(calc(var(--rot, 0deg) + 10deg)) scale(1.1); }
+            0% {
+                transform: translate(0, 0) rotate(var(--rot, 0deg)) scale(1);
+            }
+            100% {
+                transform: translate(var(--dx, 30px), var(--dy, -30px)) rotate(calc(var(--rot, 0deg) + 10deg)) scale(1.1);
+            }
         }
-
         .cards-wrapper {
             display: flex;
             flex-direction: column;
@@ -176,7 +213,6 @@
             position: relative;
             z-index: 1;
         }
-
         .glass-card {
             flex: 0 0 auto;
             width: 100%;
@@ -197,7 +233,6 @@
             -webkit-touch-callout: none;
             user-select: none;
         }
-
         .glass-card::before {
             content: '';
             position: absolute;
@@ -212,27 +247,47 @@
             transition: opacity 0.4s ease;
             pointer-events: none;
         }
-
         .glass-card:hover::before {
             opacity: 0.5;
         }
-
         .glass-card:hover {
             background: rgba(232, 240, 254, 0.06);
             box-shadow: 0 16px 48px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(232, 240, 254, 0.08);
             border-color: rgba(255, 255, 255, 0.2);
             transform: rotate(0deg) translateX(0) scale(1.02);
         }
-
-        .card-1 { --rot: -2deg; --x: -8px; }
-        .card-2 { --rot: 2.5deg; --x: 12px; }
-        .card-3 { --rot: -1.5deg; --x: -5px; }
-        .card-4 { --rot: 3deg; --x: 15px; }
-        .card-5 { --rot: -2.5deg; --x: -12px; }
-        .card-6 { --rot: 1.5deg; --x: 10px; }
-        .card-7 { --rot: -1.5deg; --x: 8px; }
-        .card-8 { --rot: 2deg; --x: -5px; }
-
+        .card-1 {
+            --rot: -2deg;
+            --x: -8px;
+        }
+        .card-2 {
+            --rot: 2.5deg;
+            --x: 12px;
+        }
+        .card-3 {
+            --rot: -1.5deg;
+            --x: -5px;
+        }
+        .card-4 {
+            --rot: 3deg;
+            --x: 15px;
+        }
+        .card-5 {
+            --rot: -2.5deg;
+            --x: -12px;
+        }
+        .card-6 {
+            --rot: 1.5deg;
+            --x: 10px;
+        }
+        .card-7 {
+            --rot: -1.5deg;
+            --x: 8px;
+        }
+        .card-8 {
+            --rot: 2deg;
+            --x: -5px;
+        }
         .card-welcome {
             --rot: 0deg;
             --x: 0px;
@@ -260,30 +315,25 @@
             opacity: 1;
             pointer-events: none;
         }
-
         .card-welcome.hidden {
             transform: translateY(30px) scale(0.85);
             opacity: 0;
             pointer-events: none;
         }
-
         .card-welcome .emoji-big {
             font-size: 5rem;
             margin-bottom: 16px;
         }
-
         .card-welcome h1 {
             font-size: 2.8rem;
             text-align: center;
             color: #ffffff;
         }
-
         .card-welcome .subtitle {
             font-size: 1.2rem;
             text-align: center;
             color: rgba(255, 255, 255, 0.7);
         }
-
         .loader {
             margin-top: 28px;
             display: flex;
@@ -291,7 +341,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .loader span {
             width: 10px;
             height: 10px;
@@ -300,18 +349,33 @@
             display: inline-block;
             animation: dot-wave 1.2s ease-in-out infinite both;
         }
-
-        .loader span:nth-child(1) { animation-delay: -0.32s; }
-        .loader span:nth-child(2) { animation-delay: -0.16s; }
-        .loader span:nth-child(3) { animation-delay: 0s; }
-        .loader span:nth-child(4) { animation-delay: 0.16s; }
-        .loader span:nth-child(5) { animation-delay: 0.32s; }
-
-        @keyframes dot-wave {
-            0%, 80%, 100% { transform: scale(0.5); opacity: 0.2; }
-            40% { transform: scale(1.2); opacity: 1; }
+        .loader span:nth-child(1) {
+            animation-delay: -0.32s;
         }
-
+        .loader span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+        .loader span:nth-child(3) {
+            animation-delay: 0s;
+        }
+        .loader span:nth-child(4) {
+            animation-delay: 0.16s;
+        }
+        .loader span:nth-child(5) {
+            animation-delay: 0.32s;
+        }
+        @keyframes dot-wave {
+            0%,
+            80%,
+            100% {
+                transform: scale(0.5);
+                opacity: 0.2;
+            }
+            40% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
         .cards-grid {
             display: none;
             flex-direction: column;
@@ -324,31 +388,57 @@
             padding-bottom: 10px;
             transition: all 0.4s ease;
         }
-
         .cards-grid.visible {
             display: flex;
         }
-
         .cards-grid.hidden {
             display: none !important;
         }
-
         .cards-grid .glass-card {
             opacity: 0;
             transform: translateY(40px) scale(0.92) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-
-        .cards-grid.visible .glass-card:nth-child(1) { opacity: 1; transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0)); transition-delay: 0.1s; }
-        .cards-grid.visible .glass-card:nth-child(2) { opacity: 1; transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0)); transition-delay: 0.2s; }
-        .cards-grid.visible .glass-card:nth-child(3) { opacity: 1; transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0)); transition-delay: 0.3s; }
-        .cards-grid.visible .glass-card:nth-child(4) { opacity: 1; transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0)); transition-delay: 0.4s; }
-        .cards-grid.visible .glass-card:nth-child(5) { opacity: 1; transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0)); transition-delay: 0.5s; }
-        .cards-grid.visible .glass-card:nth-child(6) { opacity: 1; transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0)); transition-delay: 0.6s; }
-        .cards-grid.visible .glass-card:nth-child(7) { opacity: 1; transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0)); transition-delay: 0.7s; }
-        .cards-grid.visible .glass-card:nth-child(8) { opacity: 1; transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0)); transition-delay: 0.8s; }
-
-        /* ===== ДОК ПАНЕЛЬ ===== */
+        .cards-grid.visible .glass-card:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.1s;
+        }
+        .cards-grid.visible .glass-card:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.2s;
+        }
+        .cards-grid.visible .glass-card:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.3s;
+        }
+        .cards-grid.visible .glass-card:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.4s;
+        }
+        .cards-grid.visible .glass-card:nth-child(5) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.5s;
+        }
+        .cards-grid.visible .glass-card:nth-child(6) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.6s;
+        }
+        .cards-grid.visible .glass-card:nth-child(7) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.7s;
+        }
+        .cards-grid.visible .glass-card:nth-child(8) {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            transition-delay: 0.8s;
+        }
         .dock {
             position: fixed;
             bottom: 24px;
@@ -368,11 +458,9 @@
             min-width: 260px;
             justify-content: center;
         }
-
         .dock.hidden {
             display: none !important;
         }
-
         .dock-btn {
             background: none;
             border: none;
@@ -390,30 +478,24 @@
             align-items: center;
             gap: 10px;
         }
-
         .dock-btn .icon {
             font-size: 1.5rem;
         }
-
         .dock-btn.active {
             color: #ffffff;
             background: rgba(255, 255, 255, 0.12);
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
         }
-
         .dock-btn:hover {
             background: rgba(255, 255, 255, 0.05);
             color: rgba(255, 255, 255, 0.8);
         }
-
         .dock-btn.active:hover {
             background: rgba(255, 255, 255, 0.18);
         }
-
-        /* ===== КНОПКА НАЗАД ВВЕРХУ ===== */
         .search-back-wrap {
             position: fixed;
-            top: 20px;
+            top: 52px;
             left: 20px;
             z-index: 102;
             display: none;
@@ -421,13 +503,11 @@
             opacity: 0;
             transition: all 0.3s ease;
         }
-
         .search-back-wrap.active {
             display: block;
             transform: translateY(0);
             opacity: 1;
         }
-
         .search-back {
             width: 56px;
             height: 56px;
@@ -446,18 +526,14 @@
             -webkit-tap-highlight-color: transparent;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
         }
-
         .search-back:hover {
             background: rgba(255, 255, 255, 0.2);
             color: #fff;
             transform: scale(1.05);
         }
-
         .search-back:active {
             transform: scale(0.95);
         }
-
-        /* ===== СТРОКА ПОИСКА ВНИЗУ ===== */
         .search-bottom-wrap {
             position: fixed;
             bottom: 30px;
@@ -470,18 +546,15 @@
             opacity: 0;
             transition: all 0.3s ease;
         }
-
         .search-bottom-wrap.active {
             display: block;
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-
         .search-input-wrap {
             position: relative;
             width: 100%;
         }
-
         .search-icon {
             position: absolute;
             left: 16px;
@@ -494,11 +567,9 @@
             z-index: 1;
             transition: opacity 0.2s ease;
         }
-
         .search-icon.hidden {
             opacity: 0;
         }
-
         .search-input {
             width: 100%;
             padding: 16px 24px 16px 48px;
@@ -514,21 +585,17 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
         }
-
         .search-input::placeholder {
             color: rgba(255, 255, 255, 0.5);
         }
-
         .search-input:not(:placeholder-shown)::placeholder {
             opacity: 0;
         }
-
         .search-input:focus {
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 40px rgba(0, 0, 0, 0.25);
         }
-
         .search-results {
             position: fixed;
             top: 90px;
@@ -540,11 +607,9 @@
             z-index: 100;
             display: none;
         }
-
         .search-results.active {
             display: block;
         }
-
         .search-result {
             max-width: 420px;
             margin: 0 auto 12px auto;
@@ -559,46 +624,38 @@
             gap: 16px;
             text-decoration: none;
         }
-
         .search-result:hover {
             background: rgba(255, 255, 255, 0.06);
             transform: translateY(-2px);
             border-color: rgba(255, 255, 255, 0.15);
         }
-
         .search-result .result-icon {
             font-size: 2rem;
             flex-shrink: 0;
         }
-
         .search-result .result-info {
             flex: 1;
         }
-
         .search-result .result-name {
             font-size: 1.1rem;
             font-weight: 600;
             color: #ffffff;
             margin-bottom: 4px;
         }
-
         .search-result .result-desc {
             font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.5);
         }
-
         .search-result .result-arrow {
             color: rgba(255, 255, 255, 0.3);
             font-size: 1.2rem;
         }
-
         .search-empty {
             text-align: center;
             padding: 40px 20px;
             color: rgba(255, 255, 255, 0.4);
             font-size: 1.1rem;
         }
-
         .footer {
             width: 100%;
             max-width: 420px;
@@ -612,11 +669,9 @@
             transition: opacity 0.3s ease;
             flex: 0 0 auto;
         }
-
         .footer:hover {
             opacity: 1;
         }
-
         h1 {
             font-weight: 650;
             font-size: 1.8rem;
@@ -625,7 +680,6 @@
             margin: 0 0 6px 0;
             color: #ffffff;
         }
-
         .subtitle {
             font-size: 1rem;
             font-weight: 400;
@@ -633,12 +687,10 @@
             margin: 0;
             color: rgba(255, 255, 255, 0.7);
         }
-
         .link {
             font-size: 1rem;
             margin-top: 8px;
         }
-
         .link a {
             text-decoration: none;
             font-weight: 500;
@@ -648,42 +700,92 @@
             word-break: break-all;
             color: rgba(255, 255, 255, 0.9);
         }
-
         .link a:hover {
             opacity: 0.7;
         }
-
-        .telegram-link a { color: #0088cc; border-bottom-color: rgba(0, 136, 204, 0.3); }
-        .telegram-link a:hover { border-bottom-color: rgba(0, 136, 204, 0.7); }
-        .telegram-private-link a { color: #0088cc; border-bottom-color: rgba(0, 136, 204, 0.3); }
-        .telegram-private-link a:hover { border-bottom-color: rgba(0, 136, 204, 0.7); }
-        .instagram-link a { color: #e4405f; border-bottom-color: rgba(228, 64, 95, 0.3); }
-        .instagram-link a:hover { border-bottom-color: rgba(228, 64, 95, 0.7); }
-        .threads-link a { color: #1d1d1f; border-bottom-color: rgba(0, 0, 0, 0.2); }
-        .threads-link a:hover { border-bottom-color: rgba(0, 0, 0, 0.6); }
-        .tiktok-link a { color: #1d1d1f; border-bottom-color: rgba(0, 0, 0, 0.2); }
-        .tiktok-link a:hover { border-bottom-color: rgba(0, 0, 0, 0.6); }
-        .meera-link a { color: #ff6b6b; border-bottom-color: rgba(255, 107, 107, 0.3); }
-        .meera-link a:hover { border-bottom-color: rgba(255, 107, 107, 0.7); }
-
+        .telegram-link a {
+            color: #0088cc;
+            border-bottom-color: rgba(0, 136, 204, 0.3);
+        }
+        .telegram-link a:hover {
+            border-bottom-color: rgba(0, 136, 204, 0.7);
+        }
+        .telegram-private-link a {
+            color: #0088cc;
+            border-bottom-color: rgba(0, 136, 204, 0.3);
+        }
+        .telegram-private-link a:hover {
+            border-bottom-color: rgba(0, 136, 204, 0.7);
+        }
+        .instagram-link a {
+            color: #e4405f;
+            border-bottom-color: rgba(228, 64, 95, 0.3);
+        }
+        .instagram-link a:hover {
+            border-bottom-color: rgba(228, 64, 95, 0.7);
+        }
+        .threads-link a {
+            color: #1d1d1f;
+            border-bottom-color: rgba(0, 0, 0, 0.2);
+        }
+        .threads-link a:hover {
+            border-bottom-color: rgba(0, 0, 0, 0.6);
+        }
+        .tiktok-link a {
+            color: #1d1d1f;
+            border-bottom-color: rgba(0, 0, 0, 0.2);
+        }
+        .tiktok-link a:hover {
+            border-bottom-color: rgba(0, 0, 0, 0.6);
+        }
+        .meera-link a {
+            color: #ff6b6b;
+            border-bottom-color: rgba(255, 107, 107, 0.3);
+        }
+        .meera-link a:hover {
+            border-bottom-color: rgba(255, 107, 107, 0.7);
+        }
         .emoji-big {
             font-size: 3rem;
             display: block;
             margin-bottom: 8px;
         }
-
         @media (max-width: 600px) {
-            .card-welcome .emoji-big { font-size: 3.6rem; }
-            .card-welcome h1 { font-size: 2rem; }
-            .card-welcome .subtitle { font-size: 1rem; }
-            .glass-card { padding: 24px 26px; border-radius: 36px; }
-            h1 { font-size: 1.5rem; }
-            .emoji-big { font-size: 2.4rem; }
-            .cards-grid { padding: 0 0 10px 0; }
-            .footer { font-size: 1rem; padding: 15px 0 8px 0; opacity: 0.7; }
-            .loader span { width: 8px; height: 8px; gap: 5px; }
-            .glass-card::before { border-radius: 38px; }
-
+            .card-welcome .emoji-big {
+                font-size: 3.6rem;
+            }
+            .card-welcome h1 {
+                font-size: 2rem;
+            }
+            .card-welcome .subtitle {
+                font-size: 1rem;
+            }
+            .glass-card {
+                padding: 24px 26px;
+                border-radius: 36px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .emoji-big {
+                font-size: 2.4rem;
+            }
+            .cards-grid {
+                padding: 0 0 10px 0;
+            }
+            .footer {
+                font-size: 1rem;
+                padding: 15px 0 8px 0;
+                opacity: 0.7;
+            }
+            .loader span {
+                width: 8px;
+                height: 8px;
+                gap: 5px;
+            }
+            .glass-card::before {
+                border-radius: 38px;
+            }
             .dock {
                 padding: 10px 16px;
                 border-radius: 40px;
@@ -698,22 +800,45 @@
             .dock-btn .icon {
                 font-size: 1.3rem;
             }
-
-            .search-back-wrap { top: 16px; left: 16px; }
-            .search-back { width: 48px; height: 48px; font-size: 1.6rem; }
-            .search-bottom-wrap { bottom: 24px; width: 92%; }
-            .search-input { padding: 14px 20px 14px 44px; font-size: 1rem; }
-            .search-icon { left: 14px; font-size: 1rem; }
-            .search-result { padding: 14px 18px; border-radius: 20px; }
-            .search-result .result-icon { font-size: 1.6rem; }
-            .search-result .result-name { font-size: 1rem; }
-            .search-results { top: 76px; bottom: 90px; }
+            .search-back-wrap {
+                top: 48px;
+                left: 16px;
+            }
+            .search-back {
+                width: 48px;
+                height: 48px;
+                font-size: 1.6rem;
+            }
+            .search-bottom-wrap {
+                bottom: 24px;
+                width: 92%;
+            }
+            .search-input {
+                padding: 14px 20px 14px 44px;
+                font-size: 1rem;
+            }
+            .search-icon {
+                left: 14px;
+                font-size: 1rem;
+            }
+            .search-result {
+                padding: 14px 18px;
+                border-radius: 20px;
+            }
+            .search-result .result-icon {
+                font-size: 1.6rem;
+            }
+            .search-result .result-name {
+                font-size: 1rem;
+            }
+            .search-results {
+                top: 76px;
+                bottom: 90px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- ФОНОВЫЕ СМАЙЛЫ -->
     <div class="emoji-bg" style="top: 2%; left: 2%; font-size: 4rem; --rot: 25deg; --dx: 40px; --dy: -20px;">💥</div>
     <div class="emoji-bg" style="top: 8%; right: 5%; font-size: 3rem; --rot: -45deg; --dx: -30px; --dy: 50px;">🤘</div>
     <div class="emoji-bg" style="top: 15%; left: 8%; font-size: 5rem; --rot: 180deg; --dx: 60px; --dy: 30px;">💥</div>
@@ -744,8 +869,6 @@
     <div class="emoji-bg" style="top: 92%; left: 80%; font-size: 2.0rem; --rot: 150deg; --dx: -50px; --dy: 20px;">💥</div>
     <div class="emoji-bg" style="top: 98%; left: 50%; font-size: 3.6rem; --rot: -220deg; --dx: 20px; --dy: -30px;">🤘</div>
     <div class="emoji-bg" style="top: 48%; left: 48%; font-size: 2.2rem; --rot: 45deg; --dx: 10px; --dy: -10px;">💥</div>
-
-    <!-- ПРИВЕТСТВИЕ -->
     <div class="card-welcome" id="welcomeCard">
         <span class="emoji-big">👋</span>
         <h1>Добро пожаловать!</h1>
@@ -758,31 +881,22 @@
             <span></span>
         </div>
     </div>
-
-    <!-- КНОПКА НАЗАД -->
     <div class="search-back-wrap" id="searchBackWrap">
         <button class="search-back" id="searchBack">‹</button>
     </div>
-
-    <!-- СТРОКА ПОИСКА -->
     <div class="search-bottom-wrap" id="searchBottomWrap">
         <div class="search-input-wrap">
             <span class="search-icon" id="searchIcon">🔍</span>
             <input class="search-input" id="searchInput" type="text" placeholder="Поиск">
         </div>
     </div>
-
-    <!-- РЕЗУЛЬТАТЫ ПОИСКА -->
     <div class="search-results" id="searchResults"></div>
-
-    <!-- КАРТОЧКИ -->
     <div class="cards-wrapper" id="scrollContainer">
         <div class="cards-grid" id="cardsGrid">
             <div class="glass-card card-1">
                 <span class="emoji-big">💥</span>
                 <h1>Привет тут соцсети mmmmisl_m</h1>
             </div>
-
             <div class="glass-card card-2">
                 <span class="emoji-big">🤘</span>
                 <h1>Мы в Telegram</h1>
@@ -791,7 +905,6 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Telegram</p>
             </div>
-
             <div class="glass-card card-3">
                 <span class="emoji-big">🔒</span>
                 <h1>Мы в Telegram (Приват)</h1>
@@ -800,7 +913,6 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Доступ по ссылке</p>
             </div>
-
             <div class="glass-card card-4">
                 <span class="emoji-big">📸</span>
                 <h1>Мы в Instagram</h1>
@@ -809,7 +921,6 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
             </div>
-
             <div class="glass-card card-5">
                 <span class="emoji-big">🚀</span>
                 <h1>Мы в Threads</h1>
@@ -818,7 +929,6 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
             </div>
-
             <div class="glass-card card-6">
                 <span class="emoji-big">🎵</span>
                 <h1>Мы в TikTok</h1>
@@ -827,7 +937,6 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
             </div>
-
             <div class="glass-card card-7">
                 <span class="emoji-big">🌍</span>
                 <h1>Мы в Meera</h1>
@@ -836,20 +945,16 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Meera</p>
             </div>
-
             <div class="glass-card card-8">
                 <span class="emoji-big">✨</span>
                 <h1>Присоединяйся</h1>
                 <p class="subtitle">Все ссылки выше ☝️</p>
             </div>
-
             <div class="footer">
                 © 2026 mmmmisl_m
             </div>
         </div>
     </div>
-
-    <!-- ДОК ПАНЕЛЬ -->
     <div class="dock" id="dock">
         <button class="dock-btn active" data-tab="main">
             <span class="icon">🏠</span> Главная
@@ -858,12 +963,10 @@
             <span class="icon">🔍</span> Поиск
         </button>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const welcomeCard = document.getElementById('welcomeCard');
             const cardsGrid = document.getElementById('cardsGrid');
-
             setTimeout(function() {
                 welcomeCard.classList.add('hidden');
                 setTimeout(function() {
@@ -874,7 +977,6 @@
                 }, 700);
             }, 1800);
         });
-
         const dockBtns = document.querySelectorAll('.dock-btn');
         const dock = document.getElementById('dock');
         const cardsGrid = document.getElementById('cardsGrid');
@@ -884,99 +986,81 @@
         const searchInput = document.getElementById('searchInput');
         const searchBack = document.getElementById('searchBack');
         const searchIcon = document.getElementById('searchIcon');
-
-        const searchData = [
-            {
-                icon: '🤘',
-                name: 'Telegram',
-                desc: 'Основной канал mmmmisl_m',
-                link: 'https://t.me/mmmmisl_m_channel',
-                keywords: 'telegram канал телеграм тг'
-            },
-            {
-                icon: '🔒',
-                name: 'Telegram (Приват)',
-                desc: 'Закрытый канал mmmmisl_m',
-                link: 'https://t.me/+MB8dBLXqcvVhNzcy',
-                keywords: 'telegram приват канал телеграм закрытый тг'
-            },
-            {
-                icon: '📸',
-                name: 'Instagram',
-                desc: 'Фотографии mmmmisl_m',
-                link: 'https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr',
-                keywords: 'instagram инстаграм инста фото фотографии инст'
-            },
-            {
-                icon: '🚀',
-                name: 'Threads',
-                desc: 'Мы в Threads',
-                link: 'https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==',
-                keywords: 'threads тредс трейдс'
-            },
-            {
-                icon: '🎵',
-                name: 'TikTok',
-                desc: 'Видео mmmmisl_m',
-                link: 'https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ',
-                keywords: 'tiktok тикток тик ток тик-ток тик токи'
-            },
-            {
-                icon: '🌍',
-                name: 'Meera',
-                desc: 'Мы в Meera',
-                link: 'https://meera.me/mmmmisl_m',
-                keywords: 'meera мира меера'
-            }
-        ];
+        const searchData = [{
+            icon: '🤘',
+            name: 'Telegram',
+            desc: 'Основной канал mmmmisl_m',
+            link: 'https://t.me/mmmmisl_m_channel',
+            keywords: 'telegram канал телеграм тг'
+        }, {
+            icon: '🔒',
+            name: 'Telegram (Приват)',
+            desc: 'Закрытый канал mmmmisl_m',
+            link: 'https://t.me/+MB8dBLXqcvVhNzcy',
+            keywords: 'telegram приват канал телеграм закрытый тг'
+        }, {
+            icon: '📸',
+            name: 'Instagram',
+            desc: 'Фотографии mmmmisl_m',
+            link: 'https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr',
+            keywords: 'instagram инстаграм инста фото фотографии инст'
+        }, {
+            icon: '🚀',
+            name: 'Threads',
+            desc: 'Мы в Threads',
+            link: 'https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==',
+            keywords: 'threads тредс трейдс'
+        }, {
+            icon: '🎵',
+            name: 'TikTok',
+            desc: 'Видео mmmmisl_m',
+            link: 'https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ',
+            keywords: 'tiktok тикток тик ток тик-ток тик токи'
+        }, {
+            icon: '🌍',
+            name: 'Meera',
+            desc: 'Мы в Meera',
+            link: 'https://meera.me/mmmmisl_m',
+            keywords: 'meera мира меера'
+        }];
 
         function performSearch(query) {
             const results = searchData.filter(item => {
                 const searchText = (item.name + ' ' + item.keywords + ' ' + item.desc).toLowerCase();
                 return searchText.includes(query.toLowerCase());
             });
-
             if (query.trim() === '') {
                 searchResults.innerHTML = '';
                 return;
             }
-
             if (results.length === 0) {
-                searchResults.innerHTML = `
-                    <div class="search-empty">
-                        <span style="font-size: 2rem; display: block; margin-bottom: 12px;">🔍</span>
-                        Ничего не найдено для "${query}"
-                    </div>
-                `;
+                searchResults.innerHTML =
+                    `<div class="search-empty"><span style="font-size:2rem;display:block;margin-bottom:12px;">🔍</span>Ничего не найдено для "${query}"</div>`;
                 return;
             }
-
-            searchResults.innerHTML = results.map(item => `
-                <a class="search-result" href="${item.link}" target="_blank">
-                    <span class="result-icon">${item.icon}</span>
-                    <div class="result-info">
-                        <div class="result-name">${item.name}</div>
-                        <div class="result-desc">${item.desc}</div>
-                    </div>
-                    <span class="result-arrow">→</span>
-                </a>
-            `).join('');
+            searchResults.innerHTML = results.map(item =>
+                `
+                    <a class="search-result" href="${item.link}" target="_blank">
+                        <span class="result-icon">${item.icon}</span>
+                        <div class="result-info">
+                            <div class="result-name">${item.name}</div>
+                            <div class="result-desc">${item.desc}</div>
+                        </div>
+                        <span class="result-arrow">→</span>
+                    </a>
+                `
+            ).join('');
         }
-
-        // ===== ЛУПА СКРЫВАЕТСЯ ТОЛЬКО ПРИ РУЧНОМ НАЖАТИИ =====
         searchInput.addEventListener('focus', function() {
             searchIcon.classList.add('hidden');
         });
-
         searchInput.addEventListener('blur', function() {
             searchIcon.classList.remove('hidden');
         });
-
         dockBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 dockBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-
                 if (this.dataset.tab === 'main') {
                     cardsGrid.classList.remove('hidden');
                     cardsGrid.classList.add('visible');
@@ -1000,15 +1084,12 @@
                 }
             });
         });
-
         searchInput.addEventListener('input', function() {
             performSearch(this.value);
         });
-
         searchBack.addEventListener('click', function() {
             dockBtns.forEach(b => b.classList.remove('active'));
             document.querySelector('.dock-btn[data-tab="main"]').classList.add('active');
-
             cardsGrid.classList.remove('hidden');
             cardsGrid.classList.add('visible');
             searchBackWrap.classList.remove('active');
@@ -1020,13 +1101,11 @@
             dock.classList.remove('hidden');
             searchIcon.classList.remove('hidden');
         });
-
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && searchBackWrap.classList.contains('active')) {
                 searchBack.click();
             }
         });
     </script>
-
 </body>
 </html>
