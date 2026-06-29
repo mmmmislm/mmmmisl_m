@@ -3,17 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+    <!-- ===== КАНОНИЧЕСКАЯ ССЫЛКА ДЛЯ GOOGLE ===== -->
+    <link rel="canonical" href="https://mmmmislm.github.io/mmmmisl_m/">
+
+    <!-- ===== PWA ===== -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="mmmmisl_m">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#1c1c1e">
     <meta name="msapplication-TileColor" content="#1c1c1e">
+
     <link rel="manifest" href="/mmmmisl_m/manifest.json">
     <link rel="apple-touch-icon" href="/mmmmisl_m/icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/mmmmisl_m/icon.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/mmmmisl_m/icon.png">
+
     <title>mmmmisl_m</title>
+
+    <!-- ===== GOATCOUNTER ===== -->
+    <script data-goatcounter="https://mmmmislm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -869,6 +880,7 @@
     <div class="emoji-bg" style="top: 92%; left: 80%; font-size: 2.0rem; --rot: 150deg; --dx: -50px; --dy: 20px;">💥</div>
     <div class="emoji-bg" style="top: 98%; left: 50%; font-size: 3.6rem; --rot: -220deg; --dx: 20px; --dy: -30px;">🤘</div>
     <div class="emoji-bg" style="top: 48%; left: 48%; font-size: 2.2rem; --rot: 45deg; --dx: 10px; --dy: -10px;">💥</div>
+
     <div class="card-welcome" id="welcomeCard">
         <span class="emoji-big">👋</span>
         <h1>Добро пожаловать!</h1>
@@ -881,22 +893,27 @@
             <span></span>
         </div>
     </div>
+
     <div class="search-back-wrap" id="searchBackWrap">
         <button class="search-back" id="searchBack">‹</button>
     </div>
+
     <div class="search-bottom-wrap" id="searchBottomWrap">
         <div class="search-input-wrap">
             <span class="search-icon" id="searchIcon">🔍</span>
             <input class="search-input" id="searchInput" type="text" placeholder="Поиск">
         </div>
     </div>
+
     <div class="search-results" id="searchResults"></div>
+
     <div class="cards-wrapper" id="scrollContainer">
         <div class="cards-grid" id="cardsGrid">
             <div class="glass-card card-1">
                 <span class="emoji-big">💥</span>
                 <h1>Привет тут соцсети mmmmisl_m</h1>
             </div>
+
             <div class="glass-card card-2">
                 <span class="emoji-big">🤘</span>
                 <h1>Мы в Telegram</h1>
@@ -905,6 +922,7 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Telegram</p>
             </div>
+
             <div class="glass-card card-3">
                 <span class="emoji-big">🔒</span>
                 <h1>Мы в Telegram (Приват)</h1>
@@ -913,6 +931,7 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Доступ по ссылке</p>
             </div>
+
             <div class="glass-card card-4">
                 <span class="emoji-big">📸</span>
                 <h1>Мы в Instagram</h1>
@@ -921,6 +940,7 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
             </div>
+
             <div class="glass-card card-5">
                 <span class="emoji-big">🚀</span>
                 <h1>Мы в Threads</h1>
@@ -929,6 +949,7 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
             </div>
+
             <div class="glass-card card-6">
                 <span class="emoji-big">🎵</span>
                 <h1>Мы в TikTok</h1>
@@ -937,6 +958,7 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
             </div>
+
             <div class="glass-card card-7">
                 <span class="emoji-big">🌍</span>
                 <h1>Мы в Meera</h1>
@@ -945,16 +967,19 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Meera</p>
             </div>
+
             <div class="glass-card card-8">
                 <span class="emoji-big">✨</span>
                 <h1>Присоединяйся</h1>
                 <p class="subtitle">Все ссылки выше ☝️</p>
             </div>
+
             <div class="footer">
                 © 2026 mmmmisl_m
             </div>
         </div>
     </div>
+
     <div class="dock" id="dock">
         <button class="dock-btn active" data-tab="main">
             <span class="icon">🏠</span> Главная
@@ -963,6 +988,7 @@
             <span class="icon">🔍</span> Поиск
         </button>
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const welcomeCard = document.getElementById('welcomeCard');
@@ -977,6 +1003,7 @@
                 }, 700);
             }, 1800);
         });
+
         const dockBtns = document.querySelectorAll('.dock-btn');
         const dock = document.getElementById('dock');
         const cardsGrid = document.getElementById('cardsGrid');
@@ -986,6 +1013,7 @@
         const searchInput = document.getElementById('searchInput');
         const searchBack = document.getElementById('searchBack');
         const searchIcon = document.getElementById('searchIcon');
+
         const searchData = [{
             icon: '🤘',
             name: 'Telegram',
@@ -1040,23 +1068,25 @@
             }
             searchResults.innerHTML = results.map(item =>
                 `
-                    <a class="search-result" href="${item.link}" target="_blank">
-                        <span class="result-icon">${item.icon}</span>
-                        <div class="result-info">
-                            <div class="result-name">${item.name}</div>
-                            <div class="result-desc">${item.desc}</div>
-                        </div>
-                        <span class="result-arrow">→</span>
-                    </a>
-                `
+                        <a class="search-result" href="${item.link}" target="_blank">
+                            <span class="result-icon">${item.icon}</span>
+                            <div class="result-info">
+                                <div class="result-name">${item.name}</div>
+                                <div class="result-desc">${item.desc}</div>
+                            </div>
+                            <span class="result-arrow">→</span>
+                        </a>
+                    `
             ).join('');
         }
+
         searchInput.addEventListener('focus', function() {
             searchIcon.classList.add('hidden');
         });
         searchInput.addEventListener('blur', function() {
             searchIcon.classList.remove('hidden');
         });
+
         dockBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 dockBtns.forEach(b => b.classList.remove('active'));
@@ -1084,9 +1114,11 @@
                 }
             });
         });
+
         searchInput.addEventListener('input', function() {
             performSearch(this.value);
         });
+
         searchBack.addEventListener('click', function() {
             dockBtns.forEach(b => b.classList.remove('active'));
             document.querySelector('.dock-btn[data-tab="main"]').classList.add('active');
@@ -1101,11 +1133,13 @@
             dock.classList.remove('hidden');
             searchIcon.classList.remove('hidden');
         });
+
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && searchBackWrap.classList.contains('active')) {
                 searchBack.click();
             }
         });
     </script>
+
 </body>
 </html>
