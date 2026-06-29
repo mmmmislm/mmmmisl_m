@@ -2,19 +2,19 @@
   "name": "mmmmisl_m",
   "short_name": "mmmmisl_m",
   "description": "Соцсети mmmmisl_m",
-  "start_url": "/mmmmisl_m/index.html",
-  "scope": "/mmmmisl_m/",
+  "start_url": "https://mmmmislm.github.io/mmmmisl_m/index.html",
+  "scope": "https://mmmmislm.github.io/mmmmisl_m/",
   "display": "standalone",
   "background_color": "#1c1c1e",
   "theme_color": "#1c1c1e",
   "icons": [
     {
-      "src": "/mmmmisl_m/icon.png",
+      "src": "https://mmmmislm.github.io/mmmmisl_m/icon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/mmmmisl_m/icon.png",
+      "src": "https://mmmmislm.github.io/mmmmisl_m/icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
