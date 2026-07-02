@@ -3,28 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-
-    <!-- ===== КАНОНИЧЕСКАЯ ССЫЛКА ДЛЯ GOOGLE ===== -->
     <link rel="canonical" href="https://mmmmislm.github.io/mmmmisl_m/">
-
-    <!-- ===== PWA ===== -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="mmmmisl_m">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#1c1c1e">
     <meta name="msapplication-TileColor" content="#1c1c1e">
-
     <link rel="manifest" href="/mmmmisl_m/manifest.json">
     <link rel="apple-touch-icon" href="/mmmmisl_m/icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/mmmmisl_m/icon.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/mmmmisl_m/icon.png">
-
     <title>mmmmisl_m</title>
-
-    <!-- ===== GOATCOUNTER ===== -->
     <script data-goatcounter="https://mmmmislm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
     <style>
         * {
             margin: 0;
@@ -52,15 +43,9 @@
             padding-bottom: 100px;
         }
         @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         @media (prefers-color-scheme: light) {
             body {
@@ -152,20 +137,30 @@
                 border: 1px solid rgba(255, 255, 255, 0.15) !important;
                 backdrop-filter: blur(30px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+                border-radius: 50px !important;
             }
             .dock-btn {
-                color: rgba(0, 0, 0, 0.5) !important;
+                color: rgba(0, 0, 0, 0.4) !important;
+                border-radius: 29px !important;
+            }
+            .dock-btn svg {
+                stroke: rgba(0, 0, 0, 0.4) !important;
             }
             .dock-btn.active {
                 color: #1d1d1f !important;
-                background: rgba(0, 0, 0, 0.05) !important;
+                background: rgba(0, 0, 0, 0.08) !important;
+                box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.08) !important;
+            }
+            .dock-btn.active svg {
+                stroke: #1d1d1f !important;
             }
             .dock-btn:hover {
-                background: rgba(0, 0, 0, 0.03) !important;
+                background: rgba(0, 0, 0, 0.06) !important;
             }
             .search-back {
                 color: rgba(0, 0, 0, 0.7) !important;
-                background: rgba(0, 0, 0, 0.05) !important;
+                background: rgba(255, 255, 255, 0.8) !important;
             }
             .search-back:hover {
                 background: rgba(0, 0, 0, 0.1) !important;
@@ -450,63 +445,9 @@
             transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
             transition-delay: 0.8s;
         }
-        .dock {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border-radius: 50px;
-            padding: 12px 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 999;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
-            min-width: 260px;
-            justify-content: center;
-        }
-        .dock.hidden {
-            display: none !important;
-        }
-        .dock-btn {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.5);
-            padding: 14px 28px;
-            border-radius: 40px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .dock-btn .icon {
-            font-size: 1.5rem;
-        }
-        .dock-btn.active {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-        }
-        .dock-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: rgba(255, 255, 255, 0.8);
-        }
-        .dock-btn.active:hover {
-            background: rgba(255, 255, 255, 0.18);
-        }
         .search-back-wrap {
             position: fixed;
-            top: 52px;
+            top: 42px;
             left: 20px;
             z-index: 102;
             display: none;
@@ -547,7 +488,7 @@
         }
         .search-bottom-wrap {
             position: fixed;
-            bottom: 30px;
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%) translateY(30px);
             z-index: 102;
@@ -612,7 +553,7 @@
             top: 90px;
             left: 0;
             right: 0;
-            bottom: 100px;
+            bottom: 160px;
             overflow-y: auto;
             padding: 20px;
             z-index: 100;
@@ -666,6 +607,68 @@
             padding: 40px 20px;
             color: rgba(255, 255, 255, 0.4);
             font-size: 1.1rem;
+        }
+        .dock {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        .dock.hidden {
+            display: none !important;
+        }
+        .dock-btn {
+            width: 76px;
+            height: 58px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            border-radius: 29px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: 0.25s;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            font-family: inherit;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .dock-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: rgba(255, 255, 255, 0.5);
+            stroke-width: 1.8;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: 0.25s;
+        }
+        .dock-btn:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .dock-btn.active {
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        .dock-btn.active svg {
+            stroke: #fff;
         }
         .footer {
             width: 100%;
@@ -798,21 +801,23 @@
                 border-radius: 38px;
             }
             .dock {
-                padding: 10px 16px;
+                padding: 8px 12px;
+                gap: 8px;
+                bottom: 20px;
                 border-radius: 40px;
-                gap: 6px;
-                min-width: 200px;
-                bottom: 18px;
             }
             .dock-btn {
-                font-size: 0.9rem;
-                padding: 12px 22px;
+                width: 64px;
+                height: 50px;
+                border-radius: 25px;
+                font-size: 9px;
             }
-            .dock-btn .icon {
-                font-size: 1.3rem;
+            .dock-btn svg {
+                width: 18px;
+                height: 18px;
             }
             .search-back-wrap {
-                top: 48px;
+                top: 38px;
                 left: 16px;
             }
             .search-back {
@@ -821,7 +826,7 @@
                 font-size: 1.6rem;
             }
             .search-bottom-wrap {
-                bottom: 24px;
+                bottom: 50px;
                 width: 92%;
             }
             .search-input {
@@ -844,12 +849,13 @@
             }
             .search-results {
                 top: 76px;
-                bottom: 90px;
+                bottom: 150px;
             }
         }
     </style>
 </head>
 <body>
+
     <div class="emoji-bg" style="top: 2%; left: 2%; font-size: 4rem; --rot: 25deg; --dx: 40px; --dy: -20px;">💥</div>
     <div class="emoji-bg" style="top: 8%; right: 5%; font-size: 3rem; --rot: -45deg; --dx: -30px; --dy: 50px;">🤘</div>
     <div class="emoji-bg" style="top: 15%; left: 8%; font-size: 5rem; --rot: 180deg; --dx: 60px; --dy: 30px;">💥</div>
@@ -913,7 +919,6 @@
                 <span class="emoji-big">💥</span>
                 <h1>Привет тут соцсети mmmmisl_m</h1>
             </div>
-
             <div class="glass-card card-2">
                 <span class="emoji-big">🤘</span>
                 <h1>Мы в Telegram</h1>
@@ -922,7 +927,6 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Telegram</p>
             </div>
-
             <div class="glass-card card-3">
                 <span class="emoji-big">🔒</span>
                 <h1>Мы в Telegram (Приват)</h1>
@@ -931,7 +935,6 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Доступ по ссылке</p>
             </div>
-
             <div class="glass-card card-4">
                 <span class="emoji-big">📸</span>
                 <h1>Мы в Instagram</h1>
@@ -940,7 +943,6 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
             </div>
-
             <div class="glass-card card-5">
                 <span class="emoji-big">🚀</span>
                 <h1>Мы в Threads</h1>
@@ -949,7 +951,6 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
             </div>
-
             <div class="glass-card card-6">
                 <span class="emoji-big">🎵</span>
                 <h1>Мы в TikTok</h1>
@@ -958,7 +959,6 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
             </div>
-
             <div class="glass-card card-7">
                 <span class="emoji-big">🌍</span>
                 <h1>Мы в Meera</h1>
@@ -967,13 +967,11 @@
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Meera</p>
             </div>
-
             <div class="glass-card card-8">
                 <span class="emoji-big">✨</span>
                 <h1>Присоединяйся</h1>
                 <p class="subtitle">Все ссылки выше ☝️</p>
             </div>
-
             <div class="footer">
                 © 2026 mmmmisl_m
             </div>
@@ -982,10 +980,17 @@
 
     <div class="dock" id="dock">
         <button class="dock-btn active" data-tab="main">
-            <span class="icon">🏠</span> Главная
+            <svg viewBox="0 0 24 24">
+                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+            <span>Главная</span>
         </button>
         <button class="dock-btn" data-tab="search">
-            <span class="icon">🔍</span> Поиск
+            <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <span>Поиск</span>
         </button>
     </div>
 
@@ -1068,15 +1073,15 @@
             }
             searchResults.innerHTML = results.map(item =>
                 `
-                        <a class="search-result" href="${item.link}" target="_blank">
-                            <span class="result-icon">${item.icon}</span>
-                            <div class="result-info">
-                                <div class="result-name">${item.name}</div>
-                                <div class="result-desc">${item.desc}</div>
-                            </div>
-                            <span class="result-arrow">→</span>
-                        </a>
-                    `
+                            <a class="search-result" href="${item.link}" target="_blank">
+                                <span class="result-icon">${item.icon}</span>
+                                <div class="result-info">
+                                    <div class="result-name">${item.name}</div>
+                                    <div class="result-desc">${item.desc}</div>
+                                </div>
+                                <span class="result-arrow">→</span>
+                            </a>
+                        `
             ).join('');
         }
 
@@ -1091,6 +1096,7 @@
             btn.addEventListener('click', function() {
                 dockBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
+
                 if (this.dataset.tab === 'main') {
                     cardsGrid.classList.remove('hidden');
                     cardsGrid.classList.add('visible');
@@ -1139,7 +1145,44 @@
                 searchBack.click();
             }
         });
-    </script>
 
+        let startX = 0;
+        let startY = 0;
+
+        dock.addEventListener('touchstart', function(e) {
+            const t = e.touches[0];
+            startX = t.clientX;
+            startY = t.clientY;
+        }, { passive: true });
+
+        dock.addEventListener('touchmove', function(e) {
+            if (!startX) return;
+            const t = e.touches[0];
+            const dx = t.clientX - startX;
+            const dy = t.clientY - startY;
+            if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
+            e.preventDefault();
+
+            const btns = Array.from(dockBtns);
+            const activeIndex = btns.findIndex(b => b.classList.contains('active'));
+            let targetIndex = -1;
+
+            if (dx > 0 && activeIndex > 0) {
+                targetIndex = activeIndex - 1;
+            } else if (dx < 0 && activeIndex < btns.length - 1) {
+                targetIndex = activeIndex + 1;
+            }
+
+            if (targetIndex >= 0 && targetIndex < btns.length) {
+                btns[targetIndex].click();
+                startX = t.clientX;
+            }
+        }, { passive: false });
+
+        dock.addEventListener('touchend', function() {
+            startX = 0;
+            startY = 0;
+        }, { passive: true });
+    </script>
 </body>
 </html>
