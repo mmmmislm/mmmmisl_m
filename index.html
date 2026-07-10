@@ -17,31 +17,15 @@
     <title>mmmmisl_m</title>
     <script data-goatcounter="https://mmmmislm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <style>
-        :root {
-            --search-empty-color: #ffffff;
-            --search-empty-text: rgba(255, 255, 255, 0.85);
-            --search-empty-query: rgba(255, 255, 255, 0.5);
-        }
-
-        @media (prefers-color-scheme: light) {
-            :root {
-                --search-empty-color: #000000;
-                --search-empty-text: rgba(0, 0, 0, 0.8);
-                --search-empty-query: rgba(0, 0, 0, 0.4);
-            }
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: default;
         }
 
         html {
             overflow-x: hidden;
             width: 100%;
-            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -59,25 +43,6 @@
             background-size: 400% 400%;
             animation: gradientMove 18s ease infinite;
             padding-bottom: 100px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .app-container {
-            width: 100%;
-            max-width: 480px;
-            min-height: 100vh;
-            position: relative;
-            padding: 0 16px 30px 16px;
-        }
-
-        a,
-        button,
-        .dock-btn,
-        .search-back,
-        .glass-card,
-        .link a {
-            cursor: pointer;
         }
 
         @keyframes gradientMove {
@@ -293,7 +258,7 @@
             min-height: 100vh;
             width: 100%;
             max-width: 100%;
-            padding: 20px 0 30px 0;
+            padding: 20px 16px 30px 16px;
             gap: 30px;
             position: relative;
             z-index: 1;
@@ -494,8 +459,9 @@
             gap: 30px;
             width: 100%;
             max-width: 420px;
-            margin: 0 auto;
-            padding: 20px 0 10px 0;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-bottom: 10px;
             transition: all 0.4s ease;
         }
 
@@ -596,10 +562,8 @@
             -webkit-tap-highlight-color: transparent;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
             line-height: 1;
-            text-align: center;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-            font-weight: 300;
+            font-family: inherit;
         }
 
         .search-back:hover {
@@ -948,123 +912,7 @@
             margin-bottom: 8px;
         }
 
-        /* ===== АДАПТИВ ДЛЯ ВСЕХ УСТРОЙСТВ ===== */
-
-        /* Большие экраны (десктопы, ноутбуки) */
-        @media (min-width: 768px) {
-            .app-container {
-                max-width: 560px;
-                padding: 0 24px 30px 24px;
-            }
-
-            .glass-card {
-                padding: 40px 44px;
-                border-radius: 48px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .dock {
-                padding: 12px 20px;
-                gap: 14px;
-                min-width: 280px;
-                bottom: 30px;
-            }
-
-            .dock-btn {
-                width: 84px;
-                height: 64px;
-                font-size: 11px;
-                gap: 4px;
-            }
-
-            .dock-btn svg {
-                width: 24px;
-                height: 24px;
-            }
-
-            .search-back {
-                width: 60px;
-                height: 60px;
-                font-size: 2.2rem;
-            }
-
-            .search-bottom-wrap {
-                max-width: 440px;
-                bottom: 80px;
-            }
-
-            .search-input {
-                padding: 18px 28px 18px 52px;
-                font-size: 1.2rem;
-                border-radius: 34px;
-            }
-
-            .search-icon {
-                left: 18px;
-                width: 24px;
-                height: 24px;
-            }
-
-            .search-icon svg {
-                width: 24px;
-                height: 24px;
-            }
-
-            .search-label {
-                left: 52px;
-                font-size: 1.1rem;
-            }
-
-            .search-results {
-                top: 100px;
-                bottom: 180px;
-                padding: 24px;
-            }
-
-            .search-result {
-                padding: 20px 28px;
-                border-radius: 28px;
-            }
-
-            .card-welcome .emoji-big {
-                font-size: 6rem;
-            }
-
-            .card-welcome h1 {
-                font-size: 3.2rem;
-            }
-
-            .card-welcome .subtitle {
-                font-size: 1.4rem;
-            }
-
-            .loader span {
-                width: 12px;
-                height: 12px;
-            }
-
-            .emoji-bg {
-                font-size: 4rem;
-                opacity: 0.15;
-            }
-        }
-
-        /* Планшеты (iPad, Android tablets) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .app-container {
-                max-width: 500px;
-            }
-
-            .glass-card {
-                padding: 36px 40px;
-            }
-        }
-
-        /* Телефоны (iPhone, Android) */
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .card-welcome .emoji-big {
                 font-size: 3.6rem;
             }
@@ -1184,257 +1032,160 @@
                 bottom: 150px;
             }
         }
-
-        /* Очень маленькие экраны (старые телефоны) */
-        @media (max-width: 360px) {
-            .glass-card {
-                padding: 20px 18px;
-                border-radius: 28px;
-            }
-
-            h1 {
-                font-size: 1.2rem;
-            }
-
-            .dock-btn {
-                width: 54px;
-                height: 44px;
-                font-size: 8px;
-            }
-
-            .dock-btn svg {
-                width: 16px;
-                height: 16px;
-            }
-
-            .dock {
-                padding: 6px 8px;
-                gap: 4px;
-                min-width: 120px;
-            }
-
-            .search-back {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
-            .search-input {
-                font-size: 0.9rem;
-                padding: 12px 16px 12px 38px;
-            }
-
-            .search-label {
-                font-size: 0.8rem;
-                left: 38px;
-            }
-        }
-
-        /* Большие десктопы (27"+) */
-        @media (min-width: 1400px) {
-            .app-container {
-                max-width: 640px;
-            }
-
-            .glass-card {
-                padding: 48px 52px;
-                border-radius: 56px;
-            }
-
-            h1 {
-                font-size: 2.4rem;
-            }
-
-            .dock {
-                padding: 14px 24px;
-                gap: 16px;
-                min-width: 320px;
-                bottom: 36px;
-            }
-
-            .dock-btn {
-                width: 96px;
-                height: 72px;
-                font-size: 12px;
-            }
-
-            .dock-btn svg {
-                width: 28px;
-                height: 28px;
-            }
-        }
-
-        /* iPad в портретной и ландшафтной ориентации */
-        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-            .app-container {
-                max-width: 560px;
-                padding: 0 32px 30px 32px;
-            }
-        }
-
-        @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-            .app-container {
-                max-width: 480px;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <div class="app-container">
+    <div class="emoji-bg" style="top: 2%; left: 2%; font-size: 4rem; --rot: 25deg; --dx: 40px; --dy: -20px;">💥</div>
+    <div class="emoji-bg" style="top: 8%; right: 5%; font-size: 3rem; --rot: -45deg; --dx: -30px; --dy: 50px;">🤘</div>
+    <div class="emoji-bg" style="top: 15%; left: 8%; font-size: 5rem; --rot: 180deg; --dx: 60px; --dy: 30px;">💥</div>
+    <div class="emoji-bg" style="top: 22%; right: 12%; font-size: 2.5rem; --rot: 70deg; --dx: -50px; --dy: -40px;">🤘</div>
+    <div class="emoji-bg" style="top: 30%; left: 3%; font-size: 4.5rem; --rot: -120deg; --dx: 30px; --dy: 60px;">💥</div>
+    <div class="emoji-bg" style="top: 38%; right: 8%; font-size: 3.5rem; --rot: 15deg; --dx: -20px; --dy: -50px;">🤘</div>
+    <div class="emoji-bg" style="top: 45%; left: 12%; font-size: 3rem; --rot: -200deg; --dx: 50px; --dy: 20px;">💥</div>
+    <div class="emoji-bg" style="top: 52%; right: 3%; font-size: 2.8rem; --rot: 90deg; --dx: -40px; --dy: 40px;">🤘</div>
+    <div class="emoji-bg" style="top: 60%; left: 6%; font-size: 4.2rem; --rot: -60deg; --dx: 20px; --dy: -30px;">💥</div>
+    <div class="emoji-bg" style="top: 68%; right: 10%; font-size: 3.2rem; --rot: 220deg; --dx: -60px; --dy: 10px;">🤘</div>
+    <div class="emoji-bg" style="top: 75%; left: 9%; font-size: 2rem; --rot: -15deg; --dx: 70px; --dy: -20px;">💥</div>
+    <div class="emoji-bg" style="top: 82%; right: 6%; font-size: 3.8rem; --rot: 45deg; --dx: -20px; --dy: 60px;">🤘</div>
+    <div class="emoji-bg" style="top: 88%; left: 4%; font-size: 2.2rem; --rot: 130deg; --dx: 30px; --dy: -40px;">💥</div>
+    <div class="emoji-bg" style="top: 93%; right: 9%; font-size: 3rem; --rot: -80deg; --dx: -70px; --dy: 50px;">🤘</div>
+    <div class="emoji-bg" style="top: 97%; left: 7%; font-size: 3.5rem; --rot: 300deg; --dx: 40px; --dy: -10px;">💥</div>
+    <div class="emoji-bg" style="top: 5%; left: 20%; font-size: 3.2rem; --rot: 50deg; --dx: 25px; --dy: 35px;">💥</div>
+    <div class="emoji-bg" style="top: 12%; left: 45%; font-size: 2.8rem; --rot: -30deg; --dx: -15px; --dy: -25px;">🤘</div>
+    <div class="emoji-bg" style="top: 20%; left: 70%; font-size: 4.8rem; --rot: 160deg; --dx: 45px; --dy: 20px;">💥</div>
+    <div class="emoji-bg" style="top: 28%; left: 35%; font-size: 2.2rem; --rot: -75deg; --dx: 20px; --dy: -30px;">🤘</div>
+    <div class="emoji-bg" style="top: 35%; left: 85%; font-size: 4.0rem; --rot: 110deg; --dx: -35px; --dy: 15px;">💥</div>
+    <div class="emoji-bg" style="top: 42%; left: 15%; font-size: 3.8rem; --rot: -20deg; --dx: 50px; --dy: -10px;">🤘</div>
+    <div class="emoji-bg" style="top: 50%; left: 60%; font-size: 2.6rem; --rot: 200deg; --dx: -20px; --dy: 40px;">💥</div>
+    <div class="emoji-bg" style="top: 58%; left: 30%; font-size: 4.6rem; --rot: -140deg; --dx: 30px; --dy: -50px;">🤘</div>
+    <div class="emoji-bg" style="top: 65%; left: 75%; font-size: 3.4rem; --rot: 35deg; --dx: -45px; --dy: 25px;">💥</div>
+    <div class="emoji-bg" style="top: 72%; left: 20%; font-size: 2.4rem; --rot: -90deg; --dx: 60px; --dy: -15px;">🤘</div>
+    <div class="emoji-bg" style="top: 80%; left: 55%; font-size: 4.4rem; --rot: 280deg; --dx: -25px; --dy: 35px;">💥</div>
+    <div class="emoji-bg" style="top: 87%; left: 30%; font-size: 3.0rem; --rot: -10deg; --dx: 40px; --dy: -40px;">🤘</div>
+    <div class="emoji-bg" style="top: 92%; left: 80%; font-size: 2.0rem; --rot: 150deg; --dx: -50px; --dy: 20px;">💥</div>
+    <div class="emoji-bg" style="top: 98%; left: 50%; font-size: 3.6rem; --rot: -220deg; --dx: 20px; --dy: -30px;">🤘</div>
+    <div class="emoji-bg" style="top: 48%; left: 48%; font-size: 2.2rem; --rot: 45deg; --dx: 10px; --dy: -10px;">💥</div>
 
-        <div class="emoji-bg" style="top: 2%; left: 2%; font-size: 4rem; --rot: 25deg; --dx: 40px; --dy: -20px;">💥</div>
-        <div class="emoji-bg" style="top: 8%; right: 5%; font-size: 3rem; --rot: -45deg; --dx: -30px; --dy: 50px;">🤘</div>
-        <div class="emoji-bg" style="top: 15%; left: 8%; font-size: 5rem; --rot: 180deg; --dx: 60px; --dy: 30px;">💥</div>
-        <div class="emoji-bg" style="top: 22%; right: 12%; font-size: 2.5rem; --rot: 70deg; --dx: -50px; --dy: -40px;">🤘</div>
-        <div class="emoji-bg" style="top: 30%; left: 3%; font-size: 4.5rem; --rot: -120deg; --dx: 30px; --dy: 60px;">💥</div>
-        <div class="emoji-bg" style="top: 38%; right: 8%; font-size: 3.5rem; --rot: 15deg; --dx: -20px; --dy: -50px;">🤘</div>
-        <div class="emoji-bg" style="top: 45%; left: 12%; font-size: 3rem; --rot: -200deg; --dx: 50px; --dy: 20px;">💥</div>
-        <div class="emoji-bg" style="top: 52%; right: 3%; font-size: 2.8rem; --rot: 90deg; --dx: -40px; --dy: 40px;">🤘</div>
-        <div class="emoji-bg" style="top: 60%; left: 6%; font-size: 4.2rem; --rot: -60deg; --dx: 20px; --dy: -30px;">💥</div>
-        <div class="emoji-bg" style="top: 68%; right: 10%; font-size: 3.2rem; --rot: 220deg; --dx: -60px; --dy: 10px;">🤘</div>
-        <div class="emoji-bg" style="top: 75%; left: 9%; font-size: 2rem; --rot: -15deg; --dx: 70px; --dy: -20px;">💥</div>
-        <div class="emoji-bg" style="top: 82%; right: 6%; font-size: 3.8rem; --rot: 45deg; --dx: -20px; --dy: 60px;">🤘</div>
-        <div class="emoji-bg" style="top: 88%; left: 4%; font-size: 2.2rem; --rot: 130deg; --dx: 30px; --dy: -40px;">💥</div>
-        <div class="emoji-bg" style="top: 93%; right: 9%; font-size: 3rem; --rot: -80deg; --dx: -70px; --dy: 50px;">🤘</div>
-        <div class="emoji-bg" style="top: 97%; left: 7%; font-size: 3.5rem; --rot: 300deg; --dx: 40px; --dy: -10px;">💥</div>
-        <div class="emoji-bg" style="top: 5%; left: 20%; font-size: 3.2rem; --rot: 50deg; --dx: 25px; --dy: 35px;">💥</div>
-        <div class="emoji-bg" style="top: 12%; left: 45%; font-size: 2.8rem; --rot: -30deg; --dx: -15px; --dy: -25px;">🤘</div>
-        <div class="emoji-bg" style="top: 20%; left: 70%; font-size: 4.8rem; --rot: 160deg; --dx: 45px; --dy: 20px;">💥</div>
-        <div class="emoji-bg" style="top: 28%; left: 35%; font-size: 2.2rem; --rot: -75deg; --dx: 20px; --dy: -30px;">🤘</div>
-        <div class="emoji-bg" style="top: 35%; left: 85%; font-size: 4.0rem; --rot: 110deg; --dx: -35px; --dy: 15px;">💥</div>
-        <div class="emoji-bg" style="top: 42%; left: 15%; font-size: 3.8rem; --rot: -20deg; --dx: 50px; --dy: -10px;">🤘</div>
-        <div class="emoji-bg" style="top: 50%; left: 60%; font-size: 2.6rem; --rot: 200deg; --dx: -20px; --dy: 40px;">💥</div>
-        <div class="emoji-bg" style="top: 58%; left: 30%; font-size: 4.6rem; --rot: -140deg; --dx: 30px; --dy: -50px;">🤘</div>
-        <div class="emoji-bg" style="top: 65%; left: 75%; font-size: 3.4rem; --rot: 35deg; --dx: -45px; --dy: 25px;">💥</div>
-        <div class="emoji-bg" style="top: 72%; left: 20%; font-size: 2.4rem; --rot: -90deg; --dx: 60px; --dy: -15px;">🤘</div>
-        <div class="emoji-bg" style="top: 80%; left: 55%; font-size: 4.4rem; --rot: 280deg; --dx: -25px; --dy: 35px;">💥</div>
-        <div class="emoji-bg" style="top: 87%; left: 30%; font-size: 3.0rem; --rot: -10deg; --dx: 40px; --dy: -40px;">🤘</div>
-        <div class="emoji-bg" style="top: 92%; left: 80%; font-size: 2.0rem; --rot: 150deg; --dx: -50px; --dy: 20px;">💥</div>
-        <div class="emoji-bg" style="top: 98%; left: 50%; font-size: 3.6rem; --rot: -220deg; --dx: 20px; --dy: -30px;">🤘</div>
-        <div class="emoji-bg" style="top: 48%; left: 48%; font-size: 2.2rem; --rot: 45deg; --dx: 10px; --dy: -10px;">💥</div>
-
-        <div class="card-welcome" id="welcomeCard">
-            <span class="emoji-big">👋</span>
-            <h1>Добро пожаловать!</h1>
-            <p class="subtitle">@mmmmisl_m</p>
-            <div class="loader">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <div class="card-welcome" id="welcomeCard">
+        <span class="emoji-big">👋</span>
+        <h1>Добро пожаловать!</h1>
+        <p class="subtitle">@mmmmisl_m</p>
+        <div class="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+    </div>
 
-        <div class="search-back-wrap" id="searchBackWrap">
-            <button class="search-back" id="searchBack">‹</button>
-        </div>
+    <div class="search-back-wrap" id="searchBackWrap">
+        <button class="search-back" id="searchBack">‹</button>
+    </div>
 
-        <div class="search-bottom-wrap" id="searchBottomWrap">
-            <div class="search-input-wrap">
-                <span class="search-icon" id="searchIcon">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="10" cy="10" r="7.5"/>
-                        <line x1="22" y1="22" x2="16" y2="16"/>
-                    </svg>
-                </span>
-                <span class="search-label" id="searchLabel">Поиск</span>
-                <input class="search-input" id="searchInput" type="text">
-            </div>
-        </div>
-
-        <div class="search-results" id="searchResults"></div>
-
-        <div class="cards-wrapper" id="scrollContainer">
-            <div class="cards-grid" id="cardsGrid">
-                <div class="glass-card card-1">
-                    <span class="emoji-big">💥</span>
-                    <h1>Привет тут соцсети mmmmisl_m</h1>
-                </div>
-
-                <div class="glass-card card-2">
-                    <span class="emoji-big">🤘</span>
-                    <h1>Мы в Telegram</h1>
-                    <div class="link telegram-link">
-                        <a href="https://t.me/mmmmisl_m_channel" target="_blank">↗ mmmmisl_m_channel</a>
-                    </div>
-                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Telegram</p>
-                </div>
-
-                <div class="glass-card card-3">
-                    <span class="emoji-big">🔒</span>
-                    <h1>Мы в Telegram (Приват)</h1>
-                    <div class="link telegram-private-link">
-                        <a href="https://t.me/+MB8dBLXqcvVhNzcy" target="_blank">↗ mmmmisl_m_channel_privat</a>
-                    </div>
-                    <p class="subtitle" style="margin-top: 8px;">Доступ по ссылке</p>
-                </div>
-
-                <div class="glass-card card-4">
-                    <span class="emoji-big">📸</span>
-                    <h1>Мы в Instagram</h1>
-                    <div class="link instagram-link">
-                        <a href="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr" target="_blank">↗ mmmmisl_m</a>
-                    </div>
-                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
-                </div>
-
-                <div class="glass-card card-5">
-                    <span class="emoji-big">🚀</span>
-                    <h1>Мы в Threads</h1>
-                    <div class="link threads-link">
-                        <a href="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==" target="_blank">↗ mmmmisl_m</a>
-                    </div>
-                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
-                </div>
-
-                <div class="glass-card card-6">
-                    <span class="emoji-big">🎵</span>
-                    <h1>Мы в TikTok</h1>
-                    <div class="link tiktok-link">
-                        <a href="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ" target="_blank">↗ mmmmisl_m</a>
-                    </div>
-                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
-                </div>
-
-                <div class="glass-card card-7">
-                    <span class="emoji-big">🌍</span>
-                    <h1>Мы в Meera</h1>
-                    <div class="link meera-link">
-                        <a href="https://meera.me/mmmmisl_m" target="_blank">↗ mmmmisl_m</a>
-                    </div>
-                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Meera</p>
-                </div>
-
-                <div class="glass-card card-8">
-                    <span class="emoji-big">✨</span>
-                    <h1>Присоединяйся</h1>
-                    <p class="subtitle">Все ссылки выше ☝️</p>
-                </div>
-
-                <div class="footer">
-                    © 2026 mmmmisl_m
-                </div>
-            </div>
-        </div>
-
-        <div class="dock" id="dock">
-            <button class="dock-btn active" data-tab="main">
-                <svg viewBox="0 0 24 24" stroke-width="2">
-                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/>
+    <div class="search-bottom-wrap" id="searchBottomWrap">
+        <div class="search-input-wrap">
+            <span class="search-icon" id="searchIcon">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="10" cy="10" r="7.5"/>
+                    <line x1="22" y1="22" x2="16" y2="16"/>
                 </svg>
-                <span>Главная</span>
-            </button>
-            <button class="dock-btn" data-tab="search">
-                <svg viewBox="0 0 24 24" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"/>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                </svg>
-                <span>Поиск</span>
-            </button>
+            </span>
+            <span class="search-label" id="searchLabel">Поиск</span>
+            <input class="search-input" id="searchInput" type="text">
         </div>
+    </div>
 
+    <div class="search-results" id="searchResults"></div>
+
+    <div class="cards-wrapper" id="scrollContainer">
+        <div class="cards-grid" id="cardsGrid">
+            <div class="glass-card card-1">
+                <span class="emoji-big">💥</span>
+                <h1>Привет тут соцсети mmmmisl_m</h1>
+            </div>
+
+            <div class="glass-card card-2">
+                <span class="emoji-big">🤘</span>
+                <h1>Мы в Telegram</h1>
+                <div class="link telegram-link">
+                    <a href="https://t.me/mmmmisl_m_channel" target="_blank">↗ mmmmisl_m_channel</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Telegram</p>
+            </div>
+
+            <div class="glass-card card-3">
+                <span class="emoji-big">🔒</span>
+                <h1>Мы в Telegram (Приват)</h1>
+                <div class="link telegram-private-link">
+                    <a href="https://t.me/+MB8dBLXqcvVhNzcy" target="_blank">↗ mmmmisl_m_channel_privat</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Доступ по ссылке</p>
+            </div>
+
+            <div class="glass-card card-4">
+                <span class="emoji-big">📸</span>
+                <h1>Мы в Instagram</h1>
+                <div class="link instagram-link">
+                    <a href="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr" target="_blank">↗ mmmmisl_m</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
+            </div>
+
+            <div class="glass-card card-5">
+                <span class="emoji-big">🚀</span>
+                <h1>Мы в Threads</h1>
+                <div class="link threads-link">
+                    <a href="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==" target="_blank">↗ mmmmisl_m</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
+            </div>
+
+            <div class="glass-card card-6">
+                <span class="emoji-big">🎵</span>
+                <h1>Мы в TikTok</h1>
+                <div class="link tiktok-link">
+                    <a href="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ" target="_blank">↗ mmmmisl_m</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
+            </div>
+
+            <div class="glass-card card-7">
+                <span class="emoji-big">🌍</span>
+                <h1>Мы в Meera</h1>
+                <div class="link meera-link">
+                    <a href="https://meera.me/mmmmisl_m" target="_blank">↗ mmmmisl_m</a>
+                </div>
+                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Meera</p>
+            </div>
+
+            <div class="glass-card card-8">
+                <span class="emoji-big">✨</span>
+                <h1>Присоединяйся</h1>
+                <p class="subtitle">Все ссылки выше ☝️</p>
+            </div>
+
+            <div class="footer">
+                © 2026 mmmmisl_m
+            </div>
+        </div>
+    </div>
+
+    <div class="dock" id="dock">
+        <button class="dock-btn active" data-tab="main">
+            <svg viewBox="0 0 24 24" stroke-width="2">
+                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/>
+            </svg>
+            <span>Главная</span>
+        </button>
+        <button class="dock-btn" data-tab="search">
+            <svg viewBox="0 0 24 24" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <span>Поиск</span>
+        </button>
     </div>
 
     <script>
@@ -1513,14 +1264,15 @@
             }
 
             if (results.length === 0) {
-                searchResults.innerHTML = `
+                searchResults.innerHTML =
+                    `
                             <div class="search-empty" style="text-align:center;padding:40px 20px;">
-                                <svg viewBox="0 0 24 24" style="width:56px;height:56px;stroke:var(--search-empty-color, #ffffff);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 16px;">
+                                <svg viewBox="0 0 24 24" style="width:56px;height:56px;stroke:#ffffff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 16px;">
                                     <circle cx="10" cy="10" r="7.5"/>
                                     <line x1="22" y1="22" x2="16" y2="16"/>
                                 </svg>
-                                <div style="font-weight:600;font-size:1.1rem;color:var(--search-empty-text, rgba(255,255,255,0.85));">Нет результатов по запросу</div>
-                                <div style="font-weight:600;font-size:1.1rem;color:var(--search-empty-query, rgba(255,255,255,0.5));margin-top:6px;">«${query}»</div>
+                                <div style="font-weight:600;font-size:1.1rem;color:rgba(255,255,255,0.85);">Нет результатов по запросу</div>
+                                <div style="font-weight:600;font-size:1.1rem;color:rgba(255,255,255,0.5);margin-top:6px;">«${query}»</div>
                             </div>
                         `;
                 return;
