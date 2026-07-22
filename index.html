@@ -26,6 +26,7 @@
         html {
             overflow-x: hidden;
             width: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -41,8 +42,9 @@
             color: #ffffff;
             background: linear-gradient(-45deg, #2c2c2c, #1a1a1a, #3a3a3a, #0d0d0d);
             background-size: 400% 400%;
-            animation: gradientMove 18s ease infinite;
+            animation: gradientMove 25s ease infinite;
             padding-bottom: 100px;
+            will-change: background-position;
         }
 
         @keyframes gradientMove {
@@ -62,7 +64,7 @@
                 color: #1d1d1f;
                 background: linear-gradient(-45deg, #e0e0e6, #d0d0d8, #e8e8ee, #f5f5f7);
                 background-size: 400% 400%;
-                animation: gradientMove 18s ease infinite;
+                animation: gradientMove 25s ease infinite;
             }
 
             .glass-card {
@@ -107,32 +109,62 @@
             }
 
             .emoji-bg {
-                opacity: 0.25 !important;
+                opacity: 0.2 !important;
                 filter: brightness(0.6) contrast(0.9);
             }
 
             .telegram-link a {
                 color: #0088cc !important;
+                border-bottom-color: rgba(0, 136, 204, 0.3) !important;
+            }
+
+            .telegram-link a:hover {
+                border-bottom-color: rgba(0, 136, 204, 0.7) !important;
             }
 
             .telegram-private-link a {
                 color: #0088cc !important;
+                border-bottom-color: rgba(0, 136, 204, 0.3) !important;
+            }
+
+            .telegram-private-link a:hover {
+                border-bottom-color: rgba(0, 136, 204, 0.7) !important;
             }
 
             .instagram-link a {
                 color: #e4405f !important;
+                border-bottom-color: rgba(228, 64, 95, 0.3) !important;
+            }
+
+            .instagram-link a:hover {
+                border-bottom-color: rgba(228, 64, 95, 0.7) !important;
             }
 
             .threads-link a {
-                color: #1d1d1f !important;
+                color: #FF8C00 !important;
+                border-bottom-color: rgba(255, 140, 0, 0.3) !important;
+            }
+
+            .threads-link a:hover {
+                border-bottom-color: rgba(255, 140, 0, 0.7) !important;
             }
 
             .tiktok-link a {
-                color: #1d1d1f !important;
+                color: #2ECC71 !important;
+                border-bottom-color: rgba(46, 204, 113, 0.3) !important;
+            }
+
+            .tiktok-link a:hover {
+                border-bottom-color: rgba(46, 204, 113, 0.7) !important;
             }
 
             .meera-link a {
                 color: #ff6b6b !important;
+                border-bottom-color: rgba(255, 107, 107, 0.3) !important;
+            }
+
+            .meera-link a:hover {
+                border-bottom-color: rgba(255, 107, 107, 0.7) !important;
             }
 
             .card-1,
@@ -151,16 +183,12 @@
             }
 
             .subtitle {
-                color: rgba(0, 0, 0, 0.6) !important;
+                color: rgba(0, 0, 0, 0.7) !important;
+                opacity: 0.85 !important;
             }
 
             .footer {
                 color: rgba(0, 0, 0, 0.6) !important;
-            }
-
-            .link a {
-                color: rgba(0, 0, 0, 0.8) !important;
-                border-bottom-color: rgba(0, 0, 0, 0.15) !important;
             }
 
             .dock {
@@ -183,8 +211,8 @@
 
             .dock-btn.active {
                 color: #1d1d1f !important;
-                background: rgba(0, 0, 0, 0.08) !important;
-                box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.08) !important;
+                background: rgba(0, 0, 0, 0.05) !important;
+                box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05) !important;
             }
 
             .dock-btn.active svg {
@@ -234,20 +262,21 @@
         .emoji-bg {
             position: fixed;
             font-size: 3rem;
-            opacity: 0.2;
+            opacity: 0.12;
             pointer-events: none;
             z-index: 0;
-            animation: float 20s ease-in-out infinite alternate;
+            animation: float 25s ease-in-out infinite alternate;
             user-select: none;
-            transition: opacity 0.4s ease;
+            will-change: transform;
+            transform: translateZ(0);
         }
 
         @keyframes float {
             0% {
-                transform: translate(0, 0) rotate(var(--rot, 0deg)) scale(1);
+                transform: translate(0, 0) rotate(var(--rot, 0deg)) scale(1) translateZ(0);
             }
             100% {
-                transform: translate(var(--dx, 30px), var(--dy, -30px)) rotate(calc(var(--rot, 0deg) + 10deg)) scale(1.1);
+                transform: translate(var(--dx, 30px), var(--dy, -30px)) rotate(calc(var(--rot, 0deg) + 10deg)) scale(1.1) translateZ(0);
             }
         }
 
@@ -283,6 +312,8 @@
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             user-select: none;
+            will-change: transform;
+            cursor: pointer;
         }
 
         .glass-card::before {
@@ -308,7 +339,46 @@
             background: rgba(232, 240, 254, 0.06);
             box-shadow: 0 16px 48px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(232, 240, 254, 0.08);
             border-color: rgba(255, 255, 255, 0.2);
-            transform: rotate(0deg) translateX(0) scale(1.02);
+            transform: scale(1.02) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+        }
+
+        .glass-card:active {
+            transform: scale(0.98) rotate(var(--rot, 0deg)) translateX(var(--x, 0)) !important;
+            transition: transform 0.1s ease;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .emoji-pulse {
+            animation: pulse 0.6s ease 1 !important;
+        }
+
+        .card-1 .emoji-big,
+        .card-8 .emoji-big {
+            transition: none !important;
+        }
+
+        .card-1:hover .emoji-big,
+        .card-8:hover .emoji-big {
+            animation: none !important;
+        }
+
+        .card-1 {
+            cursor: default;
+        }
+
+        .card-8 {
+            cursor: default;
         }
 
         .card-1 {
@@ -462,15 +532,20 @@
             margin-top: 20px;
             padding-top: 20px;
             padding-bottom: 10px;
-            transition: all 0.4s ease;
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         .cards-grid.visible {
             display: flex;
+            opacity: 1;
+            transform: scale(1);
         }
 
         .cards-grid.hidden {
             display: none !important;
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
         }
 
         .cards-grid .glass-card {
@@ -525,6 +600,13 @@
             opacity: 1;
             transform: translateY(0) scale(1) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
             transition-delay: 0.8s;
+        }
+
+        .search-input:focus {
+            outline: none !important;
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.25);
         }
 
         .search-back-wrap {
@@ -657,6 +739,7 @@
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 40px rgba(0, 0, 0, 0.25);
+            outline: none !important;
         }
 
         .search-results {
@@ -805,8 +888,8 @@
             padding: 20px 0 10px 0;
             font-size: 1.2rem;
             font-weight: 600;
-            opacity: 0.8;
-            color: rgba(255, 255, 255, 0.8);
+            opacity: 0.85;
+            color: rgba(255, 255, 255, 0.85);
             letter-spacing: 0.5px;
             transition: opacity 0.3s ease;
             flex: 0 0 auto;
@@ -828,14 +911,16 @@
         .subtitle {
             font-size: 1rem;
             font-weight: 400;
-            opacity: 0.7;
+            opacity: 0.85;
             margin: 0;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.85);
         }
 
         .link {
             font-size: 1rem;
             margin-top: 8px;
+            position: relative;
+            z-index: 2;
         }
 
         .link a {
@@ -845,7 +930,9 @@
             padding-bottom: 2px;
             transition: all 0.3s ease;
             word-break: break-all;
-            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 3;
+            cursor: pointer;
         }
 
         .link a:hover {
@@ -880,21 +967,21 @@
         }
 
         .threads-link a {
-            color: #1d1d1f;
-            border-bottom-color: rgba(0, 0, 0, 0.2);
+            color: #FF8C00;
+            border-bottom-color: rgba(255, 140, 0, 0.3);
         }
 
         .threads-link a:hover {
-            border-bottom-color: rgba(0, 0, 0, 0.6);
+            border-bottom-color: rgba(255, 140, 0, 0.7);
         }
 
         .tiktok-link a {
-            color: #1d1d1f;
-            border-bottom-color: rgba(0, 0, 0, 0.2);
+            color: #2ECC71;
+            border-bottom-color: rgba(46, 204, 113, 0.3);
         }
 
         .tiktok-link a:hover {
-            border-bottom-color: rgba(0, 0, 0, 0.6);
+            border-bottom-color: rgba(46, 204, 113, 0.7);
         }
 
         .meera-link a {
@@ -910,6 +997,7 @@
             font-size: 3rem;
             display: block;
             margin-bottom: 8px;
+            transition: transform 0.3s ease;
         }
 
         @media (max-width: 600px) {
@@ -1048,24 +1136,6 @@
     <div class="emoji-bg" style="top: 68%; right: 10%; font-size: 3.2rem; --rot: 220deg; --dx: -60px; --dy: 10px;">🤘</div>
     <div class="emoji-bg" style="top: 75%; left: 9%; font-size: 2rem; --rot: -15deg; --dx: 70px; --dy: -20px;">💥</div>
     <div class="emoji-bg" style="top: 82%; right: 6%; font-size: 3.8rem; --rot: 45deg; --dx: -20px; --dy: 60px;">🤘</div>
-    <div class="emoji-bg" style="top: 88%; left: 4%; font-size: 2.2rem; --rot: 130deg; --dx: 30px; --dy: -40px;">💥</div>
-    <div class="emoji-bg" style="top: 93%; right: 9%; font-size: 3rem; --rot: -80deg; --dx: -70px; --dy: 50px;">🤘</div>
-    <div class="emoji-bg" style="top: 97%; left: 7%; font-size: 3.5rem; --rot: 300deg; --dx: 40px; --dy: -10px;">💥</div>
-    <div class="emoji-bg" style="top: 5%; left: 20%; font-size: 3.2rem; --rot: 50deg; --dx: 25px; --dy: 35px;">💥</div>
-    <div class="emoji-bg" style="top: 12%; left: 45%; font-size: 2.8rem; --rot: -30deg; --dx: -15px; --dy: -25px;">🤘</div>
-    <div class="emoji-bg" style="top: 20%; left: 70%; font-size: 4.8rem; --rot: 160deg; --dx: 45px; --dy: 20px;">💥</div>
-    <div class="emoji-bg" style="top: 28%; left: 35%; font-size: 2.2rem; --rot: -75deg; --dx: 20px; --dy: -30px;">🤘</div>
-    <div class="emoji-bg" style="top: 35%; left: 85%; font-size: 4.0rem; --rot: 110deg; --dx: -35px; --dy: 15px;">💥</div>
-    <div class="emoji-bg" style="top: 42%; left: 15%; font-size: 3.8rem; --rot: -20deg; --dx: 50px; --dy: -10px;">🤘</div>
-    <div class="emoji-bg" style="top: 50%; left: 60%; font-size: 2.6rem; --rot: 200deg; --dx: -20px; --dy: 40px;">💥</div>
-    <div class="emoji-bg" style="top: 58%; left: 30%; font-size: 4.6rem; --rot: -140deg; --dx: 30px; --dy: -50px;">🤘</div>
-    <div class="emoji-bg" style="top: 65%; left: 75%; font-size: 3.4rem; --rot: 35deg; --dx: -45px; --dy: 25px;">💥</div>
-    <div class="emoji-bg" style="top: 72%; left: 20%; font-size: 2.4rem; --rot: -90deg; --dx: 60px; --dy: -15px;">🤘</div>
-    <div class="emoji-bg" style="top: 80%; left: 55%; font-size: 4.4rem; --rot: 280deg; --dx: -25px; --dy: 35px;">💥</div>
-    <div class="emoji-bg" style="top: 87%; left: 30%; font-size: 3.0rem; --rot: -10deg; --dx: 40px; --dy: -40px;">🤘</div>
-    <div class="emoji-bg" style="top: 92%; left: 80%; font-size: 2.0rem; --rot: 150deg; --dx: -50px; --dy: 20px;">💥</div>
-    <div class="emoji-bg" style="top: 98%; left: 50%; font-size: 3.6rem; --rot: -220deg; --dx: 20px; --dy: -30px;">🤘</div>
-    <div class="emoji-bg" style="top: 48%; left: 48%; font-size: 2.2rem; --rot: 45deg; --dx: 10px; --dy: -10px;">💥</div>
 
     <div class="card-welcome" id="welcomeCard">
         <span class="emoji-big">👋</span>
@@ -1106,7 +1176,7 @@
                 <h1>Привет тут соцсети mmmmisl_m</h1>
             </div>
 
-            <div class="glass-card card-2">
+            <div class="glass-card card-2" data-has-link="true">
                 <span class="emoji-big">🤘</span>
                 <h1>Мы в Telegram</h1>
                 <div class="link telegram-link">
@@ -1115,16 +1185,16 @@
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Telegram</p>
             </div>
 
-            <div class="glass-card card-3">
+            <div class="glass-card card-3" data-has-link="true">
                 <span class="emoji-big">🔒</span>
                 <h1>Мы в Telegram (Приват)</h1>
                 <div class="link telegram-private-link">
-                    <a href="https://t.me/+MB8dBLXqcvVhNzcy" target="_blank">↗ mmmmisl_m_channel_privat</a>
+                    <a href="https://t.me/+O1JxoMMscawyMGMy" target="_blank">↗ mmmmisl_m_channel_privat</a>
                 </div>
                 <p class="subtitle" style="margin-top: 8px;">Доступ по ссылке</p>
             </div>
 
-            <div class="glass-card card-4">
+            <div class="glass-card card-4" data-has-link="true">
                 <span class="emoji-big">📸</span>
                 <h1>Мы в Instagram</h1>
                 <div class="link instagram-link">
@@ -1133,7 +1203,7 @@
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
             </div>
 
-            <div class="glass-card card-5">
+            <div class="glass-card card-5" data-has-link="true">
                 <span class="emoji-big">🚀</span>
                 <h1>Мы в Threads</h1>
                 <div class="link threads-link">
@@ -1142,7 +1212,7 @@
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
             </div>
 
-            <div class="glass-card card-6">
+            <div class="glass-card card-6" data-has-link="true">
                 <span class="emoji-big">🎵</span>
                 <h1>Мы в TikTok</h1>
                 <div class="link tiktok-link">
@@ -1151,7 +1221,7 @@
                 <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
             </div>
 
-            <div class="glass-card card-7">
+            <div class="glass-card card-7" data-has-link="true">
                 <span class="emoji-big">🌍</span>
                 <h1>Мы в Meera</h1>
                 <div class="link meera-link">
@@ -1204,6 +1274,33 @@
             }, 1800);
         });
 
+        document.querySelectorAll('.glass-card[data-has-link="true"]').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('a')) return;
+                
+                const emoji = this.querySelector('.emoji-big');
+                if (emoji) {
+                    emoji.classList.remove('emoji-pulse');
+                    void emoji.offsetWidth;
+                    emoji.classList.add('emoji-pulse');
+                }
+            });
+        });
+
+        document.querySelectorAll('.link a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const card = this.closest('.glass-card');
+                if (card) {
+                    const emoji = card.querySelector('.emoji-big');
+                    if (emoji) {
+                        emoji.classList.remove('emoji-pulse');
+                        void emoji.offsetWidth;
+                        emoji.classList.add('emoji-pulse');
+                    }
+                }
+            });
+        });
+
         const dockBtns = document.querySelectorAll('.dock-btn');
         const dock = document.getElementById('dock');
         const cardsGrid = document.getElementById('cardsGrid');
@@ -1219,31 +1316,31 @@
             name: 'Telegram',
             desc: 'Основной канал mmmmisl_m',
             link: 'https://t.me/mmmmisl_m_channel',
-            keywords: 'telegram канал телеграм тг'
+            keywords: 'telegram канал телеграм тг tg'
         }, {
             icon: '🔒',
             name: 'Telegram (Приват)',
             desc: 'Закрытый канал mmmmisl_m',
-            link: 'https://t.me/+MB8dBLXqcvVhNzcy',
-            keywords: 'telegram приват канал телеграм закрытый тг'
+            link: 'https://t.me/+O1JxoMMscawyMGMy',
+            keywords: 'telegram приват канал телеграм закрытый тг tg privat private'
         }, {
             icon: '📸',
             name: 'Instagram',
             desc: 'Фотографии mmmmisl_m',
             link: 'https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr',
-            keywords: 'instagram инстаграм инста фото фотографии инст'
+            keywords: 'instagram инстаграм инста meta мета инст'
         }, {
             icon: '🚀',
             name: 'Threads',
             desc: 'Мы в Threads',
             link: 'https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==',
-            keywords: 'threads тредс трейдс'
+            keywords: 'мета meta threads тредс трейдс'
         }, {
             icon: '🎵',
             name: 'TikTok',
             desc: 'Видео mmmmisl_m',
             link: 'https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ',
-            keywords: 'tiktok тикток тик ток тик-ток тик токи'
+            keywords: 'tiktok тикток тик ток тик-ток тик токи tt тт'
         }, {
             icon: '🌍',
             name: 'Meera',
@@ -1266,7 +1363,7 @@
             if (results.length === 0) {
                 searchResults.innerHTML =
                     `
-                            <div class="search-empty" style="text-align:center;padding:40px 20px;">
+                            <div class="search-empty">
                                 <svg viewBox="0 0 24 24" style="width:56px;height:56px;stroke:#ffffff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 16px;">
                                     <circle cx="10" cy="10" r="7.5"/>
                                     <line x1="22" y1="22" x2="16" y2="16"/>
