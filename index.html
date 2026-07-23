@@ -1299,9 +1299,17 @@
             }, 1800);
         });
 
+        function vibrate() {
+            if (navigator.vibrate) {
+                navigator.vibrate(15);
+            }
+        }
+
         document.querySelectorAll('.glass-card[data-has-link="true"]').forEach(card => {
             card.addEventListener('click', function(e) {
                 if (e.target.closest('a')) return;
+                
+                vibrate();
                 
                 const emoji = this.querySelector('.emoji-big');
                 if (emoji) {
@@ -1314,6 +1322,8 @@
 
         document.querySelectorAll('.link a').forEach(link => {
             link.addEventListener('click', function(e) {
+                vibrate();
+                
                 const card = this.closest('.glass-card');
                 if (card) {
                     const emoji = card.querySelector('.emoji-big');
