@@ -66,19 +66,19 @@
                 animation: gradientMove 25s ease infinite;
             }
             .glass-card {
-                background: rgba(232, 240, 254, 0.15) !important;
+                background: rgba(255, 255, 255, 0.12) !important;
                 backdrop-filter: blur(20px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
                 border: 1px solid rgba(255, 255, 255, 0.25) !important;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(232, 240, 254, 0.08) !important;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
             }
             .glass-card:hover {
-                background: rgba(232, 240, 254, 0.22) !important;
-                box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(232, 240, 254, 0.12) !important;
+                background: rgba(255, 255, 255, 0.18) !important;
+                box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
                 border-color: rgba(255, 255, 255, 0.35) !important;
             }
             .glass-card::before {
-                background: linear-gradient(135deg, rgba(232, 240, 254, 0.4) 0%, rgba(232, 240, 254, 0.0) 35%, rgba(232, 240, 254, 0.0) 65%, rgba(232, 240, 254, 0.3) 100%) !important;
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.0) 35%, rgba(255, 255, 255, 0.0) 65%, rgba(255, 255, 255, 0.25) 100%) !important;
                 opacity: 0.4 !important;
             }
             .glass-card:hover::before {
@@ -160,7 +160,7 @@
             .card-7,
             .card-8,
             .card-9 {
-                background: rgba(232, 240, 254, 0.15) !important;
+                background: rgba(255, 255, 255, 0.12) !important;
             }
             h1 {
                 color: #1d1d1f !important;
@@ -209,6 +209,12 @@
                 background: rgba(0, 0, 0, 0.05) !important;
                 color: #1d1d1f !important;
             }
+            .search-clear svg {
+                stroke: rgba(0, 0, 0, 0.4) !important;
+            }
+            .search-clear:hover svg {
+                stroke: #1d1d1f !important;
+            }
             .search-result {
                 background: rgba(255, 255, 255, 0.1) !important;
                 border: 1px solid rgba(0, 0, 0, 0.05) !important;
@@ -227,13 +233,6 @@
                 backdrop-filter: blur(30px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
                 border: 1px solid rgba(255, 255, 255, 0.25) !important;
-            }
-            .modal-close {
-                color: #1d1d1f !important;
-                background: rgba(0, 0, 0, 0.05) !important;
-            }
-            .modal-close:hover {
-                background: rgba(0, 0, 0, 0.1) !important;
             }
             .modal-title {
                 color: #1d1d1f !important;
@@ -266,11 +265,11 @@
         }
         .emoji-bg {
             position: fixed;
-            font-size: 3rem;
-            opacity: 0.12;
+            font-size: 2.8rem;
+            opacity: 0.13;
             pointer-events: none;
             z-index: 0;
-            animation: float 25s ease-in-out infinite alternate;
+            animation: float 28s ease-in-out infinite alternate;
             user-select: none;
             will-change: transform;
             transform: translateZ(0);
@@ -280,7 +279,7 @@
                 transform: translate(0, 0) rotate(var(--rot, 0deg)) scale(1) translateZ(0);
             }
             100% {
-                transform: translate(var(--dx, 30px), var(--dy, -30px)) rotate(calc(var(--rot, 0deg) + 10deg)) scale(1.1) translateZ(0);
+                transform: translate(var(--dx, 40px), var(--dy, -40px)) rotate(calc(var(--rot, 0deg) + 15deg)) scale(1.12) translateZ(0);
             }
         }
         .cards-wrapper {
@@ -299,15 +298,14 @@
             flex: 0 0 auto;
             width: 100%;
             max-width: 420px;
-            background: rgba(232, 240, 254, 0.04);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
             border-radius: 44px;
             padding: 32px 36px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(232, 240, 254, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.06);
             transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-            transform: rotate(var(--rot, 0deg)) translateX(var(--x, 0));
             box-sizing: border-box;
             position: relative;
             opacity: 1;
@@ -316,6 +314,7 @@
             user-select: none;
             will-change: transform;
             cursor: pointer;
+            overflow: hidden;
         }
         .glass-card::before {
             content: '';
@@ -325,7 +324,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 46px;
-            background: linear-gradient(135deg, rgba(232, 240, 254, 0.25) 0%, rgba(232, 240, 254, 0.0) 35%, rgba(232, 240, 254, 0.0) 65%, rgba(232, 240, 254, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.0) 35%, rgba(255, 255, 255, 0.0) 65%, rgba(255, 255, 255, 0.15) 100%);
             z-index: -1;
             opacity: 0.3;
             transition: opacity 0.5s ease;
@@ -335,20 +334,21 @@
             opacity: 0.7;
         }
         .glass-card:hover {
-            background: rgba(232, 240, 254, 0.08);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(232, 240, 254, 0.10);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.02) rotate(var(--rot, 0deg)) translateX(var(--x, 0));
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
         }
         .glass-card:active {
-            transform: rotate(var(--rot, 0deg)) translateX(var(--x, 0)) !important;
+            transform: scale(0.98) !important;
+            background: rgba(255, 255, 255, 0.06) !important;
         }
-        .card-1 .emoji-big,
-        .card-9 .emoji-big {
+        .card-1 .card-inner,
+        .card-9 .card-inner {
             transition: none !important;
         }
-        .card-1:hover .emoji-big,
-        .card-9:hover .emoji-big {
+        .card-1:hover .card-inner,
+        .card-9:hover .card-inner {
             animation: none !important;
         }
         .card-1 {
@@ -357,45 +357,7 @@
         .card-9 {
             cursor: default;
         }
-        .card-1 {
-            --rot: -2deg;
-            --x: -8px;
-        }
-        .card-2 {
-            --rot: 2.5deg;
-            --x: 12px;
-        }
-        .card-3 {
-            --rot: -1.5deg;
-            --x: -5px;
-        }
-        .card-4 {
-            --rot: 3deg;
-            --x: 15px;
-        }
-        .card-5 {
-            --rot: -2.5deg;
-            --x: -12px;
-        }
-        .card-6 {
-            --rot: 1.5deg;
-            --x: 10px;
-        }
-        .card-7 {
-            --rot: -1.5deg;
-            --x: 8px;
-        }
-        .card-8 {
-            --rot: 2deg;
-            --x: -5px;
-        }
-        .card-9 {
-            --rot: -1.5deg;
-            --x: -8px;
-        }
         .card-welcome {
-            --rot: 0deg;
-            --x: 0px;
             position: fixed;
             top: 0;
             left: 0;
@@ -504,6 +466,56 @@
             transform: scale(0.95);
             pointer-events: none;
         }
+        .cards-grid .glass-card {
+            opacity: 0;
+            transform: translateY(40px) scale(0.92);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .cards-grid.visible .glass-card:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.1s;
+        }
+        .cards-grid.visible .glass-card:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.2s;
+        }
+        .cards-grid.visible .glass-card:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.3s;
+        }
+        .cards-grid.visible .glass-card:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.4s;
+        }
+        .cards-grid.visible .glass-card:nth-child(5) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.5s;
+        }
+        .cards-grid.visible .glass-card:nth-child(6) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.6s;
+        }
+        .cards-grid.visible .glass-card:nth-child(7) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.7s;
+        }
+        .cards-grid.visible .glass-card:nth-child(8) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.8s;
+        }
+        .cards-grid.visible .glass-card:nth-child(9) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.9s;
+        }
         .search-back-wrap {
             position: fixed;
             top: 42px;
@@ -601,9 +613,39 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
+        .search-clear {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            z-index: 2;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            padding: 2px;
+        }
+        .search-clear:hover {
+            opacity: 0.7;
+        }
+        .search-clear svg {
+            width: 22px;
+            height: 22px;
+            stroke: rgba(255, 255, 255, 0.5);
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .search-clear.visible {
+            display: flex;
+        }
         .search-input {
             width: 100%;
-            padding: 16px 20px 16px 48px;
+            padding: 16px 52px 16px 48px;
             background: transparent;
             border: none;
             outline: none;
@@ -716,7 +758,7 @@
             }
         }
         .modal-content {
-            background: rgba(30, 30, 35, 0.15);
+            background: rgba(30, 30, 35, 0.12);
             backdrop-filter: blur(30px) saturate(180%);
             -webkit-backdrop-filter: blur(30px) saturate(180%);
             border-radius: 40px;
@@ -727,11 +769,12 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             text-align: center;
-            animation: modalPop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: modalPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
         }
         @keyframes modalPop {
             0% {
-                transform: scale(0.9) translateY(10px);
+                transform: scale(0.85) translateY(30px);
                 opacity: 0;
             }
             100% {
@@ -740,31 +783,12 @@
             }
         }
         .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: rgba(255, 255, 255, 0.08);
-            border: none;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: 0.2s;
-            padding: 4px 10px;
-            border-radius: 50%;
-            line-height: 1;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-        .modal-close:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.15);
-        }
-        .modal-close:active {
-            transform: scale(0.9);
+            display: none;
         }
         .modal-icon {
             font-size: 3.5rem;
             margin-bottom: 6px;
+            animation: modalContentFade 0.4s 0.15s both;
         }
         .modal-title {
             font-size: 1.5rem;
@@ -772,11 +796,13 @@
             margin-bottom: 2px;
             color: #ffffff;
             letter-spacing: -0.02em;
+            animation: modalContentFade 0.4s 0.2s both;
         }
         .modal-subtitle {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.5);
             margin-bottom: 20px;
+            animation: modalContentFade 0.4s 0.25s both;
         }
         .modal-qr {
             width: 220px;
@@ -790,11 +816,29 @@
             justify-content: center;
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: modalContentFade 0.4s 0.3s both;
         }
         .modal-qr canvas,
         .modal-qr img {
             width: 100% !important;
             height: 100% !important;
+        }
+        .modal-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 4px;
+            animation: modalContentFade 0.4s 0.35s both;
+        }
+        @keyframes modalContentFade {
+            0% {
+                opacity: 0;
+                transform: translateY(12px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
         .modal-qr-loading {
             color: #888;
@@ -805,12 +849,6 @@
             color: #e74c3c;
             font-size: 0.85rem;
             text-align: center;
-        }
-        .modal-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 4px;
         }
         .modal-btn {
             padding: 14px 28px;
@@ -892,12 +930,12 @@
             display: flex;
             gap: 12px;
             padding: 10px 14px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(30px) saturate(200%);
             -webkit-backdrop-filter: blur(30px) saturate(200%);
             border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
             z-index: 999;
             transition: all 0.3s ease;
         }
@@ -913,8 +951,8 @@
             justify-content: center;
             gap: 2px;
             border-radius: 29px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: 0.2s;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
@@ -940,11 +978,11 @@
         }
         .dock-btn:hover {
             transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.08);
         }
         .dock-btn.active {
-            background: rgba(255, 255, 255, 0.18);
-            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.15);
             color: #fff;
         }
         .dock-btn.active svg {
@@ -955,11 +993,11 @@
             max-width: 420px;
             text-align: left;
             padding: 20px 0 10px 0;
-            font-size: 1.2rem;
-            font-weight: 600;
-            opacity: 0.85;
-            color: rgba(255, 255, 255, 0.85);
-            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            font-weight: 400;
+            opacity: 0.6;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.3px;
             transition: opacity 0.3s ease;
             flex: 0 0 auto;
         }
@@ -1074,6 +1112,7 @@
             .glass-card {
                 padding: 24px 26px;
                 border-radius: 36px;
+                background: rgba(255, 255, 255, 0.06);
             }
             h1 {
                 font-size: 1.5rem;
@@ -1085,9 +1124,9 @@
                 padding: 0 0 10px 0;
             }
             .footer {
-                font-size: 1rem;
+                font-size: 0.85rem;
                 padding: 15px 0 8px 0;
-                opacity: 0.7;
+                opacity: 0.6;
             }
             .loader span {
                 width: 8px;
@@ -1135,8 +1174,17 @@
                 width: 18px;
                 height: 18px;
             }
+            .search-clear {
+                right: 12px;
+                width: 24px;
+                height: 24px;
+            }
+            .search-clear svg {
+                width: 18px;
+                height: 18px;
+            }
             .search-input {
-                padding: 14px 16px 14px 42px;
+                padding: 14px 44px 14px 42px;
                 font-size: 1rem;
             }
             .search-results {
@@ -1184,18 +1232,33 @@
 </head>
 <body>
 
-    <div class="emoji-bg" style="top: 2%; left: 2%; font-size: 4rem; --rot: 25deg; --dx: 40px; --dy: -20px;">💥</div>
-    <div class="emoji-bg" style="top: 8%; right: 5%; font-size: 3rem; --rot: -45deg; --dx: -30px; --dy: 50px;">🤘</div>
-    <div class="emoji-bg" style="top: 15%; left: 8%; font-size: 5rem; --rot: 180deg; --dx: 60px; --dy: 30px;">💥</div>
-    <div class="emoji-bg" style="top: 22%; right: 12%; font-size: 2.5rem; --rot: 70deg; --dx: -50px; --dy: -40px;">🤘</div>
-    <div class="emoji-bg" style="top: 30%; left: 3%; font-size: 4.5rem; --rot: -120deg; --dx: 30px; --dy: 60px;">💥</div>
-    <div class="emoji-bg" style="top: 38%; right: 8%; font-size: 3.5rem; --rot: 15deg; --dx: -20px; --dy: -50px;">🤘</div>
-    <div class="emoji-bg" style="top: 45%; left: 12%; font-size: 3rem; --rot: -200deg; --dx: 50px; --dy: 20px;">💥</div>
-    <div class="emoji-bg" style="top: 52%; right: 3%; font-size: 2.8rem; --rot: 90deg; --dx: -40px; --dy: 40px;">🤘</div>
-    <div class="emoji-bg" style="top: 60%; left: 6%; font-size: 4.2rem; --rot: -60deg; --dx: 20px; --dy: -30px;">💥</div>
-    <div class="emoji-bg" style="top: 68%; right: 10%; font-size: 3.2rem; --rot: 220deg; --dx: -60px; --dy: 10px;">🤘</div>
-    <div class="emoji-bg" style="top: 75%; left: 9%; font-size: 2rem; --rot: -15deg; --dx: 70px; --dy: -20px;">💥</div>
-    <div class="emoji-bg" style="top: 82%; right: 6%; font-size: 3.8rem; --rot: 45deg; --dx: -20px; --dy: 60px;">🤘</div>
+    <div class="emoji-bg" style="top: 3%; left: 7%; font-size: 3.5rem; --rot: 25deg; --dx: 45px; --dy: -25px;">💥</div>
+    <div class="emoji-bg" style="top: 10%; right: 8%; font-size: 3rem; --rot: -45deg; --dx: -35px; --dy: 55px;">🤘</div>
+    <div class="emoji-bg" style="top: 5%; left: 45%; font-size: 4rem; --rot: 180deg; --dx: 65px; --dy: 30px;">😎</div>
+    <div class="emoji-bg" style="top: 18%; right: 15%; font-size: 2.8rem; --rot: 70deg; --dx: -50px; --dy: -40px;">😝</div>
+    <div class="emoji-bg" style="top: 28%; left: 5%; font-size: 4.2rem; --rot: -120deg; --dx: 35px; --dy: 60px;">💥</div>
+    <div class="emoji-bg" style="top: 15%; left: 75%; font-size: 3.8rem; --rot: 200deg; --dx: 55px; --dy: 25px;">💵</div>
+    <div class="emoji-bg" style="top: 42%; right: 20%; font-size: 2.6rem; --rot: 90deg; --dx: -45px; --dy: 40px;">🤘</div>
+    <div class="emoji-bg" style="top: 55%; left: 8%; font-size: 4.5rem; --rot: -60deg; --dx: 25px; --dy: -30px;">💥</div>
+    <div class="emoji-bg" style="top: 25%; left: 55%; font-size: 3.5rem; --rot: 220deg; --dx: -55px; --dy: 15px;">😎</div>
+    <div class="emoji-bg" style="top: 48%; right: 10%; font-size: 3rem; --rot: -15deg; --dx: 70px; --dy: -20px;">😝</div>
+    <div class="emoji-bg" style="top: 72%; left: 6%; font-size: 2.8rem; --rot: 130deg; --dx: 35px; --dy: -45px;">💵</div>
+    <div class="emoji-bg" style="top: 38%; left: 85%; font-size: 3.2rem; --rot: -80deg; --dx: -70px; --dy: 50px;">🤘</div>
+    <div class="emoji-bg" style="top: 80%; right: 8%; font-size: 4rem; --rot: 300deg; --dx: 40px; --dy: -15px;">💥</div>
+    <div class="emoji-bg" style="top: 8%; left: 25%; font-size: 3.2rem; --rot: 50deg; --dx: 30px; --dy: 35px;">😎</div>
+    <div class="emoji-bg" style="top: 20%; left: 60%; font-size: 2.8rem; --rot: -30deg; --dx: -20px; --dy: -25px;">💵</div>
+    <div class="emoji-bg" style="top: 50%; left: 30%; font-size: 4.8rem; --rot: 160deg; --dx: 50px; --dy: 20px;">😝</div>
+    <div class="emoji-bg" style="top: 75%; left: 50%; font-size: 4.2rem; --rot: 110deg; --dx: -35px; --dy: 15px;">💥</div>
+    <div class="emoji-bg" style="top: 85%; left: 20%; font-size: 3.5rem; --rot: -20deg; --dx: 50px; --dy: -10px;">🤘</div>
+    <div class="emoji-bg" style="top: 90%; right: 25%; font-size: 3.8rem; --rot: 200deg; --dx: -25px; --dy: 40px;">😎</div>
+    <div class="emoji-bg" style="top: 12%; left: 88%; font-size: 2.6rem; --rot: -140deg; --dx: 30px; --dy: -50px;">💵</div>
+    <div class="emoji-bg" style="top: 45%; left: 50%; font-size: 3.4rem; --rot: 35deg; --dx: -45px; --dy: 25px;">💥</div>
+    <div class="emoji-bg" style="top: 70%; left: 35%; font-size: 2.4rem; --rot: -90deg; --dx: 60px; --dy: -15px;">😝</div>
+    <div class="emoji-bg" style="top: 88%; left: 70%; font-size: 4.4rem; --rot: 280deg; --dx: -25px; --dy: 35px;">💥</div>
+    <div class="emoji-bg" style="top: 95%; left: 10%; font-size: 3rem; --rot: -10deg; --dx: 40px; --dy: -40px;">🤘</div>
+    <div class="emoji-bg" style="top: 30%; left: 35%; font-size: 3.6rem; --rot: 150deg; --dx: -50px; --dy: 20px;">😎</div>
+    <div class="emoji-bg" style="top: 60%; left: 20%; font-size: 3.2rem; --rot: 45deg; --dx: -30px; --dy: 25px;">💵</div>
+    <div class="emoji-bg" style="top: 65%; right: 30%; font-size: 2.8rem; --rot: -60deg; --dx: 40px; --dy: -35px;">🤘</div>
 
     <div class="card-welcome" id="welcomeCard">
         <span class="emoji-big">👋</span>
@@ -1223,6 +1286,12 @@
                 </svg>
             </span>
             <input class="search-input" id="searchInput" type="text" placeholder="Поиск">
+            <span class="search-clear" id="searchClear">
+                <svg viewBox="0 0 24 24">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </span>
         </div>
     </div>
 
@@ -1230,7 +1299,6 @@
 
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content" id="modalContent">
-            <button class="modal-close" id="modalClose">✕</button>
             <div class="modal-icon" id="modalIcon">🤘</div>
             <div class="modal-title" id="modalTitle">Telegram</div>
             <div class="modal-subtitle" id="modalSubtitle">Основной канал</div>
@@ -1250,77 +1318,95 @@
     <div class="cards-wrapper" id="scrollContainer">
         <div class="cards-grid visible" id="cardsGrid">
             <div class="glass-card card-1">
-                <span class="emoji-big">💥</span>
-                <h1>Привет тут соцсети mmmmisl_m</h1>
+                <div class="card-inner">
+                    <span class="emoji-big">💥</span>
+                    <h1>Привет тут соцсети mmmmisl_m</h1>
+                </div>
             </div>
 
             <div class="glass-card card-2" data-has-link="true" data-icon="🤘" data-name="Telegram" data-desc="Основной канал" data-link="https://t.me/mmmmisl_m_channel">
-                <span class="emoji-big">🤘</span>
-                <h1>Мы в Telegram</h1>
-                <div class="link telegram-link">
-                    <a href="https://t.me/mmmmisl_m_channel" target="_blank">↗ mmmmisl_m_channel</a>
+                <div class="card-inner">
+                    <span class="emoji-big">🤘</span>
+                    <h1>Мы в Telegram</h1>
+                    <div class="link telegram-link">
+                        <a href="https://t.me/mmmmisl_m_channel" target="_blank">↗ mmmmisl_m_channel</a>
+                    </div>
+                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Telegram</p>
                 </div>
-                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Telegram</p>
             </div>
 
             <div class="glass-card card-3" data-has-link="true" data-icon="🔒" data-name="Telegram (Приват)" data-desc="Закрытый канал" data-link="https://t.me/+O1JxoMMscawyMGMy">
-                <span class="emoji-big">🔒</span>
-                <h1>Мы в Telegram (Приват)</h1>
-                <div class="link telegram-private-link">
-                    <a href="https://t.me/+O1JxoMMscawyMGMy" target="_blank">↗ mmmmisl_m_channel_privat</a>
+                <div class="card-inner">
+                    <span class="emoji-big">🔒</span>
+                    <h1>Мы в Telegram (Приват)</h1>
+                    <div class="link telegram-private-link">
+                        <a href="https://t.me/+O1JxoMMscawyMGMy" target="_blank">↗ mmmmisl_m_channel_privat</a>
+                    </div>
+                    <p class="subtitle" style="margin-top: 8px;">Доступ по ссылке</p>
                 </div>
-                <p class="subtitle" style="margin-top: 8px;">Доступ по ссылке</p>
             </div>
 
             <div class="glass-card card-4" data-has-link="true" data-icon="📸" data-name="Instagram" data-desc="Фотографии" data-link="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr">
-                <span class="emoji-big">📸</span>
-                <h1>Мы в Instagram</h1>
-                <div class="link instagram-link">
-                    <a href="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr" target="_blank">↗ mmmmisl_m</a>
+                <div class="card-inner">
+                    <span class="emoji-big">📸</span>
+                    <h1>Мы в Instagram</h1>
+                    <div class="link instagram-link">
+                        <a href="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr" target="_blank">↗ mmmmisl_m</a>
+                    </div>
+                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
                 </div>
-                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
             </div>
 
             <div class="glass-card card-5" data-has-link="true" data-icon="🚀" data-name="Threads" data-desc="Мы в Threads" data-link="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==">
-                <span class="emoji-big">🚀</span>
-                <h1>Мы в Threads</h1>
-                <div class="link threads-link">
-                    <a href="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==" target="_blank">↗ mmmmisl_m</a>
+                <div class="card-inner">
+                    <span class="emoji-big">🚀</span>
+                    <h1>Мы в Threads</h1>
+                    <div class="link threads-link">
+                        <a href="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==" target="_blank">↗ mmmmisl_m</a>
+                    </div>
+                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
                 </div>
-                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
             </div>
 
             <div class="glass-card card-6" data-has-link="true" data-icon="🎵" data-name="TikTok" data-desc="Видео" data-link="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ">
-                <span class="emoji-big">🎵</span>
-                <h1>Мы в TikTok</h1>
-                <div class="link tiktok-link">
-                    <a href="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ" target="_blank">↗ mmmmisl_m</a>
+                <div class="card-inner">
+                    <span class="emoji-big">🎵</span>
+                    <h1>Мы в TikTok</h1>
+                    <div class="link tiktok-link">
+                        <a href="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ" target="_blank">↗ mmmmisl_m</a>
+                    </div>
+                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
                 </div>
-                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
             </div>
 
             <div class="glass-card card-7" data-has-link="true" data-icon="🎵" data-name="TikTok 2" data-desc="Второй аккаунт" data-link="https://www.tiktok.com/@mmmmisl_m2.0?_r=1&_t=ZT-98G4mvgEu0T">
-                <span class="emoji-big">🎵</span>
-                <h1>Мы в TikTok 2</h1>
-                <div class="link tiktok2-link">
-                    <a href="https://www.tiktok.com/@mmmmisl_m2.0?_r=1&_t=ZT-98G4mvgEu0T" target="_blank">↗ mmmmisl_m_2</a>
+                <div class="card-inner">
+                    <span class="emoji-big">🎵</span>
+                    <h1>Мы в TikTok 2</h1>
+                    <div class="link tiktok2-link">
+                        <a href="https://www.tiktok.com/@mmmmisl_m2.0?_r=1&_t=ZT-98G4mvgEu0T" target="_blank">↗ mmmmisl_m_2</a>
+                    </div>
+                    <p class="subtitle" style="margin-top: 8px;">Второй аккаунт в TikTok</p>
                 </div>
-                <p class="subtitle" style="margin-top: 8px;">Второй аккаунт в TikTok</p>
             </div>
 
             <div class="glass-card card-8" data-has-link="true" data-icon="🌍" data-name="Meera" data-desc="Мы в Meera" data-link="https://meera.me/mmmmisl_m">
-                <span class="emoji-big">🌍</span>
-                <h1>Мы в Meera</h1>
-                <div class="link meera-link">
-                    <a href="https://meera.me/mmmmisl_m" target="_blank">↗ mmmmisl_m</a>
+                <div class="card-inner">
+                    <span class="emoji-big">🌍</span>
+                    <h1>Мы в Meera</h1>
+                    <div class="link meera-link">
+                        <a href="https://meera.me/mmmmisl_m" target="_blank">↗ mmmmisl_m</a>
+                    </div>
+                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Meera</p>
                 </div>
-                <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Meera</p>
             </div>
 
             <div class="glass-card card-9">
-                <span class="emoji-big">✨</span>
-                <h1>Присоединяйся</h1>
-                <p class="subtitle">Все ссылки выше ☝️</p>
+                <div class="card-inner">
+                    <span class="emoji-big">✨</span>
+                    <h1>Присоединяйся</h1>
+                    <p class="subtitle">Все ссылки выше ☝️</p>
+                </div>
             </div>
 
             <div class="footer">
@@ -1362,7 +1448,6 @@
         });
 
         var modalOverlay = document.getElementById('modalOverlay');
-        var modalClose = document.getElementById('modalClose');
         var modalIcon = document.getElementById('modalIcon');
         var modalTitle = document.getElementById('modalTitle');
         var modalSubtitle = document.getElementById('modalSubtitle');
@@ -1431,7 +1516,6 @@
             }, 300);
         }
 
-        modalClose.addEventListener('click', closeModal);
         modalOverlay.addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
@@ -1522,6 +1606,7 @@
         var searchResults = document.getElementById('searchResults');
         var searchInput = document.getElementById('searchInput');
         var searchBack = document.getElementById('searchBack');
+        var searchClear = document.getElementById('searchClear');
 
         var searchData = [{
             icon: '🤘',
@@ -1576,9 +1661,11 @@
             if (query.trim() === '') {
                 searchResults.innerHTML = '';
                 searchResults.classList.remove('active');
+                searchClear.classList.remove('visible');
                 return;
             }
 
+            searchClear.classList.add('visible');
             searchResults.classList.add('active');
 
             if (results.length === 0) {
@@ -1615,6 +1702,15 @@
             performSearch(this.value);
         });
 
+        searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.focus();
+            searchResults.innerHTML = '';
+            searchResults.classList.remove('active');
+            searchClear.classList.remove('visible');
+            performSearch('');
+        });
+
         dockBtns.forEach(function(btn) {
             btn.addEventListener('click', function() {
                 dockBtns.forEach(function(b) { b.classList.remove('active'); });
@@ -1628,6 +1724,7 @@
                     searchResults.classList.remove('active');
                     searchInput.value = '';
                     searchResults.innerHTML = '';
+                    searchClear.classList.remove('visible');
                     document.body.style.overflow = '';
                     dock.classList.remove('hidden');
                 } else if (this.dataset.tab === 'search') {
@@ -1653,6 +1750,7 @@
             searchResults.classList.remove('active');
             searchInput.value = '';
             searchResults.innerHTML = '';
+            searchClear.classList.remove('visible');
             document.body.style.overflow = '';
             dock.classList.remove('hidden');
         });
