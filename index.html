@@ -17,15 +17,12 @@
     <title>Соцсети mmmmisl_m</title>
     
     <style>
-        /* ФОН СРАЗУ ТЁМНЫЙ */
         html, body {
             margin: 0;
             padding: 0;
             background: #1c1c1e;
             min-height: 100vh;
         }
-        
-        /* ОВЕРЛЕЙ ЗАГРУЗКИ - ВСЕГДА ВИДИМ */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -1203,7 +1200,6 @@
 </head>
 <body class="hidden-content">
 
-    <!-- ОВЕРЛЕЙ ЗАГРУЗКИ - ПОЯВЛЯЕТСЯ МГНОВЕННО -->
     <div class="loading-overlay" id="loadingOverlay">
         <span class="emoji-big">👋</span>
         <h1>Добро пожаловать!</h1>
@@ -1217,7 +1213,6 @@
         </div>
     </div>
 
-    <!-- ВЕСЬ ОСТАЛЬНОЙ КОНТЕНТ -->
     <div class="emoji-bg" style="top: 3%; left: 7%; font-size: 3.5rem; --rot: 25deg; --dx: 45px; --dy: -25px;">💥</div>
     <div class="emoji-bg" style="top: 10%; right: 8%; font-size: 3rem; --rot: -45deg; --dx: -35px; --dy: 55px;">🤘</div>
     <div class="emoji-bg" style="top: 5%; left: 45%; font-size: 4rem; --rot: 180deg; --dx: 65px; --dy: 30px;">😎</div>
@@ -1406,6 +1401,17 @@
 
     <script>
         window.addEventListener('load', function() {
+            // === ПРОВЕРКА ИНТЕРНЕТА ===
+            if (!navigator.onLine) {
+                // НЕТ ИНТЕРНЕТА - ТОЛЬКО ЗАГРУЗКА
+                var loadingOverlay = document.getElementById('loadingOverlay');
+                loadingOverlay.classList.remove('hidden');
+                document.querySelector('.loading-overlay h1').textContent = '⏳ Ожидание сети';
+                document.querySelector('.loading-overlay .subtitle').textContent = 'Подключитесь к интернету';
+                return; // Выходим, карточки НЕ показываем
+            }
+
+            // === ЕСТЬ ИНТЕРНЕТ - ПОКАЗЫВАЕМ КОНТЕНТ ===
             document.body.classList.remove('hidden-content');
             document.body.classList.add('loaded');
             
@@ -1427,7 +1433,12 @@
             });
         });
 
-        // ВЕСЬ ОСТАЛЬНОЙ JS КОД (модалки, поиск, док и т.д.)
+        // Следим за появлением интернета
+        window.addEventListener('online', function() {
+            location.reload();
+        });
+
+        // Весь остальной JS код (модалки, поиск, док и т.д.)
         var modalOverlay = document.getElementById('modalOverlay');
         var modalIcon = document.getElementById('modalIcon');
         var modalTitle = document.getElementById('modalTitle');
