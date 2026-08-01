@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="yandex-verification" content="705ffbe4a8137923" />
     <link rel="canonical" href="https://mmmmislm.github.io/mmmmisl_m/">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,11 +15,13 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/mmmmisl_m/0AFF097A-8D01-48A4-87E7-26F72D89F5E4.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/mmmmisl_m/0AFF097A-8D01-48A4-87E7-26F72D89F5E4.png">
     <title>Соцсети mmmmisl_m</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
-    </script>
-    <script data-goatcounter="https://mmmmislm.goatcounter.com/count" async src="//gc.zgo.at/count.js">
-    </script>
+    
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #1c1c1e;
+        }
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -32,7 +33,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            z-index: 99999;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         .loading-overlay.hidden {
@@ -47,6 +49,8 @@
         .loading-overlay h1 {
             font-size: 2rem;
             color: #ffffff;
+            font-weight: 650;
+            letter-spacing: -0.035em;
         }
         .loading-overlay .subtitle {
             font-size: 1rem;
@@ -82,7 +86,28 @@
                 opacity: 1;
             }
         }
+        @media (prefers-color-scheme: light) {
+            .loading-overlay {
+                background: #f2f2f7 !important;
+            }
+            .loading-overlay h1 {
+                color: #1d1d1f !important;
+            }
+            .loading-overlay .subtitle {
+                color: rgba(0, 0, 0, 0.6) !important;
+            }
+            .loading-overlay .loader span {
+                background: #1d1d1f !important;
+            }
+        }
+    </style>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    </script>
+    <script data-goatcounter="https://mmmmislm.goatcounter.com/count" async src="//gc.zgo.at/count.js">
+    </script>
+    
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -132,18 +157,6 @@
                 background: linear-gradient(-45deg, #e0e0e6, #d0d0d8, #e8e8ee, #f5f5f7);
                 background-size: 400% 400%;
                 animation: gradientMove 25s ease infinite;
-            }
-            .loading-overlay {
-                background: #f2f2f7 !important;
-            }
-            .loading-overlay h1 {
-                color: #1d1d1f !important;
-            }
-            .loading-overlay .subtitle {
-                color: rgba(0, 0, 0, 0.6) !important;
-            }
-            .loading-overlay .loader span {
-                background: #1d1d1f !important;
             }
             .glass-card {
                 background: rgba(255, 255, 255, 0.12) !important;
@@ -444,91 +457,7 @@
             cursor: default;
         }
         .card-welcome {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            max-width: 100%;
-            max-height: 100vh;
-            border-radius: 0;
-            background: #1c1c1e;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            border: none;
-            box-shadow: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            z-index: 1000;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform: translateY(0) scale(1);
-            opacity: 1;
-            pointer-events: none;
             display: none;
-        }
-        .card-welcome.hidden {
-            transform: translateY(30px) scale(0.85);
-            opacity: 0;
-            pointer-events: none;
-        }
-        .card-welcome .emoji-big {
-            font-size: 5rem;
-            margin-bottom: 16px;
-        }
-        .card-welcome h1 {
-            font-size: 2.8rem;
-            text-align: center;
-            color: #ffffff;
-        }
-        .card-welcome .subtitle {
-            font-size: 1.2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .loader {
-            margin-top: 28px;
-            display: flex;
-            gap: 7px;
-            align-items: center;
-            justify-content: center;
-        }
-        .loader span {
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            display: inline-block;
-            animation: dot-wave 1.2s ease-in-out infinite both;
-        }
-        .loader span:nth-child(1) {
-            animation-delay: -0.32s;
-        }
-        .loader span:nth-child(2) {
-            animation-delay: -0.16s;
-        }
-        .loader span:nth-child(3) {
-            animation-delay: 0s;
-        }
-        .loader span:nth-child(4) {
-            animation-delay: 0.16s;
-        }
-        .loader span:nth-child(5) {
-            animation-delay: 0.32s;
-        }
-        @keyframes dot-wave {
-            0%,
-            80%,
-            100% {
-                transform: scale(0.5);
-                opacity: 0.2;
-            }
-            40% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
         }
         .cards-grid {
             display: none;
@@ -1137,13 +1066,13 @@
             transition: transform 0.2s ease;
         }
         @media (max-width: 600px) {
-            .card-welcome .emoji-big {
+            .loading-overlay .emoji-big {
                 font-size: 3.6rem;
             }
-            .card-welcome h1 {
+            .loading-overlay h1 {
                 font-size: 2rem;
             }
-            .card-welcome .subtitle {
+            .loading-overlay .subtitle {
                 font-size: 1rem;
             }
             .glass-card {
