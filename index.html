@@ -17,12 +17,15 @@
     <title>Соцсети mmmmisl_m</title>
     
     <style>
+        /* ФОН СРАЗУ ТЁМНЫЙ */
         html, body {
             margin: 0;
             padding: 0;
             background: #1c1c1e;
             min-height: 100vh;
         }
+        
+        /* ОВЕРЛЕЙ ЗАГРУЗКИ - ВСЕГДА ВИДИМ */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -128,13 +131,14 @@
             width: 100%;
             max-width: 100vw;
             position: relative;
-            transition: background 0.6s ease, color 0.6s ease;
             color: #ffffff;
             background: linear-gradient(-45deg, #2c2c2c, #1a1a1a, #3a3a3a, #0d0d0d);
             background-size: 400% 400%;
             animation: gradientMove 25s ease infinite;
             padding-bottom: 100px;
             will-change: background-position;
+        }
+        body.hidden-content {
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -1197,8 +1201,9 @@
         }
     </style>
 </head>
-<body>
+<body class="hidden-content">
 
+    <!-- ОВЕРЛЕЙ ЗАГРУЗКИ - ПОЯВЛЯЕТСЯ МГНОВЕННО -->
     <div class="loading-overlay" id="loadingOverlay">
         <span class="emoji-big">👋</span>
         <h1>Добро пожаловать!</h1>
@@ -1212,6 +1217,7 @@
         </div>
     </div>
 
+    <!-- ВЕСЬ ОСТАЛЬНОЙ КОНТЕНТ -->
     <div class="emoji-bg" style="top: 3%; left: 7%; font-size: 3.5rem; --rot: 25deg; --dx: 45px; --dy: -25px;">💥</div>
     <div class="emoji-bg" style="top: 10%; right: 8%; font-size: 3rem; --rot: -45deg; --dx: -35px; --dy: 55px;">🤘</div>
     <div class="emoji-bg" style="top: 5%; left: 45%; font-size: 4rem; --rot: 180deg; --dx: 65px; --dy: 30px;">😎</div>
@@ -1399,8 +1405,8 @@
     </div>
 
     <script>
-        // ТОЛЬКО ПОСЛЕ ПОЛНОЙ ЗАГРУЗКИ ВСЕХ РЕСУРСОВ
         window.addEventListener('load', function() {
+            document.body.classList.remove('hidden-content');
             document.body.classList.add('loaded');
             
             var loadingOverlay = document.getElementById('loadingOverlay');
