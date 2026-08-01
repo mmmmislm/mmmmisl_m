@@ -16,12 +16,17 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/mmmmisl_m/0AFF097A-8D01-48A4-87E7-26F72D89F5E4.png">
     <title>Соцсети mmmmisl_m</title>
     
+    <!-- КРИТИЧЕСКИЙ CSS - загружается мгновенно -->
     <style>
+        /* Сразу делаем фон тёмным */
         html, body {
             margin: 0;
             padding: 0;
             background: #1c1c1e;
+            min-height: 100vh;
         }
+        
+        /* Оверлей поверх всего */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -1198,6 +1203,7 @@
 </head>
 <body>
 
+    <!-- ОВЕРЛЕЙ ЗАГРУЗКИ - ПОЯВЛЯЕТСЯ МГНОВЕННО -->
     <div class="loading-overlay" id="loadingOverlay">
         <span class="emoji-big">👋</span>
         <h1>Добро пожаловать!</h1>
@@ -1211,6 +1217,7 @@
         </div>
     </div>
 
+    <!-- ОСТАЛЬНОЙ КОНТЕНТ -->
     <div class="emoji-bg" style="top: 3%; left: 7%; font-size: 3.5rem; --rot: 25deg; --dx: 45px; --dy: -25px;">💥</div>
     <div class="emoji-bg" style="top: 10%; right: 8%; font-size: 3rem; --rot: -45deg; --dx: -35px; --dy: 55px;">🤘</div>
     <div class="emoji-bg" style="top: 5%; left: 45%; font-size: 4rem; --rot: 180deg; --dx: 65px; --dy: 30px;">😎</div>
