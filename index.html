@@ -17,12 +17,6 @@
     <title>Соцсети mmmmisl_m</title>
     
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            background: #1c1c1e;
-            min-height: 100vh;
-        }
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -730,7 +724,7 @@
             backdrop-filter: blur(30px) saturate(180%);
             -webkit-backdrop-filter: blur(30px) saturate(180%);
             border-radius: 40px;
-            padding: 35px;
+            padding: 35px 35px 70px 35px;
             max-width: 460px;
             width: 100%;
             position: relative;
@@ -1170,7 +1164,7 @@
                 font-size: 0.95rem;
             }
             .modal-content {
-                padding: 28px 20px;
+                padding: 28px 20px 60px 20px;
                 border-radius: 32px;
                 max-width: 380px;
             }
@@ -1195,10 +1189,33 @@
                 padding: 12px 14px;
                 font-size: 0.8rem;
             }
+            .modal-image {
+                max-width: 100px !important;
+                max-height: 30px !important;
+            }
+        }
+        .modal-image {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 140px;
+            max-height: 40px;
+        }
+        .modal-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
         }
     </style>
 </head>
-<body class="hidden-content">
+<body>
 
     <div class="loading-overlay" id="loadingOverlay">
         <span class="emoji-big">👋</span>
@@ -1279,6 +1296,9 @@
                     <button class="modal-btn modal-btn-secondary modal-btn-copy" id="modalCopy">Копировать</button>
                     <button class="modal-btn modal-btn-secondary" id="modalShare">Поделиться</button>
                 </div>
+            </div>
+            <div class="modal-image">
+                <img id="modalImage" src="" alt="">
             </div>
         </div>
     </div>
@@ -1400,21 +1420,41 @@
     </div>
 
     <script>
+        function getTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                return 'light';
+            }
+            return 'dark';
+        }
+
+        function updateModalImage() {
+            var modalImage = document.getElementById('modalImage');
+            if (!modalImage) return;
+            var theme = getTheme();
+            if (theme === 'light') {
+                modalImage.src = 'Text.PNG';
+                modalImage.alt = 'Text';
+            } else {
+                modalImage.src = 'Text_black.PNG';
+                modalImage.alt = 'Text_black';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function() {
+                updateModalImage();
+            });
+        }
+
         window.addEventListener('load', function() {
-            // === ПРОВЕРКА ИНТЕРНЕТА ===
             if (!navigator.onLine) {
-                // НЕТ ИНТЕРНЕТА - ТОЛЬКО ЗАГРУЗКА
                 var loadingOverlay = document.getElementById('loadingOverlay');
                 loadingOverlay.classList.remove('hidden');
                 document.querySelector('.loading-overlay h1').textContent = '⏳ Ожидание сети';
                 document.querySelector('.loading-overlay .subtitle').textContent = 'Подключитесь к интернету';
-                return; // Выходим, карточки НЕ показываем
+                return;
             }
 
-            // === ЕСТЬ ИНТЕРНЕТ - ПОКАЗЫВАЕМ КОНТЕНТ ===
-            document.body.classList.remove('hidden-content');
-            document.body.classList.add('loaded');
-            
             var loadingOverlay = document.getElementById('loadingOverlay');
             loadingOverlay.classList.add('hidden');
             
@@ -1433,12 +1473,10 @@
             });
         });
 
-        // Следим за появлением интернета
         window.addEventListener('online', function() {
             location.reload();
         });
 
-        // Весь остальной JS код (модалки, поиск, док и т.д.)
         var modalOverlay = document.getElementById('modalOverlay');
         var modalIcon = document.getElementById('modalIcon');
         var modalTitle = document.getElementById('modalTitle');
@@ -1485,6 +1523,8 @@
 
             modalCopy.classList.remove('copied');
             modalCopy.textContent = 'Копировать';
+
+            updateModalImage();
 
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
