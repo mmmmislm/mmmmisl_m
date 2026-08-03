@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <link rel="canonical" href="https://mmmmislm.github.io/mmmmisl_m/">
+    
+    <!-- Иконки -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/mmmmisl_m/icon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/mmmmisl_m/icon.png">
+    <link rel="apple-touch-icon" href="/mmmmisl_m/icon_home.png">
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="mmmmisl_m">
@@ -11,12 +17,30 @@
     <meta name="theme-color" content="#1c1c1e">
     <meta name="msapplication-TileColor" content="#1c1c1e">
     <link rel="manifest" href="/mmmmisl_m/manifest.json">
-    <link rel="apple-touch-icon" href="/mmmmisl_m/0AFF097A-8D01-48A4-87E7-26F72D89F5E4.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/mmmmisl_m/0AFF097A-8D01-48A4-87E7-26F72D89F5E4.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/mmmmisl_m/0AFF097A-8D01-48A4-87E7-26F72D89F5E4.png">
     <title>Соцсети mmmmisl_m</title>
     
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+        
+        .modal-btn, .dock-btn, .search-result, .glass-card[data-has-link="true"] {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+        
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -43,13 +67,13 @@
         }
         .loading-overlay h1 {
             font-size: 2rem;
-            color: #ffffff;
+            color: #fff;
             font-weight: 650;
             letter-spacing: -0.035em;
         }
         .loading-overlay .subtitle {
             font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
         }
         .loading-overlay .loader {
             margin-top: 28px;
@@ -61,7 +85,7 @@
         .loading-overlay .loader span {
             width: 10px;
             height: 10px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255,255,255,0.8);
             border-radius: 50%;
             display: inline-block;
             animation: dot-wave 1.2s ease-in-out infinite both;
@@ -71,16 +95,12 @@
         .loading-overlay .loader span:nth-child(3) { animation-delay: 0s; }
         .loading-overlay .loader span:nth-child(4) { animation-delay: 0.16s; }
         .loading-overlay .loader span:nth-child(5) { animation-delay: 0.32s; }
+        
         @keyframes dot-wave {
-            0%, 80%, 100% {
-                transform: scale(0.5);
-                opacity: 0.2;
-            }
-            40% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
+            0%, 80%, 100% { transform: scale(0.5); opacity: 0.2; }
+            40% { transform: scale(1.2); opacity: 1; }
         }
+        
         @media (prefers-color-scheme: light) {
             .loading-overlay {
                 background: #f2f2f7 !important;
@@ -89,20 +109,13 @@
                 color: #1d1d1f !important;
             }
             .loading-overlay .subtitle {
-                color: rgba(0, 0, 0, 0.6) !important;
+                color: rgba(0,0,0,0.6) !important;
             }
             .loading-overlay .loader span {
                 background: #1d1d1f !important;
             }
         }
-    </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
-    </script>
-    <script data-goatcounter="https://mmmmislm.goatcounter.com/count" async src="//gc.zgo.at/count.js">
-    </script>
-    
-    <style>
         * {
             margin: 0;
             padding: 0;
@@ -122,30 +135,20 @@
             width: 100%;
             max-width: 100vw;
             position: relative;
-            color: #ffffff;
+            color: #fff;
             background: linear-gradient(-45deg, #2c2c2c, #1a1a1a, #3a3a3a, #0d0d0d);
             background-size: 400% 400%;
             animation: gradientMove 25s ease infinite;
             padding-bottom: 100px;
             will-change: background-position;
         }
-        body.hidden-content {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
         body.loaded {
             opacity: 1;
         }
         @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         @media (prefers-color-scheme: light) {
             body {
@@ -155,210 +158,182 @@
                 animation: gradientMove 25s ease infinite;
             }
             .glass-card {
-                background: rgba(255, 255, 255, 0.12) !important;
+                background: rgba(255,255,255,0.12) !important;
                 backdrop-filter: blur(20px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-                border: 1px solid rgba(255, 255, 255, 0.25) !important;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+                border: 1px solid rgba(255,255,255,0.25) !important;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.08) !important;
             }
             .glass-card:hover {
-                background: rgba(255, 255, 255, 0.18) !important;
-                box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
-                border-color: rgba(255, 255, 255, 0.35) !important;
+                background: rgba(255,255,255,0.18) !important;
+                box-shadow: 0 16px 48px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.12) !important;
+                border-color: rgba(255,255,255,0.35) !important;
             }
             .glass-card::before {
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.0) 35%, rgba(255, 255, 255, 0.0) 65%, rgba(255, 255, 255, 0.25) 100%) !important;
+                background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 65%, rgba(255,255,255,0.25) 100%) !important;
                 opacity: 0.4 !important;
             }
             .glass-card:hover::before {
                 opacity: 0.7 !important;
             }
-            .card-welcome {
-                background: #f2f2f7 !important;
-                backdrop-filter: none !important;
-                -webkit-backdrop-filter: none !important;
-            }
-            .card-welcome h1 {
-                color: #1d1d1f !important;
-            }
-            .card-welcome .subtitle {
-                color: rgba(0, 0, 0, 0.6) !important;
-            }
-            .loader span {
-                background: #1d1d1f !important;
-            }
-            .emoji-bg {
-                opacity: 0.2 !important;
-                filter: brightness(0.6) contrast(0.9);
-            }
             .telegram-link a {
                 color: #0088cc !important;
-                border-bottom-color: rgba(0, 136, 204, 0.3) !important;
+                border-bottom-color: rgba(0,136,204,0.3) !important;
             }
             .telegram-link a:hover {
-                border-bottom-color: rgba(0, 136, 204, 0.7) !important;
+                border-bottom-color: rgba(0,136,204,0.7) !important;
             }
             .telegram-private-link a {
                 color: #0088cc !important;
-                border-bottom-color: rgba(0, 136, 204, 0.3) !important;
+                border-bottom-color: rgba(0,136,204,0.3) !important;
             }
             .telegram-private-link a:hover {
-                border-bottom-color: rgba(0, 136, 204, 0.7) !important;
+                border-bottom-color: rgba(0,136,204,0.7) !important;
             }
             .instagram-link a {
                 color: #e4405f !important;
-                border-bottom-color: rgba(228, 64, 95, 0.3) !important;
+                border-bottom-color: rgba(228,64,95,0.3) !important;
             }
             .instagram-link a:hover {
-                border-bottom-color: rgba(228, 64, 95, 0.7) !important;
+                border-bottom-color: rgba(228,64,95,0.7) !important;
             }
             .threads-link a {
                 color: #FF8C00 !important;
-                border-bottom-color: rgba(255, 140, 0, 0.3) !important;
+                border-bottom-color: rgba(255,140,0,0.3) !important;
             }
             .threads-link a:hover {
-                border-bottom-color: rgba(255, 140, 0, 0.7) !important;
+                border-bottom-color: rgba(255,140,0,0.7) !important;
             }
             .tiktok-link a {
                 color: #2ECC71 !important;
-                border-bottom-color: rgba(46, 204, 113, 0.3) !important;
+                border-bottom-color: rgba(46,204,113,0.3) !important;
             }
             .tiktok-link a:hover {
-                border-bottom-color: rgba(46, 204, 113, 0.7) !important;
+                border-bottom-color: rgba(46,204,113,0.7) !important;
             }
             .tiktok2-link a {
                 color: #2ECC71 !important;
-                border-bottom-color: rgba(46, 204, 113, 0.3) !important;
+                border-bottom-color: rgba(46,204,113,0.3) !important;
             }
             .tiktok2-link a:hover {
-                border-bottom-color: rgba(46, 204, 113, 0.7) !important;
+                border-bottom-color: rgba(46,204,113,0.7) !important;
             }
             .meera-link a {
                 color: #ff6b6b !important;
-                border-bottom-color: rgba(255, 107, 107, 0.3) !important;
+                border-bottom-color: rgba(255,107,107,0.3) !important;
             }
             .meera-link a:hover {
-                border-bottom-color: rgba(255, 107, 107, 0.7) !important;
-            }
-            .card-1,
-            .card-2,
-            .card-3,
-            .card-4,
-            .card-5,
-            .card-6,
-            .card-7,
-            .card-8,
-            .card-9 {
-                background: rgba(255, 255, 255, 0.12) !important;
+                border-bottom-color: rgba(255,107,107,0.7) !important;
             }
             h1 {
                 color: #1d1d1f !important;
             }
             .subtitle {
-                color: rgba(0, 0, 0, 0.7) !important;
+                color: rgba(0,0,0,0.7) !important;
                 opacity: 0.85 !important;
             }
             .footer {
-                color: rgba(0, 0, 0, 0.6) !important;
+                color: rgba(0,0,0,0.6) !important;
             }
             .dock {
-                background: rgba(255, 255, 255, 0.25) !important;
-                border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                background: rgba(255,255,255,0.25) !important;
+                border: 1px solid rgba(255,255,255,0.2) !important;
                 backdrop-filter: blur(30px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5) !important;
                 border-radius: 50px !important;
             }
             .dock-btn {
-                color: rgba(0, 0, 0, 0.4) !important;
+                color: rgba(0,0,0,0.4) !important;
                 border-radius: 29px !important;
             }
             .dock-btn svg {
-                stroke: rgba(0, 0, 0, 0.4) !important;
+                stroke: rgba(0,0,0,0.4) !important;
             }
             .dock-btn.active {
                 color: #1d1d1f !important;
-                background: rgba(0, 0, 0, 0.05) !important;
-                box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05) !important;
+                background: rgba(0,0,0,0.05) !important;
+                box-shadow: inset 0 0 15px rgba(0,0,0,0.05) !important;
             }
             .dock-btn.active svg {
                 stroke: #1d1d1f !important;
             }
             .dock-btn:hover {
-                background: rgba(0, 0, 0, 0.06) !important;
+                background: rgba(0,0,0,0.06) !important;
             }
             .search-back {
-                color: rgba(0, 0, 0, 0.7) !important;
-                background: rgba(255, 255, 255, 0.8) !important;
+                color: rgba(0,0,0,0.7) !important;
+                background: rgba(255,255,255,0.8) !important;
             }
             .search-back:hover {
-                background: rgba(0, 0, 0, 0.1) !important;
+                background: rgba(0,0,0,0.1) !important;
             }
             .search-input {
-                background: rgba(0, 0, 0, 0.05) !important;
+                background: rgba(0,0,0,0.05) !important;
                 color: #1d1d1f !important;
             }
             .search-clear svg {
-                stroke: rgba(0, 0, 0, 0.4) !important;
+                stroke: rgba(0,0,0,0.4) !important;
             }
             .search-clear:hover svg {
                 stroke: #1d1d1f !important;
             }
             .search-result {
-                background: rgba(255, 255, 255, 0.1) !important;
-                border: 1px solid rgba(0, 0, 0, 0.05) !important;
+                background: rgba(255,255,255,0.1) !important;
+                border: 1px solid rgba(0,0,0,0.05) !important;
             }
             .search-result:hover {
-                background: rgba(255, 255, 255, 0.2) !important;
+                background: rgba(255,255,255,0.2) !important;
             }
             .search-result .result-name {
                 color: #1d1d1f !important;
             }
             .search-result .result-desc {
-                color: rgba(0, 0, 0, 0.5) !important;
+                color: rgba(0,0,0,0.5) !important;
             }
             .modal-content {
-                background: rgba(255, 255, 255, 0.15) !important;
+                background: rgba(255,255,255,0.15) !important;
                 backdrop-filter: blur(30px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
-                border: 1px solid rgba(255, 255, 255, 0.25) !important;
+                border: 1px solid rgba(255,255,255,0.25) !important;
             }
             .modal-title {
                 color: #1d1d1f !important;
             }
             .modal-subtitle {
-                color: rgba(0, 0, 0, 0.5) !important;
+                color: rgba(0,0,0,0.5) !important;
             }
             .modal-btn {
-                background: rgba(0, 0, 0, 0.05) !important;
-                border: 1px solid rgba(0, 0, 0, 0.08) !important;
+                background: rgba(0,0,0,0.05) !important;
+                border: 1px solid rgba(0,0,0,0.08) !important;
                 color: #1d1d1f !important;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.4) !important;
             }
             .modal-btn-primary {
-                background: rgba(0, 136, 204, 0.2) !important;
+                background: rgba(0,136,204,0.2) !important;
                 color: #0088cc !important;
-                border: 1px solid rgba(0, 136, 204, 0.2) !important;
-                box-shadow: 0 4px 20px rgba(0, 136, 204, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+                border: 1px solid rgba(0,136,204,0.2) !important;
+                box-shadow: 0 4px 20px rgba(0,136,204,0.1), inset 0 1px 0 rgba(255,255,255,0.3) !important;
             }
             .modal-btn-secondary {
-                background: rgba(200, 200, 200, 0.15) !important;
+                background: rgba(200,200,200,0.15) !important;
                 color: #1d1d1f !important;
-                border: 1px solid rgba(200, 200, 200, 0.15) !important;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+                border: 1px solid rgba(200,200,200,0.15) !important;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.3) !important;
             }
             .modal-btn-copy.copied {
-                background: rgba(46, 204, 113, 0.3) !important;
+                background: rgba(46,204,113,0.3) !important;
                 color: #1d1d1f !important;
             }
             .modal-close-btn {
-                color: rgba(0, 0, 0, 0.5) !important;
+                color: rgba(0,0,0,0.5) !important;
             }
             .modal-close-btn:hover {
-                color: #000000 !important;
+                color: #000 !important;
                 opacity: 1 !important;
             }
         }
+        
         .emoji-bg {
             position: fixed;
             font-size: 2.8rem;
@@ -371,13 +346,10 @@
             transform: translateZ(0);
         }
         @keyframes float {
-            0% {
-                transform: translate(0, 0) rotate(var(--rot, 0deg)) scale(1) translateZ(0);
-            }
-            100% {
-                transform: translate(var(--dx, 40px), var(--dy, -40px)) rotate(calc(var(--rot, 0deg) + 15deg)) scale(1.12) translateZ(0);
-            }
+            0% { transform: translate(0,0) rotate(var(--rot,0deg)) scale(1) translateZ(0); }
+            100% { transform: translate(var(--dx,40px), var(--dy,-40px)) rotate(calc(var(--rot,0deg) + 15deg)) scale(1.12) translateZ(0); }
         }
+        
         .cards-wrapper {
             display: flex;
             flex-direction: column;
@@ -385,7 +357,7 @@
             min-height: 100vh;
             width: 100%;
             max-width: 100%;
-            padding: 20px 16px 30px 16px;
+            padding: 20px 16px 30px;
             gap: 30px;
             position: relative;
             z-index: 1;
@@ -394,29 +366,29 @@
             flex: 0 0 auto;
             width: 100%;
             max-width: 420px;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255,255,255,0.06);
             backdrop-filter: blur(25px) saturate(180%);
             -webkit-backdrop-filter: blur(25px) saturate(180%);
             border-radius: 44px;
             padding: 32px 36px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+            transition: all 0.4s cubic-bezier(0.25,0.1,0.25,1);
             box-sizing: border-box;
             position: relative;
             opacity: 0;
             transform: translateY(40px) scale(0.92);
             -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
             user-select: none;
             will-change: transform;
             cursor: pointer;
             overflow: hidden;
+            touch-action: manipulation;
         }
         .glass-card.visible {
             opacity: 1;
             transform: translateY(0) scale(1);
-            transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: opacity 0.6s cubic-bezier(0.34,1.56,0.64,1), transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
         }
         .glass-card::before {
             content: '';
@@ -426,7 +398,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 46px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.0) 35%, rgba(255, 255, 255, 0.0) 65%, rgba(255, 255, 255, 0.15) 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 65%, rgba(255,255,255,0.15) 100%);
             z-index: -1;
             opacity: 0.3;
             transition: opacity 0.5s ease;
@@ -436,32 +408,35 @@
             opacity: 0.7;
         }
         .glass-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: scale(1.02);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.15);
         }
         .glass-card:active {
-            transform: scale(0.98) !important;
-            background: rgba(255, 255, 255, 0.06) !important;
+            transform: none !important;
+            background: rgba(255,255,255,0.06) !important;
         }
-        .card-1 .card-inner,
-        .card-9 .card-inner {
+        
+        .card-1, .card-9 {
+            cursor: default;
+            touch-action: none !important;
+        }
+        .card-1:active, .card-9:active {
+            transform: none !important;
+        }
+        .card-1:hover, .card-9:hover {
+            transform: none !important;
+            background: rgba(255,255,255,0.06);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.08);
+        }
+        .card-1 .card-inner, .card-9 .card-inner {
             transition: none !important;
         }
-        .card-1:hover .card-inner,
-        .card-9:hover .card-inner {
+        .card-1:hover .card-inner, .card-9:hover .card-inner {
             animation: none !important;
         }
-        .card-1 {
-            cursor: default;
-        }
-        .card-9 {
-            cursor: default;
-        }
-        .card-welcome {
-            display: none;
-        }
+        
         .cards-grid {
             display: none;
             flex-direction: column;
@@ -479,12 +454,7 @@
             opacity: 1;
             transform: scale(1);
         }
-        .cards-grid.hidden {
-            display: none !important;
-            opacity: 0;
-            transform: scale(0.95);
-            pointer-events: none;
-        }
+        
         .search-back-wrap {
             position: fixed;
             top: 42px;
@@ -504,32 +474,32 @@
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.8);
             font-size: 2rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            -webkit-tap-highlight-color: transparent;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
             line-height: 1;
             padding: 0;
             font-family: inherit;
             border: none;
         }
         .search-back:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255,255,255,0.2);
             color: #fff;
             transform: scale(1.05);
         }
         .search-back:active {
             transform: scale(0.95);
         }
+        
         .search-bottom-wrap {
             position: fixed;
             bottom: 60px;
@@ -552,16 +522,16 @@
             width: 100%;
             overflow: hidden;
             border-radius: 30px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255,255,255,0.08);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
         }
         .search-input-wrap:focus-within {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.25);
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 4px 40px rgba(0,0,0,0.25);
         }
         .search-icon {
             position: absolute;
@@ -576,7 +546,7 @@
         .search-icon svg {
             width: 22px;
             height: 22px;
-            stroke: rgba(255, 255, 255, 0.4);
+            stroke: rgba(255,255,255,0.4);
             stroke-width: 2.5;
             fill: none;
             stroke-linecap: round;
@@ -596,14 +566,21 @@
             justify-content: center;
             transition: 0.2s;
             padding: 2px;
+            background: none !important;
+            border: none !important;
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent;
         }
         .search-clear:hover {
             opacity: 0.7;
         }
+        .search-clear:focus {
+            outline: none !important;
+        }
         .search-clear svg {
             width: 22px;
             height: 22px;
-            stroke: rgba(255, 255, 255, 0.5);
+            stroke: rgba(255,255,255,0.5);
             stroke-width: 3;
             fill: none;
             stroke-linecap: round;
@@ -618,13 +595,14 @@
             background: transparent;
             border: none;
             outline: none;
-            color: #ffffff;
+            color: #fff;
             font-size: 1.1rem;
             font-family: inherit;
         }
         .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255,255,255,0.4);
         }
+        
         .search-results {
             position: fixed;
             top: 100px;
@@ -647,8 +625,8 @@
             display: block;
         }
         .search-result {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
             border-radius: 24px;
             padding: 16px 20px;
             cursor: pointer;
@@ -660,9 +638,9 @@
             margin-bottom: 10px;
         }
         .search-result:hover {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255,255,255,0.06);
             transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255,255,255,0.15);
         }
         .search-result:active {
             transform: scale(0.97);
@@ -677,35 +655,36 @@
         .search-result .result-name {
             font-size: 1rem;
             font-weight: 600;
-            color: #ffffff;
+            color: #fff;
             margin-bottom: 2px;
         }
         .search-result .result-desc {
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255,255,255,0.5);
         }
         .search-result .result-arrow {
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(255,255,255,0.3);
             font-size: 1.2rem;
         }
         .search-empty {
             text-align: center;
             padding: 40px 20px;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255,255,255,0.4);
             font-size: 1rem;
         }
         .search-empty svg {
             display: block;
             margin: 0 auto 12px;
-            stroke: rgba(255, 255, 255, 0.3);
+            stroke: rgba(255,255,255,0.3);
         }
+        
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0,0,0,0.5);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             z-index: 2000;
@@ -719,58 +698,66 @@
             display: flex;
         }
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
+        
         .modal-content {
-            background: rgba(30, 30, 35, 0.12);
+            background: rgba(30,30,35,0.12);
             backdrop-filter: blur(30px) saturate(180%);
             -webkit-backdrop-filter: blur(30px) saturate(180%);
             border-radius: 40px;
-            padding: 35px 35px 120px 35px;
+            padding: 35px;
             max-width: 460px;
             width: 100%;
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
             text-align: center;
-            animation: modalPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: modalPop 0.45s cubic-bezier(0.34,1.56,0.64,1);
             overflow: hidden;
         }
         @keyframes modalPop {
-            0% {
-                transform: scale(0.85) translateY(30px);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-            }
+            0% { transform: scale(0.85) translateY(30px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
         }
-        .modal-close {
-            display: none;
-        }
+        
         .modal-close-btn {
             position: absolute;
             top: 16px;
             right: 16px;
-            background: none;
+            background: none !important;
             border: none;
             cursor: pointer;
             z-index: 10;
             padding: 8px;
             opacity: 0.5;
-            transition: opacity 0.3s ease;
-            color: rgba(255, 255, 255, 0.5);
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            color: rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent;
         }
         .modal-close-btn:hover {
-            color: #ffffff;
+            color: #fff;
             opacity: 1 !important;
+            transform: scale(1.1);
         }
+        .modal-close-btn:active {
+            transform: scale(0.9);
+        }
+        .modal-close-btn:focus {
+            outline: none !important;
+        }
+        .modal-close-btn svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 3;
+            display: block;
+        }
+        
         .modal-icon {
             font-size: 3.5rem;
             margin-bottom: 6px;
@@ -780,13 +767,13 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 2px;
-            color: #ffffff;
+            color: #fff;
             letter-spacing: -0.02em;
             animation: modalContentFade 0.4s 0.2s both;
         }
         .modal-subtitle {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255,255,255,0.5);
             margin-bottom: 20px;
             animation: modalContentFade 0.4s 0.25s both;
         }
@@ -795,13 +782,13 @@
             height: 220px;
             margin: 0 auto 20px;
             border-radius: 20px;
-            background: #ffffff;
+            background: #fff;
             padding: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
             animation: modalContentFade 0.4s 0.3s both;
         }
         .modal-qr canvas,
@@ -817,14 +804,8 @@
             animation: modalContentFade 0.4s 0.35s both;
         }
         @keyframes modalContentFade {
-            0% {
-                opacity: 0;
-                transform: translateY(12px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            0% { opacity: 0; transform: translateY(12px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
         .modal-qr-loading {
             color: #888;
@@ -836,6 +817,7 @@
             font-size: 0.85rem;
             text-align: center;
         }
+        
         .modal-btn {
             padding: 14px 28px;
             border: none;
@@ -851,10 +833,10 @@
             letter-spacing: 0.3px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            color: rgba(255, 255, 255, 0.85);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.85);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.1);
             user-select: none;
             -webkit-tap-highlight-color: transparent;
         }
@@ -865,7 +847,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12) 0%, transparent 60%);
             pointer-events: none;
             border-radius: 50%;
         }
@@ -874,13 +856,13 @@
             transition: transform 0.05s ease;
         }
         .modal-btn-primary {
-            background: rgba(0, 136, 204, 0.25);
-            border: 1px solid rgba(0, 136, 204, 0.2);
+            background: rgba(0,136,204,0.25);
+            border: 1px solid rgba(0,136,204,0.2);
             color: #66d0ff;
-            box-shadow: 0 4px 20px rgba(0, 136, 204, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 20px rgba(0,136,204,0.12), inset 0 1px 0 rgba(255,255,255,0.15);
         }
         .modal-btn-primary::before {
-            background: radial-gradient(circle at 30% 30%, rgba(0, 136, 204, 0.25) 0%, transparent 60%);
+            background: radial-gradient(circle at 30% 30%, rgba(0,136,204,0.25) 0%, transparent 60%);
         }
         .modal-row {
             display: flex;
@@ -892,22 +874,23 @@
             font-size: 0.9rem;
         }
         .modal-btn-secondary {
-            background: rgba(180, 180, 190, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            color: rgba(255, 255, 255, 0.75);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            background: rgba(180,180,190,0.12);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.75);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.08);
         }
         .modal-btn-secondary::before {
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06) 0%, transparent 60%);
         }
         .modal-btn-secondary:active {
             transform: scale(0.95);
         }
         .modal-btn-copy.copied {
-            background: rgba(46, 204, 113, 0.2);
-            border-color: rgba(46, 204, 113, 0.15);
+            background: rgba(46,204,113,0.2);
+            border-color: rgba(46,204,113,0.15);
             color: #6ddfa3;
         }
+        
         .dock {
             position: fixed;
             bottom: 25px;
@@ -916,12 +899,12 @@
             display: flex;
             gap: 12px;
             padding: 10px 14px;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255,255,255,0.06);
             backdrop-filter: blur(30px) saturate(200%);
             -webkit-backdrop-filter: blur(30px) saturate(200%);
             border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
             z-index: 999;
             transition: all 0.3s ease;
         }
@@ -937,8 +920,8 @@
             justify-content: center;
             gap: 2px;
             border-radius: 29px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
             transition: 0.2s;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
@@ -946,12 +929,12 @@
             font-size: 10px;
             font-weight: 500;
             letter-spacing: 0.2px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255,255,255,0.5);
         }
         .dock-btn svg {
             width: 20px;
             height: 20px;
-            stroke: rgba(255, 255, 255, 0.5);
+            stroke: rgba(255,255,255,0.5);
             stroke-width: 2;
             fill: none;
             stroke-linecap: round;
@@ -964,25 +947,26 @@
         }
         .dock-btn:hover {
             transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255,255,255,0.08);
         }
         .dock-btn.active {
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.15);
+            background: rgba(255,255,255,0.12);
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.15);
             color: #fff;
         }
         .dock-btn.active svg {
             stroke: #fff;
         }
+        
         .footer {
             width: 100%;
             max-width: 420px;
             text-align: left;
-            padding: 20px 0 10px 0;
+            padding: 20px 0 10px;
             font-size: 0.95rem;
             font-weight: 400;
             opacity: 0.6;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255,255,255,0.6);
             letter-spacing: 0.3px;
             transition: opacity 0.3s ease;
             flex: 0 0 auto;
@@ -990,20 +974,21 @@
         .footer:hover {
             opacity: 1;
         }
+        
         h1 {
             font-weight: 650;
             font-size: 1.8rem;
             letter-spacing: -0.035em;
             line-height: 1.2;
             margin: 0 0 6px 0;
-            color: #ffffff;
+            color: #fff;
         }
         .subtitle {
             font-size: 1rem;
             font-weight: 400;
             opacity: 0.85;
             margin: 0;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255,255,255,0.85);
         }
         .link {
             font-size: 1rem;
@@ -1014,7 +999,7 @@
         .link a {
             text-decoration: none;
             font-weight: 500;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid rgba(255,255,255,0.2);
             padding-bottom: 2px;
             transition: all 0.2s ease;
             word-break: break-all;
@@ -1032,52 +1017,52 @@
         }
         .telegram-link a {
             color: #0088cc;
-            border-bottom-color: rgba(0, 136, 204, 0.3);
+            border-bottom-color: rgba(0,136,204,0.3);
         }
         .telegram-link a:hover {
-            border-bottom-color: rgba(0, 136, 204, 0.7);
+            border-bottom-color: rgba(0,136,204,0.7);
         }
         .telegram-private-link a {
             color: #0088cc;
-            border-bottom-color: rgba(0, 136, 204, 0.3);
+            border-bottom-color: rgba(0,136,204,0.3);
         }
         .telegram-private-link a:hover {
-            border-bottom-color: rgba(0, 136, 204, 0.7);
+            border-bottom-color: rgba(0,136,204,0.7);
         }
         .instagram-link a {
             color: #e4405f;
-            border-bottom-color: rgba(228, 64, 95, 0.3);
+            border-bottom-color: rgba(228,64,95,0.3);
         }
         .instagram-link a:hover {
-            border-bottom-color: rgba(228, 64, 95, 0.7);
+            border-bottom-color: rgba(228,64,95,0.7);
         }
         .threads-link a {
             color: #FF8C00;
-            border-bottom-color: rgba(255, 140, 0, 0.3);
+            border-bottom-color: rgba(255,140,0,0.3);
         }
         .threads-link a:hover {
-            border-bottom-color: rgba(255, 140, 0, 0.7);
+            border-bottom-color: rgba(255,140,0,0.7);
         }
         .tiktok-link a {
             color: #2ECC71;
-            border-bottom-color: rgba(46, 204, 113, 0.3);
+            border-bottom-color: rgba(46,204,113,0.3);
         }
         .tiktok-link a:hover {
-            border-bottom-color: rgba(46, 204, 113, 0.7);
+            border-bottom-color: rgba(46,204,113,0.7);
         }
         .tiktok2-link a {
             color: #2ECC71;
-            border-bottom-color: rgba(46, 204, 113, 0.3);
+            border-bottom-color: rgba(46,204,113,0.3);
         }
         .tiktok2-link a:hover {
-            border-bottom-color: rgba(46, 204, 113, 0.7);
+            border-bottom-color: rgba(46,204,113,0.7);
         }
         .meera-link a {
             color: #ff6b6b;
-            border-bottom-color: rgba(255, 107, 107, 0.3);
+            border-bottom-color: rgba(255,107,107,0.3);
         }
         .meera-link a:hover {
-            border-bottom-color: rgba(255, 107, 107, 0.7);
+            border-bottom-color: rgba(255,107,107,0.7);
         }
         .emoji-big {
             font-size: 3rem;
@@ -1085,32 +1070,7 @@
             margin-bottom: 8px;
             transition: transform 0.2s ease;
         }
-        .modal-image {
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0.2;
-            pointer-events: none;
-            z-index: 0;
-            border-radius: 20px;
-            overflow: hidden;
-            max-width: 240px;
-            max-height: 70px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 20px;
-            max-width: 240px;
-            max-height: 70px;
-            object-fit: contain;
-        }
+        
         @media (max-width: 600px) {
             .loading-overlay .emoji-big {
                 font-size: 3.6rem;
@@ -1124,7 +1084,7 @@
             .glass-card {
                 padding: 24px 26px;
                 border-radius: 36px;
-                background: rgba(255, 255, 255, 0.06);
+                background: rgba(255,255,255,0.06);
             }
             h1 {
                 font-size: 1.5rem;
@@ -1214,7 +1174,7 @@
                 font-size: 0.95rem;
             }
             .modal-content {
-                padding: 28px 20px 100px 20px;
+                padding: 28px 20px;
                 border-radius: 32px;
                 max-width: 380px;
             }
@@ -1242,21 +1202,20 @@
             .modal-close-btn {
                 top: 12px;
                 right: 12px;
+                padding: 6px;
             }
             .modal-close-btn svg {
-                width: 20px;
-                height: 20px;
-            }
-            .modal-image {
-                max-width: 200px !important;
-                max-height: 60px !important;
-            }
-            .modal-image img {
-                max-width: 200px !important;
-                max-height: 60px !important;
+                width: 24px;
+                height: 24px;
             }
         }
     </style>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    </script>
+    <script data-goatcounter="https://mmmmislm.goatcounter.com/count" async src="//gc.zgo.at/count.js">
+    </script>
+
 </head>
 <body>
 
@@ -1273,33 +1232,33 @@
         </div>
     </div>
 
-    <div class="emoji-bg" style="top: 3%; left: 7%; font-size: 3.5rem; --rot: 25deg; --dx: 45px; --dy: -25px;">💥</div>
-    <div class="emoji-bg" style="top: 10%; right: 8%; font-size: 3rem; --rot: -45deg; --dx: -35px; --dy: 55px;">🤘</div>
-    <div class="emoji-bg" style="top: 5%; left: 45%; font-size: 4rem; --rot: 180deg; --dx: 65px; --dy: 30px;">😎</div>
-    <div class="emoji-bg" style="top: 18%; right: 15%; font-size: 2.8rem; --rot: 70deg; --dx: -50px; --dy: -40px;">😝</div>
-    <div class="emoji-bg" style="top: 28%; left: 5%; font-size: 4.2rem; --rot: -120deg; --dx: 35px; --dy: 60px;">💥</div>
-    <div class="emoji-bg" style="top: 15%; left: 75%; font-size: 3.8rem; --rot: 200deg; --dx: 55px; --dy: 25px;">💵</div>
-    <div class="emoji-bg" style="top: 42%; right: 20%; font-size: 2.6rem; --rot: 90deg; --dx: -45px; --dy: 40px;">🤘</div>
-    <div class="emoji-bg" style="top: 55%; left: 8%; font-size: 4.5rem; --rot: -60deg; --dx: 25px; --dy: -30px;">💥</div>
-    <div class="emoji-bg" style="top: 25%; left: 55%; font-size: 3.5rem; --rot: 220deg; --dx: -55px; --dy: 15px;">😎</div>
-    <div class="emoji-bg" style="top: 48%; right: 10%; font-size: 3rem; --rot: -15deg; --dx: 70px; --dy: -20px;">😝</div>
-    <div class="emoji-bg" style="top: 72%; left: 6%; font-size: 2.8rem; --rot: 130deg; --dx: 35px; --dy: -45px;">💵</div>
-    <div class="emoji-bg" style="top: 38%; left: 85%; font-size: 3.2rem; --rot: -80deg; --dx: -70px; --dy: 50px;">🤘</div>
-    <div class="emoji-bg" style="top: 80%; right: 8%; font-size: 4rem; --rot: 300deg; --dx: 40px; --dy: -15px;">💥</div>
-    <div class="emoji-bg" style="top: 8%; left: 25%; font-size: 3.2rem; --rot: 50deg; --dx: 30px; --dy: 35px;">😎</div>
-    <div class="emoji-bg" style="top: 20%; left: 60%; font-size: 2.8rem; --rot: -30deg; --dx: -20px; --dy: -25px;">💵</div>
-    <div class="emoji-bg" style="top: 50%; left: 30%; font-size: 4.8rem; --rot: 160deg; --dx: 50px; --dy: 20px;">😝</div>
-    <div class="emoji-bg" style="top: 75%; left: 50%; font-size: 4.2rem; --rot: 110deg; --dx: -35px; --dy: 15px;">💥</div>
-    <div class="emoji-bg" style="top: 85%; left: 20%; font-size: 3.5rem; --rot: -20deg; --dx: 50px; --dy: -10px;">🤘</div>
-    <div class="emoji-bg" style="top: 90%; right: 25%; font-size: 3.8rem; --rot: 200deg; --dx: -25px; --dy: 40px;">😎</div>
-    <div class="emoji-bg" style="top: 12%; left: 88%; font-size: 2.6rem; --rot: -140deg; --dx: 30px; --dy: -50px;">💵</div>
-    <div class="emoji-bg" style="top: 45%; left: 50%; font-size: 3.4rem; --rot: 35deg; --dx: -45px; --dy: 25px;">💥</div>
-    <div class="emoji-bg" style="top: 70%; left: 35%; font-size: 2.4rem; --rot: -90deg; --dx: 60px; --dy: -15px;">😝</div>
-    <div class="emoji-bg" style="top: 88%; left: 70%; font-size: 4.4rem; --rot: 280deg; --dx: -25px; --dy: 35px;">💥</div>
-    <div class="emoji-bg" style="top: 95%; left: 10%; font-size: 3rem; --rot: -10deg; --dx: 40px; --dy: -40px;">🤘</div>
-    <div class="emoji-bg" style="top: 30%; left: 35%; font-size: 3.6rem; --rot: 150deg; --dx: -50px; --dy: 20px;">😎</div>
-    <div class="emoji-bg" style="top: 60%; left: 20%; font-size: 3.2rem; --rot: 45deg; --dx: -30px; --dy: 25px;">💵</div>
-    <div class="emoji-bg" style="top: 65%; right: 30%; font-size: 2.8rem; --rot: -60deg; --dx: 40px; --dy: -35px;">🤘</div>
+    <div class="emoji-bg" style="top:3%;left:7%;font-size:3.5rem;--rot:25deg;--dx:45px;--dy:-25px;">💥</div>
+    <div class="emoji-bg" style="top:10%;right:8%;font-size:3rem;--rot:-45deg;--dx:-35px;--dy:55px;">🤘</div>
+    <div class="emoji-bg" style="top:5%;left:45%;font-size:4rem;--rot:180deg;--dx:65px;--dy:30px;">😎</div>
+    <div class="emoji-bg" style="top:18%;right:15%;font-size:2.8rem;--rot:70deg;--dx:-50px;--dy:-40px;">😝</div>
+    <div class="emoji-bg" style="top:28%;left:5%;font-size:4.2rem;--rot:-120deg;--dx:35px;--dy:60px;">💥</div>
+    <div class="emoji-bg" style="top:15%;left:75%;font-size:3.8rem;--rot:200deg;--dx:55px;--dy:25px;">💵</div>
+    <div class="emoji-bg" style="top:42%;right:20%;font-size:2.6rem;--rot:90deg;--dx:-45px;--dy:40px;">🤘</div>
+    <div class="emoji-bg" style="top:55%;left:8%;font-size:4.5rem;--rot:-60deg;--dx:25px;--dy:-30px;">💥</div>
+    <div class="emoji-bg" style="top:25%;left:55%;font-size:3.5rem;--rot:220deg;--dx:-55px;--dy:15px;">😎</div>
+    <div class="emoji-bg" style="top:48%;right:10%;font-size:3rem;--rot:-15deg;--dx:70px;--dy:-20px;">😝</div>
+    <div class="emoji-bg" style="top:72%;left:6%;font-size:2.8rem;--rot:130deg;--dx:35px;--dy:-45px;">💵</div>
+    <div class="emoji-bg" style="top:38%;left:85%;font-size:3.2rem;--rot:-80deg;--dx:-70px;--dy:50px;">🤘</div>
+    <div class="emoji-bg" style="top:80%;right:8%;font-size:4rem;--rot:300deg;--dx:40px;--dy:-15px;">💥</div>
+    <div class="emoji-bg" style="top:8%;left:25%;font-size:3.2rem;--rot:50deg;--dx:30px;--dy:35px;">😎</div>
+    <div class="emoji-bg" style="top:20%;left:60%;font-size:2.8rem;--rot:-30deg;--dx:-20px;--dy:-25px;">💵</div>
+    <div class="emoji-bg" style="top:50%;left:30%;font-size:4.8rem;--rot:160deg;--dx:50px;--dy:20px;">😝</div>
+    <div class="emoji-bg" style="top:75%;left:50%;font-size:4.2rem;--rot:110deg;--dx:-35px;--dy:15px;">💥</div>
+    <div class="emoji-bg" style="top:85%;left:20%;font-size:3.5rem;--rot:-20deg;--dx:50px;--dy:-10px;">🤘</div>
+    <div class="emoji-bg" style="top:90%;right:25%;font-size:3.8rem;--rot:200deg;--dx:-25px;--dy:40px;">😎</div>
+    <div class="emoji-bg" style="top:12%;left:88%;font-size:2.6rem;--rot:-140deg;--dx:30px;--dy:-50px;">💵</div>
+    <div class="emoji-bg" style="top:45%;left:50%;font-size:3.4rem;--rot:35deg;--dx:-45px;--dy:25px;">💥</div>
+    <div class="emoji-bg" style="top:70%;left:35%;font-size:2.4rem;--rot:-90deg;--dx:60px;--dy:-15px;">😝</div>
+    <div class="emoji-bg" style="top:88%;left:70%;font-size:4.4rem;--rot:280deg;--dx:-25px;--dy:35px;">💥</div>
+    <div class="emoji-bg" style="top:95%;left:10%;font-size:3rem;--rot:-10deg;--dx:40px;--dy:-40px;">🤘</div>
+    <div class="emoji-bg" style="top:30%;left:35%;font-size:3.6rem;--rot:150deg;--dx:-50px;--dy:20px;">😎</div>
+    <div class="emoji-bg" style="top:60%;left:20%;font-size:3.2rem;--rot:45deg;--dx:-30px;--dy:25px;">💵</div>
+    <div class="emoji-bg" style="top:65%;right:30%;font-size:2.8rem;--rot:-60deg;--dx:40px;--dy:-35px;">🤘</div>
 
     <div class="search-back-wrap" id="searchBackWrap">
         <button class="search-back" id="searchBack">‹</button>
@@ -1328,7 +1287,7 @@
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content" id="modalContent">
             <button class="modal-close-btn" id="modalCloseBtn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"/>
                     <line x1="6" y1="6" x2="18" y2="18"/>
                 </svg>
@@ -1342,12 +1301,9 @@
             <div class="modal-actions">
                 <button class="modal-btn modal-btn-primary" id="modalGo">Перейти</button>
                 <div class="modal-row">
-                    <button class="modal-btn modal-btn-secondary modal-btn-copy" id="modalCopy">Копировать</button>
+                    <button class="modal-btn modal-btn-secondary modal-btn-copy" id="modalCopy">Скопировать</button>
                     <button class="modal-btn modal-btn-secondary" id="modalShare">Поделиться</button>
                 </div>
-            </div>
-            <div class="modal-image">
-                <img id="modalImage" src="" alt="">
             </div>
         </div>
     </div>
@@ -1368,7 +1324,7 @@
                     <div class="link telegram-link">
                         <a href="https://t.me/mmmmisl_m_channel" target="_blank">↗ mmmmisl_m_channel</a>
                     </div>
-                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Telegram</p>
+                    <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Telegram</p>
                 </div>
             </div>
 
@@ -1379,7 +1335,7 @@
                     <div class="link telegram-private-link">
                         <a href="https://t.me/+O1JxoMMscawyMGMy" target="_blank">↗ mmmmisl_m_channel_privat</a>
                     </div>
-                    <p class="subtitle" style="margin-top: 8px;">Доступ по ссылке</p>
+                    <p class="subtitle" style="margin-top:8px;">Доступ по ссылке</p>
                 </div>
             </div>
 
@@ -1390,7 +1346,7 @@
                     <div class="link instagram-link">
                         <a href="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr" target="_blank">↗ mmmmisl_m</a>
                     </div>
-                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Inst.</p>
+                    <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Inst.</p>
                 </div>
             </div>
 
@@ -1401,7 +1357,7 @@
                     <div class="link threads-link">
                         <a href="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==" target="_blank">↗ mmmmisl_m</a>
                     </div>
-                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Threads</p>
+                    <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Threads</p>
                 </div>
             </div>
 
@@ -1412,7 +1368,7 @@
                     <div class="link tiktok-link">
                         <a href="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ" target="_blank">↗ mmmmisl_m</a>
                     </div>
-                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в TikTok</p>
+                    <p class="subtitle" style="margin-top:8px;">Подписывайтесь в TikTok</p>
                 </div>
             </div>
 
@@ -1423,7 +1379,7 @@
                     <div class="link tiktok2-link">
                         <a href="https://www.tiktok.com/@mmmmisl_m2.0?_r=1&_t=ZT-98G4mvgEu0T" target="_blank">↗ mmmmisl_m_2</a>
                     </div>
-                    <p class="subtitle" style="margin-top: 8px;">Второй аккаунт в TikTok</p>
+                    <p class="subtitle" style="margin-top:8px;">Второй аккаунт в TikTok</p>
                 </div>
             </div>
 
@@ -1434,7 +1390,7 @@
                     <div class="link meera-link">
                         <a href="https://meera.me/mmmmisl_m" target="_blank">↗ mmmmisl_m</a>
                     </div>
-                    <p class="subtitle" style="margin-top: 8px;">Подписывайтесь в Meera</p>
+                    <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Meera</p>
                 </div>
             </div>
 
@@ -1469,41 +1425,28 @@
     </div>
 
     <script>
-        function getTheme() {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                return 'light';
-            }
-            return 'dark';
-        }
+        // === ЗАПРЕТ НА ВЫДЕЛЕНИЕ ===
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
 
-        function updateModalImage() {
-            var modalImage = document.getElementById('modalImage');
-            if (!modalImage) return;
-            var theme = getTheme();
-            if (theme === 'light') {
-                modalImage.src = 'Text.PNG';
-                modalImage.alt = 'Text';
-            } else {
-                modalImage.src = 'Text_black.PNG';
-                modalImage.alt = 'Text_black';
-            }
-        }
+        // === ЗАПРЕТ НА КОНТЕКСТНОЕ МЕНЮ ===
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
 
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function() {
-                updateModalImage();
-            });
-        }
+        // === ЗАПРЕТ НА CTRL+A (выделение всего) ===
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'a' || e.key === 'A')) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+C разрешён — кнопка "Скопировать" работает
+        });
 
         window.addEventListener('load', function() {
-            if (!navigator.onLine) {
-                var loadingOverlay = document.getElementById('loadingOverlay');
-                loadingOverlay.classList.remove('hidden');
-                document.querySelector('.loading-overlay h1').textContent = '⏳ Ожидание сети';
-                document.querySelector('.loading-overlay .subtitle').textContent = 'Подключитесь к интернету';
-                return;
-            }
-
             var loadingOverlay = document.getElementById('loadingOverlay');
             loadingOverlay.classList.add('hidden');
             
@@ -1571,9 +1514,7 @@
             }
 
             modalCopy.classList.remove('copied');
-            modalCopy.textContent = 'Копировать';
-
-            updateModalImage();
+            modalCopy.textContent = 'Скопировать';
 
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1621,7 +1562,7 @@
                     this.textContent = '✅ Готово!';
                     setTimeout(function() {
                         this.classList.remove('copied');
-                        this.textContent = 'Копировать';
+                        this.textContent = 'Скопировать';
                     }, 2000);
                 }.bind(this)).catch(function() {
                     fallbackCopy(currentLink);
@@ -1644,7 +1585,7 @@
                 modalCopy.textContent = '✅ Готово!';
                 setTimeout(function() {
                     modalCopy.classList.remove('copied');
-                    modalCopy.textContent = 'Копировать';
+                    modalCopy.textContent = 'Скопировать';
                 }, 2000);
             } catch (err) {
                 alert('Не удалось скопировать ссылку. Скопируйте вручную:');
