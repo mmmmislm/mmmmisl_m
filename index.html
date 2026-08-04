@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <link rel="canonical" href="https://mmmmislm.github.io/mmmmisl_m/">
-    
-    <!-- Иконки -->
     <link rel="icon" type="image/png" sizes="192x192" href="/mmmmisl_m/icon.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/mmmmisl_m/icon.png">
     <link rel="apple-touch-icon" href="/mmmmisl_m/icon_home.png">
-    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="mmmmisl_m">
@@ -18,14 +15,12 @@
     <meta name="msapplication-TileColor" content="#1c1c1e">
     <link rel="manifest" href="/mmmmisl_m/manifest.json">
     <title>Соцсети mmmmisl_m</title>
-    
     <style>
         html, body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
         }
-        
         * {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -33,14 +28,13 @@
             user-select: none;
             -webkit-touch-callout: none;
         }
-        
-        .modal-btn, .dock-btn, .search-result, .glass-card[data-has-link="true"] {
-            -webkit-user-select: text;
-            -moz-user-select: text;
-            -ms-user-select: text;
-            user-select: text;
+        button, .modal-btn, .dock-btn, .search-result, .glass-card[data-has-link="true"], .modal-close-btn, .search-back {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
         }
-        
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -95,12 +89,10 @@
         .loading-overlay .loader span:nth-child(3) { animation-delay: 0s; }
         .loading-overlay .loader span:nth-child(4) { animation-delay: 0.16s; }
         .loading-overlay .loader span:nth-child(5) { animation-delay: 0.32s; }
-        
         @keyframes dot-wave {
             0%, 80%, 100% { transform: scale(0.5); opacity: 0.2; }
             40% { transform: scale(1.2); opacity: 1; }
         }
-        
         @media (prefers-color-scheme: light) {
             .loading-overlay {
                 background: #f2f2f7 !important;
@@ -115,7 +107,6 @@
                 background: #1d1d1f !important;
             }
         }
-
         * {
             margin: 0;
             padding: 0;
@@ -333,7 +324,6 @@
                 opacity: 1 !important;
             }
         }
-        
         .emoji-bg {
             position: fixed;
             font-size: 2.8rem;
@@ -349,7 +339,6 @@
             0% { transform: translate(0,0) rotate(var(--rot,0deg)) scale(1) translateZ(0); }
             100% { transform: translate(var(--dx,40px), var(--dy,-40px)) rotate(calc(var(--rot,0deg) + 15deg)) scale(1.12) translateZ(0); }
         }
-        
         .cards-wrapper {
             display: flex;
             flex-direction: column;
@@ -416,7 +405,6 @@
             transform: none !important;
             background: rgba(255,255,255,0.06) !important;
         }
-        
         .card-1, .card-9 {
             cursor: default;
             touch-action: none !important;
@@ -436,7 +424,6 @@
         .card-1:hover .card-inner, .card-9:hover .card-inner {
             animation: none !important;
         }
-        
         .cards-grid {
             display: none;
             flex-direction: column;
@@ -454,7 +441,6 @@
             opacity: 1;
             transform: scale(1);
         }
-        
         .search-back-wrap {
             position: fixed;
             top: 42px;
@@ -499,7 +485,6 @@
         .search-back:active {
             transform: scale(0.95);
         }
-        
         .search-bottom-wrap {
             position: fixed;
             bottom: 60px;
@@ -602,7 +587,6 @@
         .search-input::placeholder {
             color: rgba(255,255,255,0.4);
         }
-        
         .search-results {
             position: fixed;
             top: 100px;
@@ -677,7 +661,6 @@
             margin: 0 auto 12px;
             stroke: rgba(255,255,255,0.3);
         }
-        
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -701,7 +684,6 @@
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
-        
         .modal-content {
             background: rgba(30,30,35,0.12);
             backdrop-filter: blur(30px) saturate(180%);
@@ -721,7 +703,6 @@
             0% { transform: scale(0.85) translateY(30px); opacity: 0; }
             100% { transform: scale(1) translateY(0); opacity: 1; }
         }
-        
         .modal-close-btn {
             position: absolute;
             top: 16px;
@@ -757,7 +738,6 @@
             stroke-width: 3;
             display: block;
         }
-        
         .modal-icon {
             font-size: 3.5rem;
             margin-bottom: 6px;
@@ -791,8 +771,7 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.2);
             animation: modalContentFade 0.4s 0.3s both;
         }
-        .modal-qr canvas,
-        .modal-qr img {
+        .modal-qr canvas, .modal-qr img {
             width: 100% !important;
             height: 100% !important;
         }
@@ -817,7 +796,6 @@
             font-size: 0.85rem;
             text-align: center;
         }
-        
         .modal-btn {
             padding: 14px 28px;
             border: none;
@@ -890,7 +868,6 @@
             border-color: rgba(46,204,113,0.15);
             color: #6ddfa3;
         }
-        
         .dock {
             position: fixed;
             bottom: 25px;
@@ -957,7 +934,6 @@
         .dock-btn.active svg {
             stroke: #fff;
         }
-        
         .footer {
             width: 100%;
             max-width: 420px;
@@ -974,7 +950,6 @@
         .footer:hover {
             opacity: 1;
         }
-        
         h1 {
             font-weight: 650;
             font-size: 1.8rem;
@@ -1070,7 +1045,6 @@
             margin-bottom: 8px;
             transition: transform 0.2s ease;
         }
-        
         @media (max-width: 600px) {
             .loading-overlay .emoji-big {
                 font-size: 3.6rem;
@@ -1210,15 +1184,12 @@
             }
         }
     </style>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
     </script>
     <script data-goatcounter="https://mmmmislm.goatcounter.com/count" async src="//gc.zgo.at/count.js">
     </script>
-
 </head>
 <body>
-
     <div class="loading-overlay" id="loadingOverlay">
         <span class="emoji-big">👋</span>
         <h1>Добро пожаловать!</h1>
@@ -1231,7 +1202,6 @@
             <span></span>
         </div>
     </div>
-
     <div class="emoji-bg" style="top:3%;left:7%;font-size:3.5rem;--rot:25deg;--dx:45px;--dy:-25px;">💥</div>
     <div class="emoji-bg" style="top:10%;right:8%;font-size:3rem;--rot:-45deg;--dx:-35px;--dy:55px;">🤘</div>
     <div class="emoji-bg" style="top:5%;left:45%;font-size:4rem;--rot:180deg;--dx:65px;--dy:30px;">😎</div>
@@ -1259,11 +1229,9 @@
     <div class="emoji-bg" style="top:30%;left:35%;font-size:3.6rem;--rot:150deg;--dx:-50px;--dy:20px;">😎</div>
     <div class="emoji-bg" style="top:60%;left:20%;font-size:3.2rem;--rot:45deg;--dx:-30px;--dy:25px;">💵</div>
     <div class="emoji-bg" style="top:65%;right:30%;font-size:2.8rem;--rot:-60deg;--dx:40px;--dy:-35px;">🤘</div>
-
     <div class="search-back-wrap" id="searchBackWrap">
         <button class="search-back" id="searchBack">‹</button>
     </div>
-
     <div class="search-bottom-wrap" id="searchBottomWrap">
         <div class="search-input-wrap">
             <span class="search-icon" id="searchIcon">
@@ -1281,9 +1249,7 @@
             </span>
         </div>
     </div>
-
     <div class="search-results" id="searchResults"></div>
-
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content" id="modalContent">
             <button class="modal-close-btn" id="modalCloseBtn">
@@ -1307,7 +1273,6 @@
             </div>
         </div>
     </div>
-
     <div class="cards-wrapper" id="scrollContainer">
         <div class="cards-grid" id="cardsGrid">
             <div class="glass-card card-1">
@@ -1316,7 +1281,6 @@
                     <h1>Привет тут соцсети mmmmisl_m</h1>
                 </div>
             </div>
-
             <div class="glass-card card-2" data-has-link="true" data-icon="🤘" data-name="Telegram" data-desc="Основной канал" data-link="https://t.me/mmmmisl_m_channel">
                 <div class="card-inner">
                     <span class="emoji-big">🤘</span>
@@ -1327,7 +1291,6 @@
                     <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Telegram</p>
                 </div>
             </div>
-
             <div class="glass-card card-3" data-has-link="true" data-icon="🔒" data-name="Telegram (Приват)" data-desc="Закрытый канал" data-link="https://t.me/+O1JxoMMscawyMGMy">
                 <div class="card-inner">
                     <span class="emoji-big">🔒</span>
@@ -1338,7 +1301,6 @@
                     <p class="subtitle" style="margin-top:8px;">Доступ по ссылке</p>
                 </div>
             </div>
-
             <div class="glass-card card-4" data-has-link="true" data-icon="📸" data-name="Instagram" data-desc="Фотографии" data-link="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr">
                 <div class="card-inner">
                     <span class="emoji-big">📸</span>
@@ -1349,7 +1311,6 @@
                     <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Inst.</p>
                 </div>
             </div>
-
             <div class="glass-card card-5" data-has-link="true" data-icon="🚀" data-name="Threads" data-desc="Мы в Threads" data-link="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==">
                 <div class="card-inner">
                     <span class="emoji-big">🚀</span>
@@ -1360,7 +1321,6 @@
                     <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Threads</p>
                 </div>
             </div>
-
             <div class="glass-card card-6" data-has-link="true" data-icon="🎵" data-name="TikTok" data-desc="Видео" data-link="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ">
                 <div class="card-inner">
                     <span class="emoji-big">🎵</span>
@@ -1371,7 +1331,6 @@
                     <p class="subtitle" style="margin-top:8px;">Подписывайтесь в TikTok</p>
                 </div>
             </div>
-
             <div class="glass-card card-7" data-has-link="true" data-icon="🎵" data-name="TikTok 2" data-desc="Второй аккаунт" data-link="https://www.tiktok.com/@mmmmisl_m2.0?_r=1&_t=ZT-98G4mvgEu0T">
                 <div class="card-inner">
                     <span class="emoji-big">🎵</span>
@@ -1382,7 +1341,6 @@
                     <p class="subtitle" style="margin-top:8px;">Второй аккаунт в TikTok</p>
                 </div>
             </div>
-
             <div class="glass-card card-8" data-has-link="true" data-icon="🌍" data-name="Meera" data-desc="Мы в Meera" data-link="https://meera.me/mmmmisl_m">
                 <div class="card-inner">
                     <span class="emoji-big">🌍</span>
@@ -1393,7 +1351,6 @@
                     <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Meera</p>
                 </div>
             </div>
-
             <div class="glass-card card-9">
                 <div class="card-inner">
                     <span class="emoji-big">✨</span>
@@ -1401,13 +1358,11 @@
                     <p class="subtitle">Все ссылки выше ☝️</p>
                 </div>
             </div>
-
             <div class="footer">
                 © 2026 mmmmisl_m
             </div>
         </div>
     </div>
-
     <div class="dock" id="dock">
         <button class="dock-btn active" data-tab="main">
             <svg viewBox="0 0 24 24" stroke-width="2">
@@ -1423,40 +1378,29 @@
             <span>Поиск</span>
         </button>
     </div>
-
     <script>
-        // === ЗАПРЕТ НА ВЫДЕЛЕНИЕ ===
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
             return false;
         });
-
-        // === ЗАПРЕТ НА КОНТЕКСТНОЕ МЕНЮ ===
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             return false;
         });
-
-        // === ЗАПРЕТ НА CTRL+A (выделение всего) ===
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && (e.key === 'a' || e.key === 'A')) {
                 e.preventDefault();
                 return false;
             }
-            // Ctrl+C разрешён — кнопка "Скопировать" работает
         });
-
         window.addEventListener('load', function() {
             var loadingOverlay = document.getElementById('loadingOverlay');
             loadingOverlay.classList.add('hidden');
-            
             setTimeout(function() {
                 loadingOverlay.style.display = 'none';
             }, 700);
-            
             var cardsGrid = document.getElementById('cardsGrid');
             cardsGrid.classList.add('visible');
-            
             var cards = document.querySelectorAll('.glass-card');
             cards.forEach(function(card, index) {
                 setTimeout(function() {
@@ -1464,11 +1408,9 @@
                 }, 100 + index * 80);
             });
         });
-
         window.addEventListener('online', function() {
             location.reload();
         });
-
         var modalOverlay = document.getElementById('modalOverlay');
         var modalIcon = document.getElementById('modalIcon');
         var modalTitle = document.getElementById('modalTitle');
@@ -1477,24 +1419,18 @@
         var modalCopy = document.getElementById('modalCopy');
         var modalGo = document.getElementById('modalGo');
         var modalShare = document.getElementById('modalShare');
-
         var currentLink = '';
-
         function openModalWithLink(link, icon, name, desc) {
             currentLink = link;
-
             modalIcon.textContent = icon || '🔗';
             modalTitle.textContent = name || 'Ссылка';
             modalSubtitle.textContent = desc || '';
-
             modalQr.innerHTML = '';
-
             try {
                 if (typeof QRCode !== 'undefined') {
                     var qrDiv = document.createElement('div');
                     qrDiv.id = 'qrCodeContainer';
                     modalQr.appendChild(qrDiv);
-
                     new QRCode(qrDiv, {
                         text: link,
                         width: 220,
@@ -1512,14 +1448,11 @@
                 modalQr.innerHTML = '<div class="modal-qr-error">⚠️ Не удалось создать QR-код</div>';
                 console.error('QR generation error:', e);
             }
-
             modalCopy.classList.remove('copied');
             modalCopy.textContent = 'Скопировать';
-
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function openModal(card) {
             var icon = card.dataset.icon || '🔗';
             var name = card.dataset.name || 'Ссылка';
@@ -1527,7 +1460,6 @@
             var link = card.dataset.link || '';
             openModalWithLink(link, icon, name, desc);
         }
-
         function closeModal() {
             modalOverlay.classList.remove('active');
             document.body.style.overflow = '';
@@ -1537,25 +1469,20 @@
                 }
             }, 300);
         }
-
         document.getElementById('modalCloseBtn').addEventListener('click', function(e) {
             e.stopPropagation();
             closeModal();
         });
-
         modalOverlay.addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
-
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
                 closeModal();
             }
         });
-
         modalCopy.addEventListener('click', function() {
             if (!currentLink) return;
-
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(currentLink).then(function() {
                     this.classList.add('copied');
@@ -1571,7 +1498,6 @@
                 fallbackCopy(currentLink);
             }
         });
-
         function fallbackCopy(text) {
             var textarea = document.createElement('textarea');
             textarea.value = text;
@@ -1593,16 +1519,13 @@
             }
             document.body.removeChild(textarea);
         }
-
         modalGo.addEventListener('click', function() {
             if (currentLink) {
                 window.open(currentLink, '_blank');
             }
         });
-
         modalShare.addEventListener('click', function() {
             if (!currentLink) return;
-
             if (navigator.share) {
                 navigator.share({
                     title: modalTitle.textContent || 'mmmmisl_m',
@@ -1617,14 +1540,12 @@
                 alert('Функция "Поделиться" не поддерживается на этом устройстве');
             }
         });
-
         document.querySelectorAll('.glass-card[data-has-link="true"]').forEach(function(card) {
             card.addEventListener('click', function(e) {
                 if (e.target.closest('a')) return;
                 openModal(this);
             });
         });
-
         var dockBtns = document.querySelectorAll('.dock-btn');
         var dock = document.getElementById('dock');
         var cardsGrid = document.getElementById('cardsGrid');
@@ -1634,7 +1555,6 @@
         var searchInput = document.getElementById('searchInput');
         var searchBack = document.getElementById('searchBack');
         var searchClear = document.getElementById('searchClear');
-
         var searchData = [{
             icon: '🤘',
             name: 'Telegram',
@@ -1678,30 +1598,25 @@
             link: 'https://meera.me/mmmmisl_m',
             keywords: 'meera мира меера'
         }];
-
         function performSearch(query) {
             var results = searchData.filter(function(item) {
                 var searchText = (item.name + ' ' + item.keywords + ' ' + item.desc).toLowerCase();
                 return searchText.includes(query.toLowerCase());
             });
-
             if (query.trim() === '') {
                 searchResults.innerHTML = '';
                 searchResults.classList.remove('active');
                 searchClear.classList.remove('visible');
                 return;
             }
-
             searchClear.classList.add('visible');
             searchResults.classList.add('active');
-
             if (results.length === 0) {
                 searchResults.innerHTML =
                     '<div class="search-empty"><svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><line x1="22" y1="22" x2="16" y2="16"/></svg><div style="font-weight:600;color:rgba(255,255,255,0.85);">Нет результатов</div><div style="margin-top:4px;color:rgba(255,255,255,0.5);">«' +
                     query + '»</div></div>';
                 return;
             }
-
             searchResults.innerHTML = results.map(function(item) {
                 return '<a class="search-result" href="#" data-link="' + item.link + '" data-icon="' + item
                     .icon + '" data-name="' + item.name + '" data-desc="' + item.desc +
@@ -1710,7 +1625,6 @@
                     '</div><div class="result-desc">' + item.desc +
                     '</div></div><span class="result-arrow">→</span></a>';
             }).join('');
-
             document.querySelectorAll('.search-result').forEach(function(el) {
                 el.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1724,11 +1638,9 @@
                 });
             });
         }
-
         searchInput.addEventListener('input', function() {
             performSearch(this.value);
         });
-
         searchClear.addEventListener('click', function() {
             searchInput.value = '';
             searchInput.focus();
@@ -1737,12 +1649,10 @@
             searchClear.classList.remove('visible');
             performSearch('');
         });
-
         dockBtns.forEach(function(btn) {
             btn.addEventListener('click', function() {
                 dockBtns.forEach(function(b) { b.classList.remove('active'); });
                 this.classList.add('active');
-
                 if (this.dataset.tab === 'main') {
                     cardsGrid.classList.remove('hidden');
                     cardsGrid.classList.add('visible');
@@ -1765,11 +1675,9 @@
                 }
             });
         });
-
         searchBack.addEventListener('click', function() {
             dockBtns.forEach(function(b) { b.classList.remove('active'); });
             document.querySelector('.dock-btn[data-tab="main"]').classList.add('active');
-
             cardsGrid.classList.remove('hidden');
             cardsGrid.classList.add('visible');
             searchBackWrap.classList.remove('active');
@@ -1781,52 +1689,42 @@
             document.body.style.overflow = '';
             dock.classList.remove('hidden');
         });
-
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && searchBackWrap.classList.contains('active')) {
                 searchBack.click();
             }
         });
-
         var startX = 0;
         var startY = 0;
-
         dock.addEventListener('touchstart', function(e) {
             var t = e.touches[0];
             startX = t.clientX;
             startY = t.clientY;
         }, { passive: true });
-
         dock.addEventListener('touchmove', function(e) {
             if (!startX) return;
             var t = e.touches[0];
             var dx = t.clientX - startX;
             var dy = t.clientY - startY;
-
             if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
             e.preventDefault();
-
             var btns = Array.from(dockBtns);
             var activeIndex = btns.findIndex(function(b) { return b.classList.contains('active'); });
             var targetIndex = -1;
-
             if (dx > 0 && activeIndex > 0) {
                 targetIndex = activeIndex - 1;
             } else if (dx < 0 && activeIndex < btns.length - 1) {
                 targetIndex = activeIndex + 1;
             }
-
             if (targetIndex >= 0 && targetIndex < btns.length) {
                 btns[targetIndex].click();
                 startX = t.clientX;
             }
         }, { passive: false });
-
         dock.addEventListener('touchend', function() {
             startX = 0;
             startY = 0;
         }, { passive: true });
     </script>
-
 </body>
 </html>
