@@ -488,27 +488,27 @@
             background: rgba(255, 255, 255, 0.06) !important;
         }
         .card-1,
-        .card-9 {
+        .card-10 {
             cursor: default;
             touch-action: none !important;
         }
         .card-1:active,
-        .card-9:active {
+        .card-10:active {
             transform: none !important;
         }
         .card-1:hover,
-        .card-9:hover {
+        .card-10:hover {
             transform: none !important;
             background: rgba(255, 255, 255, 0.06);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.06);
             border-color: rgba(255, 255, 255, 0.08);
         }
         .card-1 .card-inner,
-        .card-9 .card-inner {
+        .card-10 .card-inner {
             transition: none !important;
         }
         .card-1:hover .card-inner,
-        .card-9:hover .card-inner {
+        .card-10:hover .card-inner {
             animation: none !important;
         }
         .cards-grid {
@@ -1051,6 +1051,13 @@
         .telegram-private-link a:hover {
             border-bottom-color: rgba(0, 136, 204, 0.7);
         }
+        .telegram-bot-link a {
+            color: #0088cc;
+            border-bottom-color: rgba(0, 136, 204, 0.3);
+        }
+        .telegram-bot-link a:hover {
+            border-bottom-color: rgba(0, 136, 204, 0.7);
+        }
         .instagram-link a {
             color: #e4405f;
             border-bottom-color: rgba(228, 64, 95, 0.3);
@@ -1218,6 +1225,9 @@
         body.light-theme .search-input::placeholder {
             color: rgba(0, 0, 0, 0.4) !important;
         }
+        body.light-theme .search-icon svg {
+            stroke: rgba(0, 0, 0, 0.5) !important;
+        }
         body.light-theme .search-clear svg {
             stroke: rgba(0, 0, 0, 0.4) !important;
         }
@@ -1229,6 +1239,12 @@
         }
         body.light-theme .search-result .result-desc {
             color: rgba(0, 0, 0, 0.5) !important;
+        }
+        body.light-theme .search-empty {
+            color: #1d1d1f !important;
+        }
+        body.light-theme .search-empty svg {
+            stroke: rgba(0, 0, 0, 0.3) !important;
         }
         body.light-theme h1 {
             color: #1d1d1f !important;
@@ -1358,6 +1374,9 @@
         body.dark-theme .search-input::placeholder {
             color: rgba(255, 255, 255, 0.4) !important;
         }
+        body.dark-theme .search-icon svg {
+            stroke: rgba(255, 255, 255, 0.4) !important;
+        }
         body.dark-theme .search-clear svg {
             stroke: rgba(255, 255, 255, 0.5) !important;
         }
@@ -1369,6 +1388,12 @@
         }
         body.dark-theme .search-result .result-desc {
             color: rgba(255, 255, 255, 0.5) !important;
+        }
+        body.dark-theme .search-empty {
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+        body.dark-theme .search-empty svg {
+            stroke: rgba(255, 255, 255, 0.3) !important;
         }
         body.dark-theme h1 {
             color: #fff !important;
@@ -1506,6 +1531,9 @@
             body:not(.dark-theme):not(.light-theme) .search-input::placeholder {
                 color: rgba(0, 0, 0, 0.4) !important;
             }
+            body:not(.dark-theme):not(.light-theme) .search-icon svg {
+                stroke: rgba(0, 0, 0, 0.5) !important;
+            }
             body:not(.dark-theme):not(.light-theme) .search-clear svg {
                 stroke: rgba(0, 0, 0, 0.4) !important;
             }
@@ -1517,6 +1545,12 @@
             }
             body:not(.dark-theme):not(.light-theme) .search-result .result-desc {
                 color: rgba(0, 0, 0, 0.5) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-empty {
+                color: #1d1d1f !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-empty svg {
+                stroke: rgba(0, 0, 0, 0.3) !important;
             }
             body:not(.dark-theme):not(.light-theme) h1 {
                 color: #1d1d1f !important;
@@ -1647,6 +1681,9 @@
             body:not(.dark-theme):not(.light-theme) .search-input::placeholder {
                 color: rgba(255, 255, 255, 0.4) !important;
             }
+            body:not(.dark-theme):not(.light-theme) .search-icon svg {
+                stroke: rgba(255, 255, 255, 0.4) !important;
+            }
             body:not(.dark-theme):not(.light-theme) .search-clear svg {
                 stroke: rgba(255, 255, 255, 0.5) !important;
             }
@@ -1658,6 +1695,12 @@
             }
             body:not(.dark-theme):not(.light-theme) .search-result .result-desc {
                 color: rgba(255, 255, 255, 0.5) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-empty {
+                color: rgba(255, 255, 255, 0.85) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-empty svg {
+                stroke: rgba(255, 255, 255, 0.3) !important;
             }
             body:not(.dark-theme):not(.light-theme) h1 {
                 color: #fff !important;
@@ -1973,7 +2016,17 @@
                     <p class="subtitle" style="margin-top:8px;">Доступ по ссылке</p>
                 </div>
             </div>
-            <div class="glass-card card-4" data-has-link="true" data-icon="📸" data-name="Instagram" data-desc="Фотографии" data-link="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr">
+            <div class="glass-card card-4" data-has-link="true" data-icon="🤖" data-name="Telegram Bot" data-desc="Бот с соцсетями" data-link="https://t.me/mmmmisl_mBot">
+                <div class="card-inner">
+                    <span class="emoji-big">🤖</span>
+                    <h1>Telegram Bot</h1>
+                    <div class="link telegram-bot-link">
+                        <a href="https://t.me/mmmmisl_mBot" target="_blank">↗ mmmmisl_mBot</a>
+                    </div>
+                    <p class="subtitle" style="margin-top:8px;">Бот с соцсетями (если сайт не работает)</p>
+                </div>
+            </div>
+            <div class="glass-card card-5" data-has-link="true" data-icon="📸" data-name="Instagram" data-desc="Фотографии" data-link="https://www.instagram.com/mmmmisl_m?igsh=dm1pNm5xMGc5OTli&utm_source=qr">
                 <div class="card-inner">
                     <span class="emoji-big">📸</span>
                     <h1>Мы в Instagram</h1>
@@ -1983,7 +2036,7 @@
                     <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Inst.</p>
                 </div>
             </div>
-            <div class="glass-card card-5" data-has-link="true" data-icon="🚀" data-name="Threads" data-desc="Мы в Threads" data-link="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==">
+            <div class="glass-card card-6" data-has-link="true" data-icon="🚀" data-name="Threads" data-desc="Мы в Threads" data-link="https://www.threads.com/@mmmmisl_m?igshid=NTc4MTIwNjQ2YQ==">
                 <div class="card-inner">
                     <span class="emoji-big">🚀</span>
                     <h1>Мы в Threads</h1>
@@ -1993,7 +2046,7 @@
                     <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Threads</p>
                 </div>
             </div>
-            <div class="glass-card card-6" data-has-link="true" data-icon="🎵" data-name="TikTok" data-desc="Видео" data-link="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ">
+            <div class="glass-card card-7" data-has-link="true" data-icon="🎵" data-name="TikTok" data-desc="Видео" data-link="https://www.tiktok.com/@mmmmisl_m?_r=1&_t=ZT-97QyIjOZ4NZ">
                 <div class="card-inner">
                     <span class="emoji-big">🎵</span>
                     <h1>Мы в TikTok</h1>
@@ -2003,7 +2056,7 @@
                     <p class="subtitle" style="margin-top:8px;">Подписывайтесь в TikTok</p>
                 </div>
             </div>
-            <div class="glass-card card-7" data-has-link="true" data-icon="🎵" data-name="TikTok 2" data-desc="Второй аккаунт" data-link="https://www.tiktok.com/@mmmmisl_m2.0?_r=1&_t=ZT-98G4mvgEu0T">
+            <div class="glass-card card-8" data-has-link="true" data-icon="🎵" data-name="TikTok 2" data-desc="Второй аккаунт" data-link="https://www.tiktok.com/@mmmmisl_m2.0?_r=1&_t=ZT-98G4mvgEu0T">
                 <div class="card-inner">
                     <span class="emoji-big">🎵</span>
                     <h1>Мы в TikTok 2</h1>
@@ -2013,7 +2066,7 @@
                     <p class="subtitle" style="margin-top:8px;">Второй аккаунт в TikTok</p>
                 </div>
             </div>
-            <div class="glass-card card-8" data-has-link="true" data-icon="🌍" data-name="Meera" data-desc="Мы в Meera" data-link="https://meera.me/mmmmisl_m">
+            <div class="glass-card card-9" data-has-link="true" data-icon="🌍" data-name="Meera" data-desc="Мы в Meera" data-link="https://meera.me/mmmmisl_m">
                 <div class="card-inner">
                     <span class="emoji-big">🌍</span>
                     <h1>Мы в Meera</h1>
@@ -2023,7 +2076,7 @@
                     <p class="subtitle" style="margin-top:8px;">Подписывайтесь в Meera</p>
                 </div>
             </div>
-            <div class="glass-card card-9">
+            <div class="glass-card card-10">
                 <div class="card-inner">
                     <span class="emoji-big">✨</span>
                     <h1>Присоединяйся</h1>
@@ -2079,6 +2132,7 @@
     <script>
         var copyText = 'Скопировать';
         var copiedText = '✅ Готово!';
+        var emptyResultText = 'Нет результатов';
 
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
@@ -2274,6 +2328,12 @@
             link: 'https://t.me/+O1JxoMMscawyMGMy',
             keywords: 'telegram приват канал телеграм закрытый тг tg privat private'
         }, {
+            icon: '🤖',
+            name: 'Telegram Bot',
+            desc: 'Бот с соцсетями',
+            link: 'https://t.me/mmmmisl_mBot',
+            keywords: 'telegram бот bot'
+        }, {
             icon: '📸',
             name: 'Instagram',
             desc: 'Фотографии mmmmisl_m',
@@ -2319,9 +2379,12 @@
             searchClear.classList.add('visible');
             searchResults.classList.add('active');
             if (results.length === 0) {
+                var emptyText = emptyResultText;
+                var queryText = query;
                 searchResults.innerHTML =
-                    '<div class="search-empty"><svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><line x1="22" y1="22" x2="16" y2="16"/></svg><div style="font-weight:600;color:rgba(255,255,255,0.85);">Нет результатов</div><div style="margin-top:4px;color:rgba(255,255,255,0.5);">«' +
-                    query + '»</div></div>';
+                    '<div class="search-empty"><svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><line x1="22" y1="22" x2="16" y2="16"/></svg><div style="font-weight:600;color:inherit;">' +
+                    emptyText + '</div><div style="margin-top:4px;color:rgba(255,255,255,0.5);">«' + queryText +
+                    '»</div></div>';
                 return;
             }
             searchResults.innerHTML = results.map(function(item) {
@@ -2529,18 +2592,20 @@
                     card2desc: 'Подписывайтесь в Telegram',
                     card3: 'Мы в Telegram (Приват)',
                     card3desc: 'Доступ по ссылке',
-                    card4: 'Мы в Instagram',
-                    card4desc: 'Подписывайтесь в Inst.',
-                    card5: 'Мы в Threads',
-                    card5desc: 'Подписывайтесь в Threads',
-                    card6: 'Мы в TikTok',
-                    card6desc: 'Подписывайтесь в TikTok',
-                    card7: 'Мы в TikTok 2',
-                    card7desc: 'Второй аккаунт в TikTok',
-                    card8: 'Мы в Meera',
-                    card8desc: 'Подписывайтесь в Meera',
-                    card9: 'Присоединяйся',
-                    card9desc: 'Все ссылки выше ☝️',
+                    card4: 'Telegram Bot',
+                    card4desc: 'Бот с соцсетями',
+                    card5: 'Мы в Instagram',
+                    card5desc: 'Подписывайтесь в Inst.',
+                    card6: 'Мы в Threads',
+                    card6desc: 'Подписывайтесь в Threads',
+                    card7: 'Мы в TikTok',
+                    card7desc: 'Подписывайтесь в TikTok',
+                    card8: 'Мы в TikTok 2',
+                    card8desc: 'Второй аккаунт в TikTok',
+                    card9: 'Мы в Meera',
+                    card9desc: 'Подписывайтесь в Meera',
+                    card10: 'Присоединяйся',
+                    card10desc: 'Все ссылки выше ☝️',
                     footer: '© 2026 mmmmisl_m',
                     modalGo: 'Перейти',
                     modalCopy: 'Скопировать',
@@ -2550,6 +2615,8 @@
                     modalTelegramDesc: 'Основной канал',
                     modalTelegramPrivate: 'Telegram (Приват)',
                     modalTelegramPrivateDesc: 'Закрытый канал',
+                    modalTelegramBot: 'Telegram Bot',
+                    modalTelegramBotDesc: 'Бот с соцсетями',
                     modalInstagram: 'Instagram',
                     modalInstagramDesc: 'Фотографии',
                     modalThreads: 'Threads',
@@ -2559,7 +2626,8 @@
                     modalTikTok2: 'TikTok 2',
                     modalTikTok2Desc: 'Второй аккаунт',
                     modalMeera: 'Meera',
-                    modalMeeraDesc: 'Мы в Meera'
+                    modalMeeraDesc: 'Мы в Meera',
+                    emptyResult: 'Нет результатов'
                 },
                 en: {
                     title: 'Social networks mmmmisl_m',
@@ -2578,18 +2646,20 @@
                     card2desc: 'Subscribe on Telegram',
                     card3: 'We are on Telegram (Private)',
                     card3desc: 'Access by link',
-                    card4: 'We are on Instagram',
-                    card4desc: 'Subscribe on Instagram',
-                    card5: 'We are on Threads',
-                    card5desc: 'Subscribe on Threads',
-                    card6: 'We are on TikTok',
-                    card6desc: 'Subscribe on TikTok',
-                    card7: 'We are on TikTok 2',
-                    card7desc: 'Second account on TikTok',
-                    card8: 'We are on Meera',
-                    card8desc: 'Subscribe on Meera',
-                    card9: 'Join us',
-                    card9desc: 'All links above ☝️',
+                    card4: 'Telegram Bot',
+                    card4desc: 'Bot with social networks',
+                    card5: 'We are on Instagram',
+                    card5desc: 'Subscribe on Instagram',
+                    card6: 'We are on Threads',
+                    card6desc: 'Subscribe on Threads',
+                    card7: 'We are on TikTok',
+                    card7desc: 'Subscribe on TikTok',
+                    card8: 'We are on TikTok 2',
+                    card8desc: 'Second account on TikTok',
+                    card9: 'We are on Meera',
+                    card9desc: 'Subscribe on Meera',
+                    card10: 'Join us',
+                    card10desc: 'All links above ☝️',
                     footer: '© 2026 mmmmisl_m',
                     modalGo: 'Go',
                     modalCopy: 'Copy',
@@ -2599,6 +2669,8 @@
                     modalTelegramDesc: 'Main channel',
                     modalTelegramPrivate: 'Telegram (Private)',
                     modalTelegramPrivateDesc: 'Private channel',
+                    modalTelegramBot: 'Telegram Bot',
+                    modalTelegramBotDesc: 'Bot with social networks',
                     modalInstagram: 'Instagram',
                     modalInstagramDesc: 'Photos',
                     modalThreads: 'Threads',
@@ -2608,7 +2680,8 @@
                     modalTikTok2: 'TikTok 2',
                     modalTikTok2Desc: 'Second account',
                     modalMeera: 'Meera',
-                    modalMeeraDesc: 'We are on Meera'
+                    modalMeeraDesc: 'We are on Meera',
+                    emptyResult: 'No results'
                 }
             };
 
@@ -2643,7 +2716,7 @@
             }
 
             var cards = document.querySelectorAll('.glass-card');
-            if (cards.length >= 9) {
+            if (cards.length >= 10) {
                 var card1h1 = cards[0].querySelector('h1');
                 if (card1h1) card1h1.textContent = t.card1;
 
@@ -2686,6 +2759,11 @@
                 if (card9h1) card9h1.textContent = t.card9;
                 var card9p = cards[8].querySelector('.subtitle');
                 if (card9p) card9p.textContent = t.card9desc;
+
+                var card10h1 = cards[9].querySelector('h1');
+                if (card10h1) card10h1.textContent = t.card10;
+                var card10p = cards[9].querySelector('.subtitle');
+                if (card10p) card10p.textContent = t.card10desc;
             }
 
             var footer = document.querySelector('.footer');
@@ -2702,23 +2780,26 @@
 
             copyText = t.modalCopy;
             copiedText = '✅ ' + (lang === 'en' ? 'Done!' : 'Готово!');
+            emptyResultText = t.emptyResult;
 
             var cardsWithLinks = document.querySelectorAll('.glass-card[data-has-link="true"]');
-            if (cardsWithLinks.length >= 7) {
+            if (cardsWithLinks.length >= 8) {
                 cardsWithLinks[0].dataset.name = t.modalTelegram;
                 cardsWithLinks[0].dataset.desc = t.modalTelegramDesc;
                 cardsWithLinks[1].dataset.name = t.modalTelegramPrivate;
                 cardsWithLinks[1].dataset.desc = t.modalTelegramPrivateDesc;
-                cardsWithLinks[2].dataset.name = t.modalInstagram;
-                cardsWithLinks[2].dataset.desc = t.modalInstagramDesc;
-                cardsWithLinks[3].dataset.name = t.modalThreads;
-                cardsWithLinks[3].dataset.desc = t.modalThreadsDesc;
-                cardsWithLinks[4].dataset.name = t.modalTikTok;
-                cardsWithLinks[4].dataset.desc = t.modalTikTokDesc;
-                cardsWithLinks[5].dataset.name = t.modalTikTok2;
-                cardsWithLinks[5].dataset.desc = t.modalTikTok2Desc;
-                cardsWithLinks[6].dataset.name = t.modalMeera;
-                cardsWithLinks[6].dataset.desc = t.modalMeeraDesc;
+                cardsWithLinks[2].dataset.name = t.modalTelegramBot;
+                cardsWithLinks[2].dataset.desc = t.modalTelegramBotDesc;
+                cardsWithLinks[3].dataset.name = t.modalInstagram;
+                cardsWithLinks[3].dataset.desc = t.modalInstagramDesc;
+                cardsWithLinks[4].dataset.name = t.modalThreads;
+                cardsWithLinks[4].dataset.desc = t.modalThreadsDesc;
+                cardsWithLinks[5].dataset.name = t.modalTikTok;
+                cardsWithLinks[5].dataset.desc = t.modalTikTokDesc;
+                cardsWithLinks[6].dataset.name = t.modalTikTok2;
+                cardsWithLinks[6].dataset.desc = t.modalTikTok2Desc;
+                cardsWithLinks[7].dataset.name = t.modalMeera;
+                cardsWithLinks[7].dataset.desc = t.modalMeeraDesc;
             }
 
             if (lang === 'en') {
@@ -2734,6 +2815,12 @@
                     desc: 'Private channel mmmmisl_m',
                     link: 'https://t.me/+O1JxoMMscawyMGMy',
                     keywords: 'telegram private privat channel'
+                }, {
+                    icon: '🤖',
+                    name: 'Telegram Bot',
+                    desc: 'Bot with social networks',
+                    link: 'https://t.me/mmmmisl_mBot',
+                    keywords: 'telegram bot'
                 }, {
                     icon: '📸',
                     name: 'Instagram',
@@ -2778,6 +2865,12 @@
                     desc: 'Закрытый канал mmmmisl_m',
                     link: 'https://t.me/+O1JxoMMscawyMGMy',
                     keywords: 'telegram приват канал телеграм закрытый тг tg privat private'
+                }, {
+                    icon: '🤖',
+                    name: 'Telegram Bot',
+                    desc: 'Бот с соцсетями',
+                    link: 'https://t.me/mmmmisl_mBot',
+                    keywords: 'telegram бот bot'
                 }, {
                     icon: '📸',
                     name: 'Instagram',
