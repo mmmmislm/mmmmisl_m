@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="canonical" href="https://mmmmislm.github.io/mmmmisl_m/">
     <link rel="icon" type="image/png" sizes="192x192" href="/mmmmisl_m/icon.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/mmmmisl_m/icon.png">
@@ -32,6 +32,7 @@
         button,
         .modal-btn,
         .dock-btn,
+        .search-btn-circle,
         .search-result,
         .glass-card[data-has-link="true"],
         .modal-close-btn,
@@ -155,7 +156,7 @@
             background: linear-gradient(-45deg, #2c2c2c, #1a1a1a, #3a3a3a, #0d0d0d);
             background-size: 400% 400%;
             animation: gradientMove 25s ease infinite;
-            padding-bottom: 100px;
+            padding-bottom: calc(120px + env(safe-area-inset-bottom));
             will-change: background-position;
             transition: background 0.6s ease, color 0.6s ease;
         }
@@ -173,7 +174,7 @@
                 background-position: 0% 50%;
             }
         }
-        body.settings-open {
+        body.modal-open {
             overflow: hidden !important;
         }
         .bottom-bar {
@@ -253,153 +254,51 @@
         .dock-btn.active svg {
             stroke: #fff;
         }
-        .settings-btn {
-            width: 58px;
-            height: 58px;
+        .search-btn-circle {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.8);
-            overflow: visible;
-            flex-shrink: 0;
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .settings-btn:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        .settings-btn svg {
-            width: 28px;
-            height: 28px;
-            stroke: currentColor;
-            transition: transform 0.4s ease, opacity 0.3s ease;
-            flex-shrink: 0;
-        }
-        .settings-btn.open svg {
-            opacity: 0;
-            transform: rotate(90deg) scale(0.5);
-            pointer-events: none;
-        }
-        .settings-btn.open {
-            width: 220px;
-            height: auto;
-            border-radius: 20px;
-            padding: 16px 20px;
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            cursor: default;
-            position: absolute;
-            bottom: calc(100% + 16px);
-            right: 0;
-            transform-origin: bottom right;
-            animation: settingsPop 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-        @keyframes settingsPop {
-            0% {
-                transform: scale(0.85) translateY(8px);
-                opacity: 0;
-                border-radius: 50%;
-                width: 58px;
-                height: 58px;
-                padding: 0;
-                background: transparent;
-            }
-            100% {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-                border-radius: 20px;
-                width: 220px;
-                height: auto;
-                padding: 16px 20px;
-            }
-        }
-        .settings-panel {
-            display: none;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-            opacity: 0;
-        }
-        .settings-btn.open .settings-panel {
-            display: flex;
-            animation: contentFadeIn 0.3s ease 0.35s forwards;
-        }
-        @keyframes contentFadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(6px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .settings-section {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .settings-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-        .settings-options {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .settings-option {
-            padding: 4px 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.04);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.75rem;
-            font-weight: 500;
+            padding: 0;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
             cursor: pointer;
             transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            color: rgba(255, 255, 255, 0.5);
+            flex-shrink: 0;
             font-family: inherit;
         }
-        .settings-option:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: rgba(255, 255, 255, 0.8);
+        .search-btn-circle svg {
+            width: 30px;
+            height: 30px;
+            stroke: currentColor;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: 0.2s;
         }
-        .settings-option.active {
+        .search-btn-circle:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.85);
+            transform: scale(1.05);
+        }
+        .search-btn-circle:active {
+            transform: scale(0.92);
+            transition: transform 0.05s ease;
+        }
+        .search-btn-circle.active {
             background: rgba(255, 255, 255, 0.12);
             color: #fff;
-            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.15), 0 20px 60px rgba(0, 0, 0, 0.3);
         }
-        .settings-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.08);
-            margin: 2px 0;
-        }
-        body.settings-open .cards-wrapper,
-        body.settings-open .dock,
-        body.settings-open .search-back-wrap,
-        body.settings-open .search-bottom-wrap,
-        body.settings-open .search-results,
-        body.settings-open .glass-card,
-        body.settings-open .emoji-bg {
-            pointer-events: none !important;
-            user-select: none !important;
-        }
-        body.settings-open .settings-btn {
-            pointer-events: auto !important;
-        }
-        body.settings-open .settings-btn .settings-panel {
-            pointer-events: auto !important;
+        .search-btn-circle.active svg {
+            stroke: #fff;
         }
         .emoji-bg {
             position: fixed;
@@ -451,7 +350,6 @@
             transform: translateY(40px) scale(0.92);
             -webkit-tap-highlight-color: transparent;
             user-select: none;
-            will-change: transform;
             cursor: pointer;
             overflow: hidden;
             touch-action: manipulation;
@@ -488,27 +386,27 @@
             background: rgba(255, 255, 255, 0.06) !important;
         }
         .card-1,
-        .card-13 {
+        .card-12 {
             cursor: default;
             touch-action: none !important;
         }
         .card-1:active,
-        .card-13:active {
+        .card-12:active {
             transform: none !important;
         }
         .card-1:hover,
-        .card-13:hover {
+        .card-12:hover {
             transform: none !important;
             background: rgba(255, 255, 255, 0.06);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.06);
             border-color: rgba(255, 255, 255, 0.08);
         }
         .card-1 .card-inner,
-        .card-13 .card-inner {
+        .card-12 .card-inner {
             transition: none !important;
         }
         .card-1:hover .card-inner,
-        .card-13:hover .card-inner {
+        .card-12:hover .card-inner {
             animation: none !important;
         }
         .cards-grid {
@@ -757,6 +655,14 @@
             margin: 0 auto 12px;
             stroke: rgba(255, 255, 255, 0.3);
         }
+        .search-empty .empty-title {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .search-empty .empty-query {
+            margin-top: 4px;
+            color: rgba(255, 255, 255, 0.5);
+        }
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -775,6 +681,11 @@
         }
         .modal-overlay.active {
             display: flex;
+        }
+        .modal-overlay.settings-overlay {
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
         @keyframes fadeIn {
             0% {
@@ -864,8 +775,8 @@
             animation: modalContentFade 0.4s 0.25s both;
         }
         .modal-qr {
-            width: 220px;
-            height: 220px;
+            width: 260px;
+            height: 260px;
             margin: 0 auto 20px;
             border-radius: 20px;
             background: #fff;
@@ -981,6 +892,128 @@
             border-color: rgba(46, 204, 113, 0.15);
             color: #6ddfa3;
         }
+
+        .settings-modal-content {
+            background: rgba(30, 30, 35, 0.12);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border-radius: 40px;
+            padding: 35px;
+            max-width: 460px;
+            width: 100%;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-align: center;
+            animation: modalPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+        }
+        .settings-modal-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            letter-spacing: -0.02em;
+            animation: modalContentFade 0.4s 0.15s both;
+        }
+        .settings-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 18px;
+            animation: modalContentFade 0.4s 0.2s both;
+        }
+        .settings-group:last-child {
+            margin-bottom: 0;
+        }
+        .settings-group-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 600;
+            text-align: left;
+        }
+        .theme-options {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .theme-option {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 8px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: inherit;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .theme-option:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
+            transform: translateY(-2px);
+        }
+        .theme-option.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .theme-option svg {
+            width: 34px;
+            height: 34px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.2s ease;
+        }
+        .theme-option.active svg {
+            transform: scale(1.1);
+        }
+        .theme-option span {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .lang-options {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .lang-option {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .lang-option:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .lang-option.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
         .footer {
             width: 100%;
             max-width: 420px;
@@ -1130,40 +1163,6 @@
         body.light-theme .loading-overlay .loader span {
             background: #1d1d1f !important;
         }
-        body.light-theme .settings-btn {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            color: rgba(0, 0, 0, 0.7);
-        }
-        body.light-theme .settings-btn:hover {
-            background: rgba(0, 0, 0, 0.08);
-        }
-        body.light-theme .settings-btn.open {
-            background: #ffffff !important;
-            border: 1px solid rgba(0, 0, 0, 0.1) !important;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
-            color: #1d1d1f !important;
-        }
-        body.light-theme .settings-label {
-            color: rgba(0, 0, 0, 0.4);
-        }
-        body.light-theme .settings-option {
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            background: rgba(0, 0, 0, 0.02);
-            color: rgba(0, 0, 0, 0.5);
-        }
-        body.light-theme .settings-option:hover {
-            background: rgba(0, 0, 0, 0.05);
-            color: rgba(0, 0, 0, 0.8);
-        }
-        body.light-theme .settings-option.active {
-            background: rgba(0, 0, 0, 0.08);
-            color: #000;
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-        body.light-theme .settings-divider {
-            background: rgba(0, 0, 0, 0.08);
-        }
         body.light-theme .dock {
             background: rgba(255, 255, 255, 0.25) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -1184,6 +1183,24 @@
         body.light-theme .dock-btn.active svg {
             stroke: #1d1d1f !important;
         }
+        body.light-theme .search-btn-circle {
+            background: rgba(255, 255, 255, 0.25) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: rgba(0, 0, 0, 0.4) !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+        }
+        body.light-theme .search-btn-circle:hover {
+            background: rgba(255, 255, 255, 0.4) !important;
+            color: rgba(0, 0, 0, 0.7) !important;
+        }
+        body.light-theme .search-btn-circle.active {
+            background: rgba(0, 0, 0, 0.05) !important;
+            color: #1d1d1f !important;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.08), 0 20px 60px rgba(0, 0, 0, 0.08) !important;
+        }
+        body.light-theme .search-btn-circle.active svg {
+            stroke: #1d1d1f !important;
+        }
         body.light-theme .glass-card {
             background: rgba(255, 255, 255, 0.12) !important;
             backdrop-filter: blur(20px) saturate(180%) !important;
@@ -1198,13 +1215,16 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0.25) 100%) !important;
             opacity: 0.4 !important;
         }
-        body.light-theme .modal-content {
-            background: rgba(255, 255, 255, 0.15) !important;
+        body.light-theme .modal-content,
+        body.light-theme .settings-modal-content {
+            background: rgba(255, 255, 255, 0.85) !important;
             backdrop-filter: blur(30px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
-            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+            border: 1px solid rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
         }
-        body.light-theme .modal-title {
+        body.light-theme .modal-title,
+        body.light-theme .settings-modal-title {
             color: #1d1d1f !important;
         }
         body.light-theme .modal-subtitle {
@@ -1220,7 +1240,7 @@
             color: #0088cc !important;
         }
         body.light-theme .modal-btn-secondary {
-            background: rgba(200, 200, 200, 0.15) !important;
+            background: rgba(200, 200, 200, 0.3) !important;
             color: #1d1d1f !important;
         }
         body.light-theme .modal-close-btn {
@@ -1255,10 +1275,47 @@
             color: rgba(0, 0, 0, 0.5) !important;
         }
         body.light-theme .search-empty {
-            color: #1d1d1f !important;
+            color: rgba(0, 0, 0, 0.6) !important;
         }
         body.light-theme .search-empty svg {
             stroke: rgba(0, 0, 0, 0.3) !important;
+        }
+        body.light-theme .search-empty .empty-title {
+            color: #1d1d1f !important;
+        }
+        body.light-theme .search-empty .empty-query {
+            color: rgba(0, 0, 0, 0.5) !important;
+        }
+        body.light-theme .settings-group-label {
+            color: rgba(0, 0, 0, 0.4) !important;
+        }
+        body.light-theme .theme-option {
+            background: rgba(0, 0, 0, 0.03) !important;
+            border: 1px solid rgba(0, 0, 0, 0.06) !important;
+            color: rgba(0, 0, 0, 0.6) !important;
+        }
+        body.light-theme .theme-option:hover {
+            background: rgba(0, 0, 0, 0.06) !important;
+            color: rgba(0, 0, 0, 0.85) !important;
+        }
+        body.light-theme .theme-option.active {
+            background: rgba(0, 0, 0, 0.08) !important;
+            color: #000 !important;
+            border-color: rgba(0, 0, 0, 0.15) !important;
+        }
+        body.light-theme .lang-option {
+            background: rgba(0, 0, 0, 0.03) !important;
+            border: 1px solid rgba(0, 0, 0, 0.06) !important;
+            color: rgba(0, 0, 0, 0.6) !important;
+        }
+        body.light-theme .lang-option:hover {
+            background: rgba(0, 0, 0, 0.06) !important;
+            color: rgba(0, 0, 0, 0.85) !important;
+        }
+        body.light-theme .lang-option.active {
+            background: rgba(0, 0, 0, 0.08) !important;
+            color: #000 !important;
+            border-color: rgba(0, 0, 0, 0.15) !important;
         }
         body.light-theme h1 {
             color: #1d1d1f !important;
@@ -1269,6 +1326,11 @@
         }
         body.light-theme .footer {
             color: rgba(0, 0, 0, 0.6) !important;
+        }
+        body.light-theme .modal-overlay.settings-overlay {
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
         }
 
         body.dark-theme {
@@ -1287,33 +1349,6 @@
         body.dark-theme .loading-overlay .loader span {
             background: rgba(255, 255, 255, 0.8) !important;
         }
-        body.dark-theme .settings-btn {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border: 1px solid rgba(255, 255, 255, 0.15) !important;
-            color: rgba(255, 255, 255, 0.8) !important;
-        }
-        body.dark-theme .settings-btn.open {
-            background: rgba(30, 30, 35, 0.95) !important;
-            border: 1px solid rgba(255, 255, 255, 0.15) !important;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
-            color: rgba(255, 255, 255, 0.8) !important;
-        }
-        body.dark-theme .settings-label {
-            color: rgba(255, 255, 255, 0.4) !important;
-        }
-        body.dark-theme .settings-option {
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            background: rgba(255, 255, 255, 0.04) !important;
-            color: rgba(255, 255, 255, 0.6) !important;
-        }
-        body.dark-theme .settings-option.active {
-            background: rgba(255, 255, 255, 0.12) !important;
-            color: #fff !important;
-            border-color: rgba(255, 255, 255, 0.2) !important;
-        }
-        body.dark-theme .settings-divider {
-            background: rgba(255, 255, 255, 0.08) !important;
-        }
         body.dark-theme .dock {
             background: rgba(255, 255, 255, 0.06) !important;
             border: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -1329,6 +1364,19 @@
             background: rgba(255, 255, 255, 0.12) !important;
         }
         body.dark-theme .dock-btn.active svg {
+            stroke: #fff !important;
+        }
+        body.dark-theme .search-btn-circle {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            color: rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+        }
+        body.dark-theme .search-btn-circle.active {
+            background: rgba(255, 255, 255, 0.12) !important;
+            color: #fff !important;
+        }
+        body.dark-theme .search-btn-circle.active svg {
             stroke: #fff !important;
         }
         body.dark-theme .glass-card {
@@ -1347,13 +1395,15 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0.15) 100%) !important;
             opacity: 0.3 !important;
         }
-        body.dark-theme .modal-content {
-            background: rgba(30, 30, 35, 0.12) !important;
+        body.dark-theme .modal-content,
+        body.dark-theme .settings-modal-content {
+            background: rgba(30, 30, 35, 0.95) !important;
             backdrop-filter: blur(30px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
             border: 1px solid rgba(255, 255, 255, 0.15) !important;
         }
-        body.dark-theme .modal-title {
+        body.dark-theme .modal-title,
+        body.dark-theme .settings-modal-title {
             color: #fff !important;
         }
         body.dark-theme .modal-subtitle {
@@ -1409,6 +1459,35 @@
         body.dark-theme .search-empty svg {
             stroke: rgba(255, 255, 255, 0.3) !important;
         }
+        body.dark-theme .search-empty .empty-title {
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+        body.dark-theme .search-empty .empty-query {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+        body.dark-theme .settings-group-label {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+        body.dark-theme .theme-option {
+            background: rgba(255, 255, 255, 0.04) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+        body.dark-theme .theme-option.active {
+            background: rgba(255, 255, 255, 0.12) !important;
+            color: #fff !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+        }
+        body.dark-theme .lang-option {
+            background: rgba(255, 255, 255, 0.04) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+        body.dark-theme .lang-option.active {
+            background: rgba(255, 255, 255, 0.12) !important;
+            color: #fff !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+        }
         body.dark-theme h1 {
             color: #fff !important;
         }
@@ -1436,40 +1515,6 @@
             body:not(.dark-theme):not(.light-theme) .loading-overlay .loader span {
                 background: #1d1d1f !important;
             }
-            body:not(.dark-theme):not(.light-theme) .settings-btn {
-                background: rgba(0, 0, 0, 0.05);
-                border: 1px solid rgba(0, 0, 0, 0.1);
-                color: rgba(0, 0, 0, 0.7);
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-btn:hover {
-                background: rgba(0, 0, 0, 0.08);
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-btn.open {
-                background: #ffffff !important;
-                border: 1px solid rgba(0, 0, 0, 0.1) !important;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
-                color: #1d1d1f !important;
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-label {
-                color: rgba(0, 0, 0, 0.4);
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-option {
-                border: 1px solid rgba(0, 0, 0, 0.06);
-                background: rgba(0, 0, 0, 0.02);
-                color: rgba(0, 0, 0, 0.5);
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-option:hover {
-                background: rgba(0, 0, 0, 0.05);
-                color: rgba(0, 0, 0, 0.8);
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-option.active {
-                background: rgba(0, 0, 0, 0.08);
-                color: #000;
-                border-color: rgba(0, 0, 0, 0.15);
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-divider {
-                background: rgba(0, 0, 0, 0.08);
-            }
             body:not(.dark-theme):not(.light-theme) .dock {
                 background: rgba(255, 255, 255, 0.25) !important;
                 border: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -1490,6 +1535,19 @@
             body:not(.dark-theme):not(.light-theme) .dock-btn.active svg {
                 stroke: #1d1d1f !important;
             }
+            body:not(.dark-theme):not(.light-theme) .search-btn-circle {
+                background: rgba(255, 255, 255, 0.25) !important;
+                border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                color: rgba(0, 0, 0, 0.4) !important;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-btn-circle.active {
+                background: rgba(0, 0, 0, 0.05) !important;
+                color: #1d1d1f !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-btn-circle.active svg {
+                stroke: #1d1d1f !important;
+            }
             body:not(.dark-theme):not(.light-theme) .glass-card {
                 background: rgba(255, 255, 255, 0.12) !important;
                 backdrop-filter: blur(20px) saturate(180%) !important;
@@ -1504,13 +1562,16 @@
                 background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0.25) 100%) !important;
                 opacity: 0.4 !important;
             }
-            body:not(.dark-theme):not(.light-theme) .modal-content {
-                background: rgba(255, 255, 255, 0.15) !important;
+            body:not(.dark-theme):not(.light-theme) .modal-content,
+            body:not(.dark-theme):not(.light-theme) .settings-modal-content {
+                background: rgba(255, 255, 255, 0.85) !important;
                 backdrop-filter: blur(30px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
-                border: 1px solid rgba(255, 255, 255, 0.25) !important;
+                border: 1px solid rgba(0, 0, 0, 0.08) !important;
+                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
             }
-            body:not(.dark-theme):not(.light-theme) .modal-title {
+            body:not(.dark-theme):not(.light-theme) .modal-title,
+            body:not(.dark-theme):not(.light-theme) .settings-modal-title {
                 color: #1d1d1f !important;
             }
             body:not(.dark-theme):not(.light-theme) .modal-subtitle {
@@ -1526,7 +1587,7 @@
                 color: #0088cc !important;
             }
             body:not(.dark-theme):not(.light-theme) .modal-btn-secondary {
-                background: rgba(200, 200, 200, 0.15) !important;
+                background: rgba(200, 200, 200, 0.3) !important;
                 color: #1d1d1f !important;
             }
             body:not(.dark-theme):not(.light-theme) .modal-close-btn {
@@ -1561,10 +1622,39 @@
                 color: rgba(0, 0, 0, 0.5) !important;
             }
             body:not(.dark-theme):not(.light-theme) .search-empty {
-                color: #1d1d1f !important;
+                color: rgba(0, 0, 0, 0.6) !important;
             }
             body:not(.dark-theme):not(.light-theme) .search-empty svg {
                 stroke: rgba(0, 0, 0, 0.3) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-empty .empty-title {
+                color: #1d1d1f !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-empty .empty-query {
+                color: rgba(0, 0, 0, 0.5) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .settings-group-label {
+                color: rgba(0, 0, 0, 0.4) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .theme-option {
+                background: rgba(0, 0, 0, 0.03) !important;
+                border: 1px solid rgba(0, 0, 0, 0.06) !important;
+                color: rgba(0, 0, 0, 0.6) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .theme-option.active {
+                background: rgba(0, 0, 0, 0.08) !important;
+                color: #000 !important;
+                border-color: rgba(0, 0, 0, 0.15) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .lang-option {
+                background: rgba(0, 0, 0, 0.03) !important;
+                border: 1px solid rgba(0, 0, 0, 0.06) !important;
+                color: rgba(0, 0, 0, 0.6) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .lang-option.active {
+                background: rgba(0, 0, 0, 0.08) !important;
+                color: #000 !important;
+                border-color: rgba(0, 0, 0, 0.15) !important;
             }
             body:not(.dark-theme):not(.light-theme) h1 {
                 color: #1d1d1f !important;
@@ -1575,6 +1665,11 @@
             }
             body:not(.dark-theme):not(.light-theme) .footer {
                 color: rgba(0, 0, 0, 0.6) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .modal-overlay.settings-overlay {
+                background: rgba(0, 0, 0, 0.05);
+                backdrop-filter: blur(2px);
+                -webkit-backdrop-filter: blur(2px);
             }
         }
         @media (prefers-color-scheme: dark) {
@@ -1594,33 +1689,6 @@
             body:not(.dark-theme):not(.light-theme) .loading-overlay .loader span {
                 background: rgba(255, 255, 255, 0.8) !important;
             }
-            body:not(.dark-theme):not(.light-theme) .settings-btn {
-                background: rgba(255, 255, 255, 0.1) !important;
-                border: 1px solid rgba(255, 255, 255, 0.15) !important;
-                color: rgba(255, 255, 255, 0.8) !important;
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-btn.open {
-                background: rgba(30, 30, 35, 0.95) !important;
-                border: 1px solid rgba(255, 255, 255, 0.15) !important;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
-                color: rgba(255, 255, 255, 0.8) !important;
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-label {
-                color: rgba(255, 255, 255, 0.4) !important;
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-option {
-                border: 1px solid rgba(255, 255, 255, 0.08) !important;
-                background: rgba(255, 255, 255, 0.04) !important;
-                color: rgba(255, 255, 255, 0.6) !important;
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-option.active {
-                background: rgba(255, 255, 255, 0.12) !important;
-                color: #fff !important;
-                border-color: rgba(255, 255, 255, 0.2) !important;
-            }
-            body:not(.dark-theme):not(.light-theme) .settings-divider {
-                background: rgba(255, 255, 255, 0.08) !important;
-            }
             body:not(.dark-theme):not(.light-theme) .dock {
                 background: rgba(255, 255, 255, 0.06) !important;
                 border: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -1636,6 +1704,18 @@
                 background: rgba(255, 255, 255, 0.12) !important;
             }
             body:not(.dark-theme):not(.light-theme) .dock-btn.active svg {
+                stroke: #fff !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-btn-circle {
+                background: rgba(255, 255, 255, 0.06) !important;
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                color: rgba(255, 255, 255, 0.5) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-btn-circle.active {
+                background: rgba(255, 255, 255, 0.12) !important;
+                color: #fff !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-btn-circle.active svg {
                 stroke: #fff !important;
             }
             body:not(.dark-theme):not(.light-theme) .glass-card {
@@ -1654,13 +1734,15 @@
                 background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0.15) 100%) !important;
                 opacity: 0.3 !important;
             }
-            body:not(.dark-theme):not(.light-theme) .modal-content {
-                background: rgba(30, 30, 35, 0.12) !important;
+            body:not(.dark-theme):not(.light-theme) .modal-content,
+            body:not(.dark-theme):not(.light-theme) .settings-modal-content {
+                background: rgba(30, 30, 35, 0.95) !important;
                 backdrop-filter: blur(30px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
                 border: 1px solid rgba(255, 255, 255, 0.15) !important;
             }
-            body:not(.dark-theme):not(.light-theme) .modal-title {
+            body:not(.dark-theme):not(.light-theme) .modal-title,
+            body:not(.dark-theme):not(.light-theme) .settings-modal-title {
                 color: #fff !important;
             }
             body:not(.dark-theme):not(.light-theme) .modal-subtitle {
@@ -1716,6 +1798,35 @@
             body:not(.dark-theme):not(.light-theme) .search-empty svg {
                 stroke: rgba(255, 255, 255, 0.3) !important;
             }
+            body:not(.dark-theme):not(.light-theme) .search-empty .empty-title {
+                color: rgba(255, 255, 255, 0.85) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .search-empty .empty-query {
+                color: rgba(255, 255, 255, 0.5) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .settings-group-label {
+                color: rgba(255, 255, 255, 0.4) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .theme-option {
+                background: rgba(255, 255, 255, 0.04) !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                color: rgba(255, 255, 255, 0.6) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .theme-option.active {
+                background: rgba(255, 255, 255, 0.12) !important;
+                color: #fff !important;
+                border-color: rgba(255, 255, 255, 0.25) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .lang-option {
+                background: rgba(255, 255, 255, 0.04) !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                color: rgba(255, 255, 255, 0.6) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .lang-option.active {
+                background: rgba(255, 255, 255, 0.12) !important;
+                color: #fff !important;
+                border-color: rgba(255, 255, 255, 0.25) !important;
+            }
             body:not(.dark-theme):not(.light-theme) h1 {
                 color: #fff !important;
             }
@@ -1746,42 +1857,13 @@
                 width: 18px;
                 height: 18px;
             }
-            .settings-btn {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
+            .search-btn-circle {
+                width: 66px;
+                height: 66px;
             }
-            .settings-btn svg {
-                width: 24px;
-                height: 24px;
-            }
-            .settings-btn.open {
-                width: 180px;
-                padding: 14px 16px;
-                border-radius: 20px;
-            }
-            @keyframes settingsPop {
-                0% {
-                    transform: scale(0.85) translateY(8px);
-                    opacity: 0;
-                    border-radius: 50%;
-                    width: 50px;
-                    height: 50px;
-                    padding: 0;
-                    background: transparent;
-                }
-                100% {
-                    transform: scale(1) translateY(0);
-                    opacity: 1;
-                    border-radius: 20px;
-                    width: 180px;
-                    height: auto;
-                    padding: 14px 16px;
-                }
-            }
-            .settings-option {
-                font-size: 0.7rem;
-                padding: 3px 10px;
+            .search-btn-circle svg {
+                width: 26px;
+                height: 26px;
             }
             .loading-overlay .emoji-big {
                 font-size: 3.6rem;
@@ -1872,21 +1954,23 @@
             .search-result .result-name {
                 font-size: 0.95rem;
             }
-            .modal-content {
+            .modal-content,
+            .settings-modal-content {
                 padding: 28px 20px;
                 border-radius: 32px;
                 max-width: 380px;
             }
             .modal-qr {
-                width: 180px;
-                height: 180px;
+                width: 200px;
+                height: 200px;
                 border-radius: 16px;
                 padding: 14px;
             }
             .modal-icon {
                 font-size: 2.8rem;
             }
-            .modal-title {
+            .modal-title,
+            .settings-modal-title {
                 font-size: 1.2rem;
             }
             .modal-btn {
@@ -1906,6 +1990,20 @@
             .modal-close-btn svg {
                 width: 24px;
                 height: 24px;
+            }
+            .theme-option {
+                padding: 12px 6px;
+            }
+            .theme-option svg {
+                width: 30px;
+                height: 30px;
+            }
+            .theme-option span {
+                font-size: 0.7rem;
+            }
+            .lang-option {
+                padding: 10px 12px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -1955,7 +2053,7 @@
     <div class="emoji-bg" style="top:60%;left:20%;font-size:3.2rem;--rot:45deg;--dx:-30px;--dy:25px;">💵</div>
     <div class="emoji-bg" style="top:65%;right:30%;font-size:2.8rem;--rot:-60deg;--dx:40px;--dy:-35px;">🤘</div>
     <div class="search-back-wrap" id="searchBackWrap">
-        <button class="search-back" id="searchBack">
+        <button class="search-back" id="searchBack" aria-label="Назад">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="15 18 9 12 15 6"/>
             </svg>
@@ -1970,7 +2068,7 @@
                 </svg>
             </span>
             <input class="search-input" id="searchInput" type="text" placeholder="Поиск">
-            <span class="search-clear" id="searchClear">
+            <span class="search-clear" id="searchClear" aria-label="Очистить">
                 <svg viewBox="0 0 24 24">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
@@ -1979,6 +2077,7 @@
         </div>
     </div>
     <div class="search-results" id="searchResults"></div>
+
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content" id="modalContent">
             <button class="modal-close-btn" id="modalCloseBtn">
@@ -2002,6 +2101,75 @@
             </div>
         </div>
     </div>
+
+    <div class="modal-overlay settings-overlay" id="settingsOverlay">
+        <div class="settings-modal-content">
+            <button class="modal-close-btn" id="settingsCloseBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+            <div class="settings-modal-title" id="settingsTitle">Настройки</div>
+            <div class="settings-group">
+                <div class="settings-group-label" id="themeGroupLabel">Тема</div>
+                <div class="theme-options">
+                    <button class="theme-option active" data-theme="auto">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 9.3 A2.7 2.7 0 0 1 12 14.7 Z" fill="currentColor" stroke="none"/>
+                            <path d="M12 8 A4 4 0 0 1 12 16" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 8 A4 4 0 0 0 12 16" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="3" x2="12" y2="5" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="19" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+                            <line x1="5.5" y1="5.5" x2="6.9" y2="6.9" stroke="currentColor" stroke-width="2"/>
+                            <line x1="17.1" y1="17.1" x2="18.5" y2="18.5" stroke="currentColor" stroke-width="2"/>
+                            <line x1="3" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2"/>
+                            <line x1="19" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2"/>
+                            <line x1="5.5" y1="18.5" x2="6.9" y2="17.1" stroke="currentColor" stroke-width="2"/>
+                            <line x1="17.1" y1="6.9" x2="18.5" y2="5.5" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span id="themeAutoLabel">Авто</span>
+                    </button>
+                    <button class="theme-option" data-theme="light">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/>
+                            <line x1="12" y1="3" x2="12" y2="5" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="19" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+                            <line x1="5.5" y1="5.5" x2="6.9" y2="6.9" stroke="currentColor" stroke-width="2"/>
+                            <line x1="17.1" y1="17.1" x2="18.5" y2="18.5" stroke="currentColor" stroke-width="2"/>
+                            <line x1="3" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2"/>
+                            <line x1="19" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2"/>
+                            <line x1="5.5" y1="18.5" x2="6.9" y2="17.1" stroke="currentColor" stroke-width="2"/>
+                            <line x1="17.1" y1="6.9" x2="18.5" y2="5.5" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span id="themeLightLabel">Светлая</span>
+                    </button>
+                    <button class="theme-option" data-theme="dark">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/>
+                            <line x1="12" y1="4.6" x2="12" y2="5" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="19" x2="12" y2="19.4" stroke="currentColor" stroke-width="2"/>
+                            <line x1="6.9" y1="6.9" x2="7.2" y2="7.2" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16.8" y1="16.8" x2="17.1" y2="17.1" stroke="currentColor" stroke-width="2"/>
+                            <line x1="4.6" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2"/>
+                            <line x1="19" y1="12" x2="19.4" y2="12" stroke="currentColor" stroke-width="2"/>
+                            <line x1="6.9" y1="17.1" x2="7.2" y2="16.8" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16.8" y1="7.2" x2="17.1" y2="6.9" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span id="themeDarkLabel">Тёмная</span>
+                    </button>
+                </div>
+            </div>
+            <div class="settings-group">
+                <div class="settings-group-label" id="langGroupLabel">Язык</div>
+                <div class="lang-options">
+                    <button class="lang-option" data-lang="ru">Русский</button>
+                    <button class="lang-option" data-lang="en">English</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="cards-wrapper" id="scrollContainer">
         <div class="cards-grid" id="cardsGrid">
             <div class="glass-card card-1">
@@ -2122,7 +2290,8 @@
             </div>
         </div>
     </div>
-    <div class="bottom-bar">
+
+    <div class="bottom-bar" id="bottomBar">
         <div class="dock" id="dock">
             <button class="dock-btn active" data-tab="main">
                 <svg viewBox="0 0 24 24" stroke-width="2">
@@ -2130,39 +2299,22 @@
                 </svg>
                 <span>Главная</span>
             </button>
-            <button class="dock-btn" data-tab="search">
+            <button class="dock-btn" data-tab="settings">
                 <svg viewBox="0 0 24 24" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"/>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/>
+                    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
                 </svg>
-                <span>Поиск</span>
+                <span>Настройки</span>
             </button>
         </div>
-        <div class="settings-btn" id="settingsBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/>
-                <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+        <button class="search-btn-circle" id="searchBtnCircle" data-tab="search" aria-label="Поиск">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="2.2"/>
+                <line x1="15" y1="15" x2="21" y2="21" stroke="currentColor" stroke-width="3.2"/>
             </svg>
-            <div class="settings-panel" id="settingsPanel">
-                <div class="settings-section">
-                    <div class="settings-label">Тема</div>
-                    <div class="settings-options">
-                        <button class="settings-option active" data-theme="auto">Авто</button>
-                        <button class="settings-option" data-theme="light">Светлая</button>
-                        <button class="settings-option" data-theme="dark">Тёмная</button>
-                    </div>
-                </div>
-                <div class="settings-divider"></div>
-                <div class="settings-section">
-                    <div class="settings-label">Язык</div>
-                    <div class="settings-options">
-                        <button class="settings-option" data-lang="ru">Русский</button>
-                        <button class="settings-option" data-lang="en">English</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </button>
     </div>
+
     <script>
         var copyText = 'Скопировать';
         var copiedText = '✅ Готово!';
@@ -2223,16 +2375,16 @@
                     modalQr.appendChild(qrDiv);
                     new QRCode(qrDiv, {
                         text: link,
-                        width: 220,
-                        height: 220,
+                        width: 260,
+                        height: 260,
                         colorDark: "#000000",
                         colorLight: "#ffffff",
-                        correctLevel: QRCode.CorrectLevel.H
+                        correctLevel: QRCode.CorrectLevel.M
                     });
                 } else {
                     modalQr.innerHTML =
-                        '<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=' + encodeURIComponent(
-                            link) + '&bgcolor=ffffff&color=000000&margin=12" alt="QR-код" loading="lazy">';
+                        '<img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=' + encodeURIComponent(
+                            link) + '&bgcolor=ffffff&color=000000&margin=12" alt="QR-код" loading="lazy" onerror="this.parentElement.innerHTML=\'<div class=&quot;modal-qr-error&quot;>⚠️ QR недоступен</div>\'">';
                 }
             } catch (e) {
                 modalQr.innerHTML = '<div class="modal-qr-error">⚠️ Не удалось создать QR-код</div>';
@@ -2241,7 +2393,7 @@
             modalCopy.classList.remove('copied');
             modalCopy.textContent = copyText;
             modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('modal-open');
         }
 
         function openModal(card) {
@@ -2254,7 +2406,7 @@
 
         function closeModal() {
             modalOverlay.classList.remove('active');
-            document.body.style.overflow = '';
+            document.body.classList.remove('modal-open');
             setTimeout(function() {
                 if (!modalOverlay.classList.contains('active')) {
                     modalQr.innerHTML = '<div class="modal-qr-loading">⏳ Генерация QR...</div>';
@@ -2277,13 +2429,13 @@
             if (!currentLink) return;
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(currentLink).then(function() {
-                    this.classList.add('copied');
-                    this.textContent = copiedText;
+                    modalCopy.classList.add('copied');
+                    modalCopy.textContent = copiedText;
                     setTimeout(function() {
-                        this.classList.remove('copied');
-                        this.textContent = copyText;
+                        modalCopy.classList.remove('copied');
+                        modalCopy.textContent = copyText;
                     }, 2000);
-                }.bind(this)).catch(function() {
+                }).catch(function() {
                     fallbackCopy(currentLink);
                 });
             } else {
@@ -2339,7 +2491,17 @@
                 openModal(this);
             });
         });
+
+        var settingsOverlay = document.getElementById('settingsOverlay');
+        var settingsCloseBtn = document.getElementById('settingsCloseBtn');
+
+        function openSettings() {
+            settingsOverlay.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+
         var dockBtns = document.querySelectorAll('.dock-btn');
+        var searchBtnCircle = document.getElementById('searchBtnCircle');
         var dock = document.getElementById('dock');
         var cardsGrid = document.getElementById('cardsGrid');
         var searchBackWrap = document.getElementById('searchBackWrap');
@@ -2348,7 +2510,62 @@
         var searchInput = document.getElementById('searchInput');
         var searchBack = document.getElementById('searchBack');
         var searchClear = document.getElementById('searchClear');
-        var bottomBar = document.querySelector('.bottom-bar');
+        var bottomBar = document.getElementById('bottomBar');
+
+        function activateTab(tab) {
+            dockBtns.forEach(function(b) {
+                b.classList.remove('active');
+            });
+            if (searchBtnCircle) searchBtnCircle.classList.remove('active');
+
+            if (tab === 'main') {
+                var mainBtn = document.querySelector('.dock-btn[data-tab="main"]');
+                if (mainBtn) mainBtn.classList.add('active');
+                cardsGrid.classList.remove('hidden');
+                cardsGrid.classList.add('visible');
+                searchBackWrap.classList.remove('active');
+                searchBottomWrap.classList.remove('active');
+                searchResults.classList.remove('active');
+                searchInput.value = '';
+                searchResults.innerHTML = '';
+                searchClear.classList.remove('visible');
+                document.body.classList.remove('modal-open');
+                if (bottomBar) bottomBar.classList.remove('hidden');
+            } else if (tab === 'settings') {
+                var settingsBtn = document.querySelector('.dock-btn[data-tab="settings"]');
+                if (settingsBtn) settingsBtn.classList.add('active');
+                openSettings();
+            } else if (tab === 'search') {
+                if (searchBtnCircle) searchBtnCircle.classList.add('active');
+                cardsGrid.classList.remove('visible');
+                cardsGrid.classList.add('hidden');
+                searchBackWrap.classList.add('active');
+                searchBottomWrap.classList.add('active');
+                document.body.classList.add('modal-open');
+                if (bottomBar) bottomBar.classList.add('hidden');
+                performSearch('');
+            }
+        }
+
+        function closeSettings() {
+            settingsOverlay.classList.remove('active');
+            document.body.classList.remove('modal-open');
+            activateTab('main');
+        }
+
+        settingsCloseBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeSettings();
+        });
+        settingsOverlay.addEventListener('click', function(e) {
+            if (e.target === this) closeSettings();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && settingsOverlay.classList.contains('active')) {
+                closeSettings();
+            }
+        });
+
         var searchData = [{
             icon: '🤘',
             name: 'Telegram',
@@ -2425,12 +2642,9 @@
             searchClear.classList.add('visible');
             searchResults.classList.add('active');
             if (results.length === 0) {
-                var emptyText = emptyResultText;
-                var queryText = query;
                 searchResults.innerHTML =
-                    '<div class="search-empty"><svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><line x1="22" y1="22" x2="16" y2="16"/></svg><div style="font-weight:600;color:inherit;">' +
-                    emptyText + '</div><div style="margin-top:4px;color:rgba(255,255,255,0.5);">«' + queryText +
-                    '»</div></div>';
+                    '<div class="search-empty"><svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><line x1="22" y1="22" x2="16" y2="16"/></svg><div class="empty-title">' +
+                    emptyResultText + '</div><div class="empty-query">«' + query + '»</div></div>';
                 return;
             }
             searchResults.innerHTML = results.map(function(item) {
@@ -2467,126 +2681,29 @@
         });
         dockBtns.forEach(function(btn) {
             btn.addEventListener('click', function() {
-                dockBtns.forEach(function(b) {
-                    b.classList.remove('active');
-                });
-                this.classList.add('active');
-                if (this.dataset.tab === 'main') {
-                    cardsGrid.classList.remove('hidden');
-                    cardsGrid.classList.add('visible');
-                    searchBackWrap.classList.remove('active');
-                    searchBottomWrap.classList.remove('active');
-                    searchResults.classList.remove('active');
-                    searchInput.value = '';
-                    searchResults.innerHTML = '';
-                    searchClear.classList.remove('visible');
-                    document.body.style.overflow = '';
-                    if (bottomBar) bottomBar.classList.remove('hidden');
-                } else if (this.dataset.tab === 'search') {
-                    cardsGrid.classList.remove('visible');
-                    cardsGrid.classList.add('hidden');
-                    searchBackWrap.classList.add('active');
-                    searchBottomWrap.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                    if (bottomBar) bottomBar.classList.add('hidden');
-                    performSearch('');
-                }
+                activateTab(this.dataset.tab);
             });
         });
-        searchBack.addEventListener('click', function() {
-            dockBtns.forEach(function(b) {
-                b.classList.remove('active');
+
+        if (searchBtnCircle) {
+            searchBtnCircle.addEventListener('click', function() {
+                activateTab('search');
             });
-            document.querySelector('.dock-btn[data-tab="main"]').classList.add('active');
-            cardsGrid.classList.remove('hidden');
-            cardsGrid.classList.add('visible');
-            searchBackWrap.classList.remove('active');
-            searchBottomWrap.classList.remove('active');
-            searchResults.classList.remove('active');
-            searchInput.value = '';
-            searchResults.innerHTML = '';
-            searchClear.classList.remove('visible');
-            document.body.style.overflow = '';
-            if (bottomBar) bottomBar.classList.remove('hidden');
+        }
+
+        searchBack.addEventListener('click', function() {
+            activateTab('main');
         });
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && searchBackWrap.classList.contains('active')) {
                 searchBack.click();
             }
         });
-        var startX = 0;
-        var startY = 0;
-        dock.addEventListener('touchstart', function(e) {
-            var t = e.touches[0];
-            startX = t.clientX;
-            startY = t.clientY;
-        }, { passive: true });
-        dock.addEventListener('touchmove', function(e) {
-            if (!startX) return;
-            var t = e.touches[0];
-            var dx = t.clientX - startX;
-            var dy = t.clientY - startY;
-            if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
-            e.preventDefault();
-            var btns = Array.from(dockBtns);
-            var activeIndex = btns.findIndex(function(b) {
-                return b.classList.contains('active');
-            });
-            var targetIndex = -1;
-            if (dx > 0 && activeIndex > 0) {
-                targetIndex = activeIndex - 1;
-            } else if (dx < 0 && activeIndex < btns.length - 1) {
-                targetIndex = activeIndex + 1;
-            }
-            if (targetIndex >= 0 && targetIndex < btns.length) {
-                btns[targetIndex].click();
-                startX = t.clientX;
-            }
-        }, { passive: false });
-        dock.addEventListener('touchend', function() {
-            startX = 0;
-            startY = 0;
-        }, { passive: true });
 
-        var settingsBtn = document.getElementById('settingsBtn');
-        var settingsPanel = document.getElementById('settingsPanel');
-        var isOpen = false;
-
-        if (settingsBtn && settingsPanel) {
-            settingsBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                isOpen = !isOpen;
-                this.classList.toggle('open');
-
-                if (isOpen) {
-                    document.body.style.overflow = 'hidden';
-                    document.body.classList.add('settings-open');
-                } else {
-                    document.body.style.overflow = '';
-                    document.body.classList.remove('settings-open');
-                }
-            });
-
-            document.addEventListener('click', function(e) {
-                if (isOpen) {
-                    if (!settingsBtn.contains(e.target)) {
-                        settingsBtn.classList.remove('open');
-                        isOpen = false;
-                        document.body.style.overflow = '';
-                        document.body.classList.remove('settings-open');
-                    }
-                }
-            });
-
-            settingsBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        }
-
-        document.querySelectorAll('.settings-option[data-theme]').forEach(function(btn) {
+        document.querySelectorAll('.theme-option[data-theme]').forEach(function(btn) {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                document.querySelectorAll('.settings-option[data-theme]').forEach(function(b) {
+                document.querySelectorAll('.theme-option[data-theme]').forEach(function(b) {
                     b.classList.remove('active');
                 });
                 this.classList.add('active');
@@ -2596,10 +2713,10 @@
             });
         });
 
-        document.querySelectorAll('.settings-option[data-lang]').forEach(function(btn) {
+        document.querySelectorAll('.lang-option[data-lang]').forEach(function(btn) {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                document.querySelectorAll('.settings-option[data-lang]').forEach(function(b) {
+                document.querySelectorAll('.lang-option[data-lang]').forEach(function(b) {
                     b.classList.remove('active');
                 });
                 this.classList.add('active');
@@ -2626,8 +2743,10 @@
                     welcome: 'Добро пожаловать!',
                     subtitle: '@mmmmisl_m',
                     main: 'Главная',
+                    settings: 'Настройки',
                     search: 'Поиск',
                     searchPlaceholder: 'Поиск',
+                    settingsTitle: 'Настройки',
                     themeLabel: 'Тема',
                     langLabel: 'Язык',
                     auto: 'Авто',
@@ -2688,8 +2807,10 @@
                     welcome: 'Welcome!',
                     subtitle: '@mmmmisl_m',
                     main: 'Home',
+                    settings: 'Settings',
                     search: 'Search',
                     searchPlaceholder: 'Search',
+                    settingsTitle: 'Settings',
                     themeLabel: 'Theme',
                     langLabel: 'Language',
                     auto: 'Auto',
@@ -2758,24 +2879,26 @@
 
             var mainBtn = document.querySelector('.dock-btn[data-tab="main"] span');
             if (mainBtn) mainBtn.textContent = t.main;
-            var searchBtn = document.querySelector('.dock-btn[data-tab="search"] span');
-            if (searchBtn) searchBtn.textContent = t.search;
+            var settingsBtnSpan = document.querySelector('.dock-btn[data-tab="settings"] span');
+            if (settingsBtnSpan) settingsBtnSpan.textContent = t.settings;
 
             var searchInputEl = document.querySelector('.search-input');
             if (searchInputEl) searchInputEl.placeholder = t.searchPlaceholder;
 
-            var labels = document.querySelectorAll('.settings-label');
-            if (labels.length >= 2) {
-                labels[0].textContent = t.themeLabel;
-                labels[1].textContent = t.langLabel;
-            }
+            var settingsTitleEl = document.getElementById('settingsTitle');
+            if (settingsTitleEl) settingsTitleEl.textContent = t.settingsTitle;
 
-            var themeBtns = document.querySelectorAll('.settings-option[data-theme]');
-            if (themeBtns.length >= 3) {
-                themeBtns[0].textContent = t.auto;
-                themeBtns[1].textContent = t.light;
-                themeBtns[2].textContent = t.dark;
-            }
+            var themeGroupLabel = document.getElementById('themeGroupLabel');
+            if (themeGroupLabel) themeGroupLabel.textContent = t.themeLabel;
+            var langGroupLabel = document.getElementById('langGroupLabel');
+            if (langGroupLabel) langGroupLabel.textContent = t.langLabel;
+
+            var themeAutoLabel = document.getElementById('themeAutoLabel');
+            if (themeAutoLabel) themeAutoLabel.textContent = t.auto;
+            var themeLightLabel = document.getElementById('themeLightLabel');
+            if (themeLightLabel) themeLightLabel.textContent = t.light;
+            var themeDarkLabel = document.getElementById('themeDarkLabel');
+            if (themeDarkLabel) themeDarkLabel.textContent = t.dark;
 
             var cards = document.querySelectorAll('.glass-card');
             if (cards.length >= 12) {
@@ -3024,7 +3147,7 @@
         var savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             applyTheme(savedTheme);
-            document.querySelectorAll('.settings-option[data-theme]').forEach(function(b) {
+            document.querySelectorAll('.theme-option[data-theme]').forEach(function(b) {
                 if (b.dataset.theme === savedTheme) {
                     b.classList.add('active');
                 } else {
@@ -3032,7 +3155,7 @@
                 }
             });
         } else {
-            document.querySelectorAll('.settings-option[data-theme]').forEach(function(b) {
+            document.querySelectorAll('.theme-option[data-theme]').forEach(function(b) {
                 if (b.dataset.theme === 'auto') {
                     b.classList.add('active');
                 } else {
@@ -3044,7 +3167,7 @@
         var savedLang = localStorage.getItem('lang');
         if (savedLang) {
             applyLanguage(savedLang);
-            document.querySelectorAll('.settings-option[data-lang]').forEach(function(b) {
+            document.querySelectorAll('.lang-option[data-lang]').forEach(function(b) {
                 if (b.dataset.lang === savedLang) {
                     b.classList.add('active');
                 } else {
