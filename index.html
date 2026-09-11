@@ -2589,13 +2589,13 @@
             name: 'WB Chat',
             desc: 'Основной канал',
             link: 'https://chat.wb.ru/join/K277TwDwjWaYoQI1',
-            keywords: 'wb chat wildberries чат вайлдберриз'
+            keywords: 'wb вб wbchat вбчат вайлдберриз вайлдбериз вб-чат вб чат wb chat wb-chat wildberries вбчат wbчат'
         }, {
             icon: '🔒',
             name: 'WB Chat (Приват)',
             desc: 'Закрытый канал',
             link: 'https://chat.wb.ru/join/zjd7OQkwUi8QBSYs',
-            keywords: 'wb chat приват wildberries чат вайлдберриз закрытый'
+            keywords: 'wb вб wbchat вбчат вайлдберриз вайлдбериз приват закрытый private privat wb-private вб-приват вб приват wb приват wildberries private вб закрытый'
         }, {
             icon: '📸',
             name: 'Instagram',
@@ -2628,12 +2628,81 @@
             keywords: 'meera мира меера'
         }];
 
+        function levenshtein(a, b) {
+            if (a === b) return 0;
+            if (!a.length) return b.length;
+            if (!b.length) return a.length;
+
+            var matrix = [];
+            for (var i = 0; i <= b.length; i++) {
+                matrix[i] = [i];
+            }
+            for (var j = 0; j <= a.length; j++) {
+                matrix[0][j] = j;
+            }
+            for (var i = 1; i <= b.length; i++) {
+                for (var j = 1; j <= a.length; j++) {
+                    if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(
+                            matrix[i - 1][j - 1] + 1,
+                            matrix[i][j - 1] + 1,
+                            matrix[i - 1][j] + 1
+                        );
+                    }
+                }
+            }
+            return matrix[b.length][a.length];
+        }
+
+        function normalizeText(str) {
+            return String(str)
+                .toLowerCase()
+                .replace(/ё/g, 'е')
+                .replace(/[^a-zа-я0-9\s]/gi, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function fuzzyMatch(query, text) {
+            var q = normalizeText(query);
+            var t = normalizeText(text);
+            if (!q) return false;
+
+            if (t.indexOf(q) !== -1) return true;
+
+            var queryWords = q.split(' ').filter(Boolean);
+            var textWords = t.split(' ').filter(Boolean);
+
+            for (var i = 0; i < queryWords.length; i++) {
+                var qw = queryWords[i];
+                if (qw.length < 3) {
+                    if (t.indexOf(qw) === -1) return false;
+                    continue;
+                }
+                var maxDist = qw.length <= 4 ? 1 : (qw.length <= 7 ? 2 : 3);
+                var found = false;
+                for (var j = 0; j < textWords.length; j++) {
+                    var tw = textWords[j];
+                    if (Math.abs(tw.length - qw.length) > maxDist + 1) continue;
+                    if (tw.indexOf(qw) !== -1 || qw.indexOf(tw) !== -1) {
+                        found = true;
+                        break;
+                    }
+                    if (levenshtein(qw, tw) <= maxDist) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) return false;
+            }
+            return true;
+        }
+
         function performSearch(query) {
-            var results = searchData.filter(function(item) {
-                var searchText = (item.name + ' ' + item.keywords + ' ' + item.desc).toLowerCase();
-                return searchText.includes(query.toLowerCase());
-            });
-            if (query.trim() === '') {
+            var trimmed = query.trim();
+            if (trimmed === '') {
                 searchResults.innerHTML = '';
                 searchResults.classList.remove('active');
                 searchClear.classList.remove('visible');
@@ -2641,13 +2710,43 @@
             }
             searchClear.classList.add('visible');
             searchResults.classList.add('active');
-            if (results.length === 0) {
+
+            var scored = [];
+            for (var i = 0; i < searchData.length; i++) {
+                var item = searchData[i];
+                var haystack = item.name + ' ' + item.keywords + ' ' + item.desc;
+                var normalizedHaystack = normalizeText(haystack);
+                var normalizedQuery = normalizeText(trimmed);
+
+                var score = 0;
+                if (normalizedHaystack.indexOf(normalizedQuery) !== -1) {
+                    score = 1000 - normalizedHaystack.indexOf(normalizedQuery);
+                } else if (fuzzyMatch(trimmed, haystack)) {
+                    var dist = levenshtein(normalizedQuery, normalizedHaystack.substring(0, Math.min(normalizedHaystack.length, normalizedQuery.length + 3)));
+                    score = 500 - dist;
+                }
+
+                if (score > 0) {
+                    scored.push({
+                        item: item,
+                        score: score
+                    });
+                }
+            }
+
+            scored.sort(function(a, b) {
+                return b.score - a.score;
+            });
+
+            if (scored.length === 0) {
                 searchResults.innerHTML =
                     '<div class="search-empty"><svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><line x1="22" y1="22" x2="16" y2="16"/></svg><div class="empty-title">' +
                     emptyResultText + '</div><div class="empty-query">«' + query + '»</div></div>';
                 return;
             }
-            searchResults.innerHTML = results.map(function(item) {
+
+            searchResults.innerHTML = scored.map(function(entry) {
+                var item = entry.item;
                 return '<a class="search-result" href="#" data-link="' + item.link + '" data-icon="' + item
                     .icon + '" data-name="' + item.name + '" data-desc="' + item.desc +
                     '"><span class="result-icon">' + item.icon +
@@ -2655,6 +2754,7 @@
                     '</div><div class="result-desc">' + item.desc +
                     '</div></div><span class="result-arrow">→</span></a>';
             }).join('');
+
             document.querySelectorAll('.search-result').forEach(function(el) {
                 el.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -3025,13 +3125,13 @@
                     name: 'WB Chat',
                     desc: 'Main channel',
                     link: 'https://chat.wb.ru/join/K277TwDwjWaYoQI1',
-                    keywords: 'wb chat wildberries'
+                    keywords: 'wb вб wbchat вбчат wildberries вайлдберриз вайлдбериз chat wb chat wb-chat вб чат wbчат'
                 }, {
                     icon: '🔒',
                     name: 'WB Chat (Private)',
                     desc: 'Private channel',
                     link: 'https://chat.wb.ru/join/zjd7OQkwUi8QBSYs',
-                    keywords: 'wb chat private wildberries'
+                    keywords: 'wb вб wbchat вбчат wildberries вайлдберриз вайлдбериз private privat закрытый приват wb-private вб приват вб-приват'
                 }, {
                     icon: '📸',
                     name: 'Instagram',
@@ -3087,13 +3187,13 @@
                     name: 'WB Chat',
                     desc: 'Основной канал',
                     link: 'https://chat.wb.ru/join/K277TwDwjWaYoQI1',
-                    keywords: 'wb chat wildberries чат вайлдберриз'
+                    keywords: 'wb вб wbchat вбчат вайлдберриз вайлдбериз вбчат вб-чат вб чат wb chat wb-chat wildberries вб чат вайлд wbчат'
                 }, {
                     icon: '🔒',
                     name: 'WB Chat (Приват)',
                     desc: 'Закрытый канал',
                     link: 'https://chat.wb.ru/join/zjd7OQkwUi8QBSYs',
-                    keywords: 'wb chat приват wildberries чат вайлдберриз закрытый'
+                    keywords: 'wb вб wbchat вбчат вайлдберриз вайлдбериз приват закрытый private privat wb-private вб-приват вб приват wb приват wildberries private вб закрытый'
                 }, {
                     icon: '📸',
                     name: 'Instagram',
