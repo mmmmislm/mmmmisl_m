@@ -379,7 +379,6 @@
                         transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        /* Мягкая полоса на верхней грани — БЕЗ яркого белого */
         .glass-card::before {
             content: '';
             position: absolute;
@@ -399,7 +398,6 @@
             border-radius: 44px 44px 0 0;
         }
 
-        /* Мягкая полоса на нижней грани */
         .glass-card::after {
             content: '';
             position: absolute;
@@ -1117,6 +1115,7 @@
         body.light-theme {
             color: #1d1d1f;
             background: #f2f2f7;
+            animation: none;
         }
         body.light-theme .loading-overlay { background: #f2f2f7 !important; }
         body.light-theme .loading-overlay h1 { color: #1d1d1f !important; }
@@ -1230,13 +1229,19 @@
         body.light-theme .footer { color: rgba(0, 0, 0, 0.6) !important; }
 
         /* ============================================
-           DARK THEME
+           DARK THEME — такой же градиент, как в авто-тёмной
            ============================================ */
         body.dark-theme {
             color: #fff;
-            background: #1c1c1e;
+            background: linear-gradient(-45deg, #2c2c2c, #1a1a1a, #3a3a3a, #0d0d0d);
+            background-size: 400% 400%;
+            animation: gradientMove 25s ease infinite;
         }
-        body.dark-theme .loading-overlay { background: #1c1c1e !important; }
+        body.dark-theme .loading-overlay {
+            background: linear-gradient(-45deg, #2c2c2c, #1a1a1a, #3a3a3a, #0d0d0d);
+            background-size: 400% 400%;
+            animation: gradientMove 25s ease infinite;
+        }
         body.dark-theme .loading-overlay h1 { color: #fff !important; }
         body.dark-theme .loading-overlay .subtitle { color: rgba(255, 255, 255, 0.7) !important; }
         body.dark-theme .loading-overlay .loader span { background: rgba(255, 255, 255, 0.8) !important; }
@@ -1266,6 +1271,7 @@
             body:not(.dark-theme):not(.light-theme) {
                 color: #1d1d1f;
                 background: #f2f2f7;
+                animation: none;
             }
             body:not(.dark-theme):not(.light-theme) .loading-overlay { background: #f2f2f7 !important; }
             body:not(.dark-theme):not(.light-theme) .loading-overlay h1 { color: #1d1d1f !important; }
