@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Все соцсети mmmmisl_m в одном месте: Telegram, Telegram Bot, WB Chat, Instagram, Threads, TikTok, Meera. Быстрый доступ к каналам, QR-коды и поиск.">
     <link rel="canonical" href="https://mmmmislm.github.io/mmmmisl_m/">
     <link rel="icon" type="image/png" sizes="192x192" href="/mmmmisl_m/icon.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/mmmmisl_m/icon.png">
@@ -44,9 +45,6 @@
             -webkit-touch-callout: none !important;
         }
 
-        /* ============================================
-           СТЕКЛО — переменные (iOS 26)
-           ============================================ */
         :root {
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-bg-hover: rgba(255, 255, 255, 0.09);
@@ -60,11 +58,11 @@
             --glass-blur: blur(6px) saturate(180%);
         }
         body.light-theme {
-            --glass-bg: rgba(255, 255, 255, 0.45);
-            --glass-bg-hover: rgba(255, 255, 255, 0.6);
-            --glass-bg-strong: rgba(255, 255, 255, 0.9);
-            --glass-border: rgba(255, 255, 255, 0.7);
-            --glass-border-hover: rgba(255, 255, 255, 0.9);
+            --glass-bg: rgba(255, 255, 255, 0.22);
+            --glass-bg-hover: rgba(255, 255, 255, 0.32);
+            --glass-bg-strong: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.55);
+            --glass-border-hover: rgba(255, 255, 255, 0.75);
             --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
             --glass-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
             --glass-inset-top: inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -82,6 +80,19 @@
             --glass-inset-top: inset 0 1px 0 rgba(255, 255, 255, 0.15);
             --glass-inset-bottom: inset 0 -1px 0 rgba(0, 0, 0, 0.2);
             --glass-blur: blur(6px) saturate(180%);
+        }
+        @media (prefers-color-scheme: light) {
+            body:not(.dark-theme):not(.light-theme) {
+                --glass-bg: rgba(255, 255, 255, 0.22);
+                --glass-bg-hover: rgba(255, 255, 255, 0.32);
+                --glass-bg-strong: rgba(255, 255, 255, 0.75);
+                --glass-border: rgba(255, 255, 255, 0.55);
+                --glass-border-hover: rgba(255, 255, 255, 0.75);
+                --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+                --glass-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
+                --glass-inset-top: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+                --glass-inset-bottom: inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+            }
         }
 
         .loading-overlay {
@@ -183,9 +194,6 @@
         }
         body.modal-open { overflow: hidden !important; }
 
-        /* ============================================
-           BOTTOM BAR + DOCK + FAB
-           ============================================ */
         .bottom-bar {
             position: fixed;
             bottom: 25px;
@@ -344,9 +352,6 @@
             transition: filter 0.3s ease, opacity 0.3s ease;
         }
 
-        /* ============================================
-           СТЕКЛЯННАЯ КАРТОЧКА — большое закругление, аккуратные грани
-           ============================================ */
         .glass-card {
             flex: 0 0 auto;
             width: 100%;
@@ -470,9 +475,6 @@
             transform: scale(1);
         }
 
-        /* ============================================
-           КНОПКА НАЗАД
-           ============================================ */
         .search-back-wrap {
             position: fixed;
             top: 42px;
@@ -530,9 +532,6 @@
         }
         .search-back:active { transform: scale(0.95); }
 
-        /* ============================================
-           СТРОКА ПОИСКА
-           ============================================ */
         .search-bottom-wrap {
             position: fixed;
             bottom: 60px;
@@ -712,9 +711,6 @@
             color: rgba(255, 255, 255, 0.5);
         }
 
-        /* ============================================
-           МОДАЛКИ
-           ============================================ */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -1109,9 +1105,6 @@
             transition: transform 0.2s ease;
         }
 
-        /* ============================================
-           LIGHT THEME
-           ============================================ */
         body.light-theme {
             color: #1d1d1f;
             background: #f2f2f7;
@@ -1228,9 +1221,6 @@
         }
         body.light-theme .footer { color: rgba(0, 0, 0, 0.6) !important; }
 
-        /* ============================================
-           DARK THEME — такой же градиент, как в авто-тёмной
-           ============================================ */
         body.dark-theme {
             color: #fff;
             background: linear-gradient(-45deg, #2c2c2c, #1a1a1a, #3a3a3a, #0d0d0d);
@@ -1277,6 +1267,33 @@
             body:not(.dark-theme):not(.light-theme) .loading-overlay h1 { color: #1d1d1f !important; }
             body:not(.dark-theme):not(.light-theme) .loading-overlay .subtitle { color: rgba(0, 0, 0, 0.6) !important; }
             body:not(.dark-theme):not(.light-theme) .loading-overlay .loader span { background: #1d1d1f !important; }
+
+            body:not(.dark-theme):not(.light-theme) .dock-btn {
+                color: rgba(0, 0, 0, 0.5) !important;
+                background: rgba(0, 0, 0, 0.03);
+                border-color: rgba(0, 0, 0, 0.06);
+            }
+            body:not(.dark-theme):not(.light-theme) .dock-btn svg { stroke: rgba(0, 0, 0, 0.5) !important; }
+            body:not(.dark-theme):not(.light-theme) .dock-btn.active {
+                color: #1d1d1f !important;
+                background: rgba(0, 0, 0, 0.06) !important;
+                box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.06);
+            }
+            body:not(.dark-theme):not(.light-theme) .dock-btn.active svg { stroke: #1d1d1f !important; }
+            body:not(.dark-theme):not(.light-theme) .dock-btn:hover { background: rgba(0, 0, 0, 0.05); }
+
+            body:not(.dark-theme):not(.light-theme) .search-btn-circle { color: rgba(0, 0, 0, 0.5) !important; }
+            body:not(.dark-theme):not(.light-theme) .search-btn-circle:hover { color: rgba(0, 0, 0, 0.85) !important; }
+            body:not(.dark-theme):not(.light-theme) .search-btn-circle.active { color: #1d1d1f !important; }
+            body:not(.dark-theme):not(.light-theme) .search-btn-circle.active svg { stroke: #1d1d1f !important; }
+
+            body:not(.dark-theme):not(.light-theme) .glass-card::before {
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 20%, rgba(255, 255, 255, 0.5) 80%, rgba(255, 255, 255, 0) 100%) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .glass-card::after {
+                background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.06) 20%, rgba(0, 0, 0, 0.06) 80%, rgba(0, 0, 0, 0) 100%) !important;
+            }
+
             body:not(.dark-theme):not(.light-theme) .modal-title,
             body:not(.dark-theme):not(.light-theme) .settings-modal-title { color: #1d1d1f !important; }
             body:not(.dark-theme):not(.light-theme) .modal-subtitle { color: rgba(0, 0, 0, 0.5) !important; }
@@ -1295,39 +1312,16 @@
             }
             body:not(.dark-theme):not(.light-theme) .modal-close-btn { color: rgba(0, 0, 0, 0.5) !important; }
             body:not(.dark-theme):not(.light-theme) .modal-close-btn:hover { color: #000 !important; }
-            body:not(.dark-theme):not(.light-theme) h1 { color: #1d1d1f !important; }
-            body:not(.dark-theme):not(.light-theme) .subtitle { color: rgba(0, 0, 0, 0.7) !important; opacity: 0.85 !important; }
-            body:not(.dark-theme):not(.light-theme) .footer { color: rgba(0, 0, 0, 0.6) !important; }
 
-            body:not(.dark-theme):not(.light-theme) .dock-btn { color: rgba(0, 0, 0, 0.5) !important; background: rgba(0, 0, 0, 0.03); border-color: rgba(0, 0, 0, 0.06); }
-            body:not(.dark-theme):not(.light-theme) .dock-btn svg { stroke: rgba(0, 0, 0, 0.5) !important; }
-            body:not(.dark-theme):not(.light-theme) .dock-btn.active { color: #1d1d1f !important; background: rgba(0, 0, 0, 0.06) !important; }
-            body:not(.dark-theme):not(.light-theme) .dock-btn.active svg { stroke: #1d1d1f !important; }
-            body:not(.dark-theme):not(.light-theme) .search-btn-circle { color: rgba(0, 0, 0, 0.5) !important; }
-            body:not(.dark-theme):not(.light-theme) .search-btn-circle.active { color: #1d1d1f !important; }
-            body:not(.dark-theme):not(.light-theme) .search-btn-circle.active svg { stroke: #1d1d1f !important; }
-            body:not(.dark-theme):not(.light-theme) .glass-card::before {
-                background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 20%, rgba(255, 255, 255, 0.5) 80%, rgba(255, 255, 255, 0) 100%) !important;
-            }
-            body:not(.dark-theme):not(.light-theme) .glass-card::after {
-                background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.06) 20%, rgba(0, 0, 0, 0.06) 80%, rgba(0, 0, 0, 0) 100%) !important;
-            }
-            body:not(.dark-theme):not(.light-theme) .search-back { color: rgba(0, 0, 0, 0.75) !important; }
-            body:not(.dark-theme):not(.light-theme) .search-input { color: #1d1d1f !important; }
-            body:not(.dark-theme):not(.light-theme) .search-input::placeholder { color: rgba(0, 0, 0, 0.4) !important; }
-            body:not(.dark-theme):not(.light-theme) .search-icon svg { stroke: rgba(0, 0, 0, 0.5) !important; }
-            body:not(.dark-theme):not(.light-theme) .search-clear svg { stroke: rgba(0, 0, 0, 0.4) !important; }
-            body:not(.dark-theme):not(.light-theme) .search-result .result-name { color: #1d1d1f !important; }
-            body:not(.dark-theme):not(.light-theme) .search-result .result-desc { color: rgba(0, 0, 0, 0.5) !important; }
-            body:not(.dark-theme):not(.light-theme) .search-empty { color: rgba(0, 0, 0, 0.6) !important; }
-            body:not(.dark-theme):not(.light-theme) .search-empty svg { stroke: rgba(0, 0, 0, 0.3) !important; }
-            body:not(.dark-theme):not(.light-theme) .search-empty .empty-title { color: #1d1d1f !important; }
-            body:not(.dark-theme):not(.light-theme) .search-empty .empty-query { color: rgba(0, 0, 0, 0.5) !important; }
             body:not(.dark-theme):not(.light-theme) .settings-group-label { color: rgba(0, 0, 0, 0.4) !important; }
             body:not(.dark-theme):not(.light-theme) .theme-option {
                 background: rgba(0, 0, 0, 0.03) !important;
                 border: 1px solid rgba(0, 0, 0, 0.06) !important;
                 color: rgba(0, 0, 0, 0.6) !important;
+            }
+            body:not(.dark-theme):not(.light-theme) .theme-option:hover {
+                background: rgba(0, 0, 0, 0.06) !important;
+                color: rgba(0, 0, 0, 0.85) !important;
             }
             body:not(.dark-theme):not(.light-theme) .theme-option.active {
                 background: rgba(0, 0, 0, 0.08) !important;
@@ -1339,10 +1333,44 @@
                 border: 1px solid rgba(0, 0, 0, 0.06) !important;
                 color: rgba(0, 0, 0, 0.6) !important;
             }
+            body:not(.dark-theme):not(.light-theme) .lang-option:hover {
+                background: rgba(0, 0, 0, 0.06) !important;
+                color: rgba(0, 0, 0, 0.85) !important;
+            }
             body:not(.dark-theme):not(.light-theme) .lang-option.active {
                 background: rgba(0, 0, 0, 0.08) !important;
                 color: #000 !important;
                 border-color: rgba(0, 0, 0, 0.15) !important;
+            }
+
+            body:not(.dark-theme):not(.light-theme) .search-back { color: rgba(0, 0, 0, 0.75) !important; }
+            body:not(.dark-theme):not(.light-theme) .search-input { color: #1d1d1f !important; }
+            body:not(.dark-theme):not(.light-theme) .search-input::placeholder { color: rgba(0, 0, 0, 0.4) !important; }
+            body:not(.dark-theme):not(.light-theme) .search-icon svg { stroke: rgba(0, 0, 0, 0.5) !important; }
+            body:not(.dark-theme):not(.light-theme) .search-clear svg { stroke: rgba(0, 0, 0, 0.4) !important; }
+            body:not(.dark-theme):not(.light-theme) .search-result .result-name { color: #1d1d1f !important; }
+            body:not(.dark-theme):not(.light-theme) .search-result .result-desc { color: rgba(0, 0, 0, 0.5) !important; }
+            body:not(.dark-theme):not(.light-theme) .search-empty { color: rgba(0, 0, 0, 0.6) !important; }
+            body:not(.dark-theme):not(.light-theme) .search-empty svg { stroke: rgba(0, 0, 0, 0.3) !important; }
+            body:not(.dark-theme):not(.light-theme) .search-empty .empty-title { color: #1d1d1f !important; }
+            body:not(.dark-theme):not(.light-theme) .search-empty .empty-query { color: rgba(0, 0, 0, 0.5) !important; }
+
+            body:not(.dark-theme):not(.light-theme) h1 { color: #1d1d1f !important; }
+            body:not(.dark-theme):not(.light-theme) .subtitle { color: rgba(0, 0, 0, 0.7) !important; opacity: 0.85 !important; }
+            body:not(.dark-theme):not(.light-theme) .footer { color: rgba(0, 0, 0, 0.6) !important; }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body:not(.dark-theme):not(.light-theme) {
+                color: #fff;
+                background: linear-gradient(-45deg, #2c2c2c, #1a1a1a, #3a3a3a, #0d0d0d);
+                background-size: 400% 400%;
+                animation: gradientMove 25s ease infinite;
+            }
+            body:not(.dark-theme):not(.light-theme) .loading-overlay {
+                background: linear-gradient(-45deg, #2c2c2c, #1a1a1a, #3a3a3a, #0d0d0d);
+                background-size: 400% 400%;
+                animation: gradientMove 25s ease infinite;
             }
         }
 
